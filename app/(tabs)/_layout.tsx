@@ -1,35 +1,33 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import {
+    Icon,
+    Label,
+    NativeTabs,
+} from 'expo-router/unstable-native-tabs';
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+// Static tab bar colors (white background)
+const TAB_BAR_BG = '#ffffff';
+const TAB_LABEL_COLOR = '#6b7280';
+const TAB_TINT_COLOR = '#ea580c';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <NativeTabs
+      backgroundColor={TAB_BAR_BG}
+      tintColor={TAB_TINT_COLOR}
+      labelStyle={{ color: TAB_LABEL_COLOR }}
+    >
+      <NativeTabs.Trigger name="index">
+        <Icon sf="house.fill" md="home" />
+        <Label>Anasayfa</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="dua">
+        <Icon sf="book.fill" md="menu_book" />
+        <Label>Günün Duası</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="tracker">
+        <Icon sf="calendar" md="calendar_today" />
+        <Label>Takip</Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }
