@@ -25,6 +25,13 @@ export const Colors = {
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
   },
+  ramadan: {
+    background: '#1E1B2E',
+    card: '#2D2A42',
+    accent: '#FFB380',
+    text: '#FFFFFF',
+    textSecondary: '#A0A0A0',
+  }
 };
 
 export const Fonts = Platform.select({
