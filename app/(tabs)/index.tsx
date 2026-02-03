@@ -1,8 +1,18 @@
 import { Colors } from '@/constants/theme';
+import { getStoredDistrictId } from '@/lib/location-storage';
+import type { District, PrayerTimesRecord, State } from '@/lib/prayer-times';
+import {
+    getIftarProgress,
+    getLocationName,
+    getRemainingToIftar,
+    getTodayRecord,
+    timesToDisplayList,
+} from '@/lib/prayer-times';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useEffect } from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useFocusEffect, useRouter } from 'expo-router';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, {
     Easing,
     useAnimatedProps,
@@ -18,45 +28,38 @@ import Svg, { Circle, Defs, Stop, LinearGradient as SvgGradient } from 'react-na
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 const AnimatedText = Animated.createAnimatedComponent(Text);
 
-const { width } = Dimensions.get('window');
-
-// Mock Data
-const PRAYER_TIMES = [
-  { name: 'İmsak', time: '05:30', icon: 'wb-twilight' },
-  { name: 'Güneş', time: '06:55', icon: 'wb-sunny' },
-  { name: 'Öğle', time: '13:10', icon: 'wb-sunny' },
-  { name: 'Akşam (İftar)', time: '16:40', icon: 'nights-stay', active: true },
-  { name: 'Yatsı', time: '21:05', icon: 'bedtime' },
-];
-
 const CIRCULAR_TIMING = { duration: 1200, easing: Easing.out(Easing.cubic) };
 
-/** 24 saat = tam daire */
-const TOTAL_SECONDS_24H = 24 * 60 * 60;
+const districts = require('../../assets/data/prayer-times.districts.json') as District[];
+const states = require('../../assets/data/prayer-times.states.json') as State[];
+const prayerTimes2026 = require('../../assets/data/prayer-times-2026.json') as {
+  data: PrayerTimesRecord[];
+};
 
-/** "HH:MM:SS" → saniye; daire progress = kalan / 24h */
-function timeStringToProgress(timeStr: string): number {
-  const parts = timeStr.trim().split(':').map(Number);
-  const hours = parts[0] ?? 0;
-  const minutes = parts[1] ?? 0;
-  const seconds = parts[2] ?? 0;
-  const totalSeconds = hours * 3600 + minutes * 60 + seconds;
-  return Math.min(1, Math.max(0, totalSeconds / TOTAL_SECONDS_24H));
-}
+const DEFAULT_DISTRICT_ID = '15153';
 
-const CircularTimer = ({ time = "02:44:58", label = "İftara kalan süre" }) => {
+const CircularTimer = ({
+  time = '--:--:--',
+  progress: progressProp = 0,
+  label = 'İftara kalan süre',
+}: {
+  time: string;
+  progress: number;
+  label?: string;
+}) => {
   const size = 220;
   const strokeWidth = 8;
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
 
-  const progress = timeStringToProgress(time);
   const progressValue = useSharedValue(0);
   const timeScale = useSharedValue(1);
 
   useEffect(() => {
-    progressValue.value = withTiming(progress, CIRCULAR_TIMING);
-  }, [progress]);
+    progressValue.value = withTiming(progressProp, CIRCULAR_TIMING);
+    // progressValue is a Reanimated shared value ref; omit from deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [progressProp]);
 
   useEffect(() => {
     timeScale.value = withRepeat(
@@ -67,6 +70,8 @@ const CircularTimer = ({ time = "02:44:58", label = "İftara kalan süre" }) => 
       -1,
       true
     );
+    // timeScale is a Reanimated shared value ref; omit from deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const animatedCircleProps = useAnimatedProps(() => ({
@@ -118,7 +123,9 @@ const CircularTimer = ({ time = "02:44:58", label = "İftara kalan süre" }) => 
   );
 };
 
-const PrayerRow = ({ item }: { item: typeof PRAYER_TIMES[0] }) => (
+type PrayerItem = { name: string; time: string; icon: string; active?: boolean };
+
+const PrayerRow = ({ item }: { item: PrayerItem }) => (
   <View style={[styles.prayerRow, item.active && styles.activePrayerRow]}>
     <View style={styles.prayerInfo}>
       <MaterialIcons 
@@ -132,7 +139,57 @@ const PrayerRow = ({ item }: { item: typeof PRAYER_TIMES[0] }) => (
   </View>
 );
 
+function formatGregorianLong(d: Date): string {
+  const days = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+  const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+  return `${d.getDate()} ${months[d.getMonth()]} ${days[d.getDay()]}`;
+}
+
 export default function HomeScreen() {
+  const router = useRouter();
+  const [districtId, setDistrictId] = useState<string>(DEFAULT_DISTRICT_ID);
+
+  useFocusEffect(
+    useCallback(() => {
+      getStoredDistrictId().then((id) => {
+        if (id) setDistrictId(id);
+      });
+    }, [])
+  );
+
+  const todayRecord = useMemo(
+    () => getTodayRecord(prayerTimes2026.data),
+    []
+  );
+  const prayerList = useMemo(
+    () => (todayRecord ? timesToDisplayList(todayRecord.times) : []),
+    [todayRecord]
+  );
+  const locationName = useMemo(
+    () => getLocationName(districtId, districts, states),
+    [districtId]
+  );
+  const [remainingIftar, setRemainingIftar] = useState(() =>
+    getRemainingToIftar(todayRecord)
+  );
+  const [iftarProgress, setIftarProgress] = useState(() =>
+    getIftarProgress(todayRecord)
+  );
+
+  useEffect(() => {
+    const tick = () => {
+      setRemainingIftar(getRemainingToIftar(todayRecord));
+      setIftarProgress(getIftarProgress(todayRecord));
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [todayRecord]);
+
+  const dateText = todayRecord
+    ? `${todayRecord.hijri_date.full_date} / ${formatGregorianLong(new Date())}`
+    : formatGregorianLong(new Date());
+
   return (
     <LinearGradient
       colors={[Colors.ramadan.background, '#2A2640']}
@@ -140,28 +197,35 @@ export default function HomeScreen() {
     >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
-          
-          {/* Timer Section */}
           <View style={styles.timerSection}>
-            <CircularTimer />
+            <CircularTimer
+              time={remainingIftar}
+              progress={iftarProgress}
+              label="İftara kalan süre"
+            />
           </View>
 
-          {/* Date & Location */}
           <View style={styles.dateSection}>
-            <Text style={styles.dateText}>25 Ramazan / 2 Şubat Pazartesi</Text>
-            <View style={styles.locationContainer}>
-              <MaterialIcons name="cloud-queue" size={16} color={Colors.ramadan.textSecondary} />
-              <Text style={styles.locationText}> İstanbul, Türkiye 2°C</Text>
-            </View>
+            <Text style={styles.dateText}>{dateText}</Text>
+            <Pressable
+              style={styles.locationContainer}
+              onPress={() => router.push('/location')}
+            >
+              <MaterialIcons name="location-on" size={16} color={Colors.ramadan.textSecondary} />
+              <Text style={styles.locationText}>{locationName}</Text>
+              <MaterialIcons name="chevron-right" size={20} color={Colors.ramadan.textSecondary} />
+            </Pressable>
           </View>
 
-          {/* Prayer Times List */}
           <View style={styles.listSection}>
-            {PRAYER_TIMES.map((item, index) => (
-              <PrayerRow key={index} item={item} />
-            ))}
+            {prayerList.length > 0
+              ? prayerList.map((item, index) => (
+                  <PrayerRow key={item.name} item={item} />
+                ))
+              : (
+                  <Text style={styles.dateText}>Bugün için vakit verisi yok</Text>
+                )}
           </View>
-
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
@@ -220,11 +284,16 @@ const styles = StyleSheet.create({
   locationContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 4,
+    borderRadius: 12,
+    borderCurve: 'continuous',
   },
   locationText: {
+    flex: 1,
     color: Colors.ramadan.textSecondary,
     fontSize: 14,
-    marginLeft: 5,
+    marginLeft: 8,
   },
   listSection: {
     paddingHorizontal: 20,
