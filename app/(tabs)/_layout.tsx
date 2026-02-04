@@ -4,18 +4,9 @@ import {
     NativeTabs,
 } from 'expo-router/unstable-native-tabs';
 
-// Static tab bar colors (white background)
-const TAB_BAR_BG = '#ffffff';
-const TAB_LABEL_COLOR = '#6b7280';
-const TAB_TINT_COLOR = '#ea580c';
-
 export default function TabLayout() {
   return (
-    <NativeTabs
-      backgroundColor={TAB_BAR_BG}
-      tintColor={TAB_TINT_COLOR}
-      labelStyle={{ color: TAB_LABEL_COLOR }}
-    >
+    <NativeTabs>
       <NativeTabs.Trigger name="index">
         <Icon sf="house.fill" md="home" />
         <Label>Anasayfa</Label>
