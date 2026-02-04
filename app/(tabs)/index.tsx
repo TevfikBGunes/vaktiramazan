@@ -11,20 +11,13 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
-import Animated, {
-    Easing,
-    FadeInDown,
-    FadeInUp,
-} from 'react-native-reanimated';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 import { useRamadanTheme } from '@/hooks/useRamadanTheme';
 
-const { width } = Dimensions.get('window');
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-
-const CIRCULAR_TIMING = { duration: 1200, easing: Easing.out(Easing.cubic) };
 
 const districts = require('../../assets/data/prayer-times.districts.json') as District[];
 const states = require('../../assets/data/prayer-times.states.json') as State[];
