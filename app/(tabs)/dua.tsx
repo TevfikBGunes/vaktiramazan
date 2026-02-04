@@ -1,5 +1,8 @@
 import { useRamadanTheme } from '@/hooks/useRamadanTheme';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
+const DUA_TEXT =
+  '"Allah\'ım! Senin rızan için oruç tuttum, sana inandım, sana güvendim ve senin rızkınla orucumu açtım."';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
@@ -25,7 +28,7 @@ export default function DuaScreen() {
         <View style={styles.content}>
           <View style={[styles.card, { backgroundColor: colors.card }]}>
             <Text style={[styles.duaText, { color: colors.text }]}>
-              "Allah'ım! Senin rızan için oruç tuttum, sana inandım, sana güvendim ve senin rızkınla orucumu açtım."
+              {DUA_TEXT}
             </Text>
           </View>
         </View>
