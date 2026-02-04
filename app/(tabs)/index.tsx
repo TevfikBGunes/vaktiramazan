@@ -3,10 +3,9 @@ import { useTheme } from '@/context/ThemeContext';
 import { getStoredDistrictId } from '@/lib/location-storage';
 import type { District, PrayerTimesRecord, State } from '@/lib/prayer-times';
 import {
-    getIftarProgress,
+    getDailyRecords,
     getLocationName,
-    getRemainingToIftar,
-    getTodayRecord,
+    getTimerState,
     timesToDisplayList,
 } from '@/lib/prayer-times';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -138,10 +137,11 @@ export default function HomeScreen() {
     }, [])
   );
 
-  const todayRecord = useMemo(
-    () => getTodayRecord(prayerTimes2026.data),
+  const { today: todayRecord, tomorrow: tomorrowRecord } = useMemo(
+    () => getDailyRecords(prayerTimes2026.data),
     []
   );
+  
   const prayerList = useMemo(
     () => (todayRecord ? timesToDisplayList(todayRecord.times) : []),
     [todayRecord]
@@ -150,22 +150,19 @@ export default function HomeScreen() {
     () => getLocationName(districtId, districts, states),
     [districtId]
   );
-  const [remainingIftar, setRemainingIftar] = useState(() =>
-    getRemainingToIftar(todayRecord)
-  );
-  const [iftarProgress, setIftarProgress] = useState(() =>
-    getIftarProgress(todayRecord)
+
+  const [timerState, setTimerState] = useState(() =>
+    getTimerState(todayRecord, tomorrowRecord)
   );
 
   useEffect(() => {
     const tick = () => {
-      setRemainingIftar(getRemainingToIftar(todayRecord));
-      setIftarProgress(getIftarProgress(todayRecord));
+      setTimerState(getTimerState(todayRecord, tomorrowRecord));
     };
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, [todayRecord]);
+  }, [todayRecord, tomorrowRecord]);
 
   const dateText = todayRecord
     ? `${todayRecord.hijri_date.full_date} / ${formatGregorianLong(new Date())}`
@@ -210,9 +207,9 @@ export default function HomeScreen() {
 
           <Animated.View entering={FadeInDown.delay(200).springify()} style={styles.timerSection}>
             <CircularTimer
-              time={remainingIftar}
-              progress={iftarProgress}
-              label="İftara Kalan"
+              time={timerState.text}
+              progress={timerState.progress}
+              label={timerState.label}
             />
           </Animated.View>
 
