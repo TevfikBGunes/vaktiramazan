@@ -1,5 +1,11 @@
 # vaktiramazan
 
+## 1.3.0
+
+### Minor Changes
+
+- 5a54a29: Refactor: Enforce light mode and remove theme switching options.
+
 ## 1.2.0
 
 ### Minor Changes
