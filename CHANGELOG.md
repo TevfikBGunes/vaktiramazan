@@ -20,4 +20,4 @@
 
 ### Minor Changes
 
-- 72caed1: Add Dua and Tracker tabs, EAS build config, and sync app version with package.json
+- 72caed1: Add Dua and Oruç Takvimi tabs, EAS build config, and sync app version with package.json

@@ -49,7 +49,7 @@ function getMoonPhaseForDay(day: number): MoonPhaseIcon {
 
 const INITIAL_COMPLETED = [1, 2, 3, 4];
 
-export default function TrackerScreen() {
+export default function FastingCalendarScreen() {
   const colors = Colors[useTheme().activeTheme];
   const router = useRouter();
   const [completedSet, setCompletedSet] = useState<Set<number>>(
@@ -174,7 +174,7 @@ export default function TrackerScreen() {
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
         <View style={styles.header}>
           <View style={styles.headerSpacer} />
-          <Text style={[styles.headerTitle, { color: colors.text }]}>Takip</Text>
+          <Text style={[styles.headerTitle, { color: colors.text }]}>Oruç Takvimi</Text>
           <Pressable
             style={({ pressed }) => [styles.settingsButton, pressed && { opacity: 0.7 }]}
             onPress={() => router.push('/settings')}>
