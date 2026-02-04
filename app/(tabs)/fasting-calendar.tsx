@@ -15,10 +15,13 @@ const prayerTimes2026 = require('../../assets/data/prayer-times-2026.json') as {
   data: PrayerTimesRecord[];
 };
 
-const RAMADAN_DAYS = 30;
+// Ramazan gün sayısı veriden (hicrî ay 9 kayıt sayısı); 29 veya 30 olabilir
+const RAMADAN_DAYS = prayerTimes2026.data.filter(
+  (r) => r.hijri_date?.month === 9
+).length;
 const BAYRAM_DAYS = 3;
-// 30. gün = Bayram 1; sonra Bayram 2, 3. Toplam 29 Ramazan + 3 Bayram = 32 slot
-const TOTAL_CALENDAR_DAYS = 29 + BAYRAM_DAYS; // 32
+// Son Ramazan gününden sonra Bayram 1, 2, 3. Toplam takvim slotu:
+const TOTAL_CALENDAR_DAYS = RAMADAN_DAYS + BAYRAM_DAYS;
 const CELL_WIDTH = 48;
 const CELL_GAP = 4;
 const GRID_WIDTH = 7 * CELL_WIDTH + 6 * CELL_GAP;
@@ -55,7 +58,7 @@ export default function FastingCalendarScreen() {
   const [completedSet, setCompletedSet] = useState<Set<number>>(
     () => new Set(INITIAL_COMPLETED)
   );
-  const [selectedDay, setSelectedDay] = useState<number | null>(null); // 1–29 Ramazan, 30–32 Bayram 1–3
+  const [selectedDay, setSelectedDay] = useState<number | null>(null); // 1..RAMADAN_DAYS Ramazan, sonrası Bayram 1–3
 
   const todayRecord = useMemo(
     () => getTodayRecord(prayerTimes2026.data),
@@ -63,7 +66,7 @@ export default function FastingCalendarScreen() {
   );
   const todayRamadanDay = getTodayRamadanDay(todayRecord) ?? 5;
 
-  // Ramazan günlerini (1-30) key, o günün kaydını value yapan map
+  // Ramazan günlerini (1..RAMADAN_DAYS) key, o günün kaydını value yapan map
   const ramadanDaysMap = useMemo(() => {
     const map = new Map<number, PrayerTimesRecord>();
     prayerTimes2026.data.forEach((r) => {
@@ -103,11 +106,12 @@ export default function FastingCalendarScreen() {
     return `${d.getDate()} ${months[d.getMonth()]}`;
   };
 
-  /** 19 Mart = Arife (oruç tutuluyor). Bayram günleri artık ayrı hücrelerde. */
-  const getSpecialDayTag = (dayIndex: number): 'arife' | null => {
+  /** Özel günler: 16 Mart = Kadir Gecesi, 19 Mart = Arife (oruç tutuluyor). */
+  const getSpecialDayTag = (dayIndex: number): 'kadir' | 'arife' | null => {
     const record = ramadanDaysMap.get(dayIndex);
     if (!record?.date) return null;
     const d = new Date(record.date);
+    if (d.getMonth() === 2 && d.getDate() === 16) return 'kadir';
     if (d.getMonth() === 2 && d.getDate() === 19) return 'arife';
     return null;
   };
@@ -259,8 +263,8 @@ export default function FastingCalendarScreen() {
               if (slot === null) {
                 return <View key={cellIndex} style={styles.gridCell} />;
               }
-              if (slot <= 29) {
-                const dayIndex = slot; // Ramazan 1–29
+              if (slot <= RAMADAN_DAYS) {
+                const dayIndex = slot; // Ramazan 1..RAMADAN_DAYS
                 const isCompleted = isDayCompleted(dayIndex);
                 const isCurrent = dayIndex === currentDay;
                 const future = isFutureDay(dayIndex);
@@ -292,6 +296,11 @@ export default function FastingCalendarScreen() {
                     <Text style={[styles.dateLabel, { color: colors.textSecondary }]}>
                       {getGregorianDate(dayIndex)}
                     </Text>
+                    {getSpecialDayTag(dayIndex) === 'kadir' && (
+                      <View style={[styles.dayTag, styles.dayTagKadir, { backgroundColor: `${colors.accent}30` }]}>
+                        <Text style={[styles.dayTagText, { color: colors.accent }]}>Kadir Gecesi</Text>
+                      </View>
+                    )}
                     {getSpecialDayTag(dayIndex) === 'arife' && (
                       <View style={[styles.dayTag, styles.dayTagArife, { backgroundColor: `${colors.accent}30` }]}>
                         <Text style={[styles.dayTagText, { color: colors.accent }]}>Arife</Text>
@@ -300,7 +309,7 @@ export default function FastingCalendarScreen() {
                   </Pressable>
                 );
               }
-              const bayramDay = (slot - 29) as 1 | 2 | 3; // slot 30→1, 31→2, 32→3
+              const bayramDay = (slot - RAMADAN_DAYS) as 1 | 2 | 3; // Bayram 1, 2, 3
               return (
                 <Pressable
                   key={cellIndex}
@@ -338,22 +347,28 @@ export default function FastingCalendarScreen() {
                 <>
                   <Text style={[styles.modalTitle, { color: colors.text }]}>
                     {selectedDay}. Gün
+                    {getSpecialDayTag(selectedDay) === 'kadir' && ' · Kadir Gecesi'}
                     {getSpecialDayTag(selectedDay) === 'arife' && ' · Ramazan Bayramı Arifesi'}
                   </Text>
-                  {selectedDay <= 29 && getSpecialDayTag(selectedDay) === 'arife' && (
+                  {selectedDay <= RAMADAN_DAYS && getSpecialDayTag(selectedDay) === 'kadir' && (
+                    <Text style={[styles.modalSubtitle, { color: colors.textSecondary }]}>
+                      Mübarek gecelerden
+                    </Text>
+                  )}
+                  {selectedDay <= RAMADAN_DAYS && getSpecialDayTag(selectedDay) === 'arife' && (
                     <Text style={[styles.modalSubtitle, { color: colors.textSecondary }]}>
                       Oruç tutuluyor
                     </Text>
                   )}
                   <View style={styles.modalActions}>
-                    {selectedDay <= 29 && canSaveDay(selectedDay) && (
+                    {selectedDay <= RAMADAN_DAYS && canSaveDay(selectedDay) && (
                       <Pressable
                         style={[styles.modalButton, { borderColor: colors.accent }]}
                         onPress={() => handleSaveDay(selectedDay)}>
                         <Text style={[styles.modalButtonText, { color: colors.accent }]}>Orucu kaydet</Text>
                       </Pressable>
                     )}
-                    {selectedDay <= 29 && isDayCompleted(selectedDay) && (
+                    {selectedDay <= RAMADAN_DAYS && isDayCompleted(selectedDay) && (
                       <Pressable
                         style={[styles.modalButton, styles.modalButtonDanger]}
                         onPress={() => handleDeleteDay(selectedDay)}>
@@ -449,6 +464,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 6,
   },
+  dayTagKadir: {},
   dayTagArife: {},
   dayTagBayram: {
     backgroundColor: `${BAYRAM_COLOR}25`,
@@ -456,6 +472,7 @@ const styles = StyleSheet.create({
   dayTagText: {
     fontSize: 9,
     fontWeight: '600',
+    textAlign: 'center',
   },
   dayTagTextBayram: {
     fontSize: 9,
