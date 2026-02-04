@@ -68,13 +68,24 @@ function getLocalDateString(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-/** Returns today's prayer record (by local date). */
+/** Returns today's prayer record (by local date). Fallback to first record for testing if not found. */
 export function getTodayRecord(data: PrayerTimesRecord[]): PrayerTimesRecord | null {
   const today = getLocalDateString(new Date());
-  return data.find((r) => r.date.slice(0, 10) === today) ?? null;
+  const record = data.find((r) => r.date.slice(0, 10) === today);
+  return record ?? data[0] ?? null;
 }
 
-/** Returns district + state name for district_id (e.g. "LEFKE, KUZEY KIBRIS"). */
+/** Location name in title case per word (tr-TR locale), e.g. "ADANA" → "Adana". */
+export function toLocationTitleCase(str: string): string {
+  if (!str) return str;
+  return str
+    .toLocaleLowerCase('tr-TR')
+    .split(/\s+/)
+    .map((word) => word.charAt(0).toLocaleUpperCase('tr-TR') + word.slice(1))
+    .join(' ');
+}
+
+/** Returns district + state name for district_id (e.g. "Adana, Adana"). */
 export function getLocationName(
   districtId: string,
   districts: District[],
@@ -85,7 +96,7 @@ export function getLocationName(
   if (!district) return districtId;
   const state = states.find((s) => s._id === district.state_id);
   const stateName = state?.name ?? '';
-  return `${district.name}, ${stateName}`;
+  return `${toLocationTitleCase(district.name)}, ${toLocationTitleCase(stateName)}`;
 }
 
 /** Returns states for a country (country_id "2" = Turkey). */
@@ -146,18 +157,27 @@ export function getRemainingToIftar(record: PrayerTimesRecord | null): string {
   ].join(':');
 }
 
-/** Circle progress (0–1) for time until iftar. */
+/** Circle progress (1–0) for time until iftar (starts full, empties as time passes). */
 export function getIftarProgress(record: PrayerTimesRecord | null): number {
   if (!record) return 0;
   const [h, m] = record.times.aksam.split(':').map(Number);
   const now = new Date();
   const todayIftar = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, 0);
-  if (now >= todayIftar) return 1;
+  
+  // If iftar passed, circle is empty (0)
+  if (now >= todayIftar) return 0;
+
   const [ih, im] = record.times.imsak.split(':').map(Number);
   const imsakToday = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ih, im, 0);
+  
+  // If before imsak, circle is full (1)
+  if (now < imsakToday) return 1;
+
   const totalMs = todayIftar.getTime() - imsakToday.getTime();
   const elapsedMs = now.getTime() - imsakToday.getTime();
-  return Math.min(1, Math.max(0, elapsedMs / totalMs));
+  
+  // Progress = Remaining / Total (1 -> 0)
+  return 1 - Math.min(1, Math.max(0, elapsedMs / totalMs));
 }
 
 export { PRAYER_KEYS };
