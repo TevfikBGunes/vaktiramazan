@@ -75,6 +75,14 @@ export function getTodayRecord(data: PrayerTimesRecord[]): PrayerTimesRecord | n
   return record ?? data[0] ?? null;
 }
 
+/** Ramazan ayı = Hicri 9. Bugünkü kayıt Ramazan ise gün numarasını (1–30) döndürür, değilse null. */
+export function getTodayRamadanDay(record: PrayerTimesRecord | null): number | null {
+  if (!record?.hijri_date) return null;
+  const { month, day } = record.hijri_date;
+  if (month === 9) return Math.min(day, 30);
+  return null;
+}
+
 export function getDailyRecords(data: PrayerTimesRecord[]): { today: PrayerTimesRecord | null; tomorrow: PrayerTimesRecord | null } {
   const now = new Date();
   const todayStr = getLocalDateString(now);
