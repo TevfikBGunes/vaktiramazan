@@ -34,9 +34,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="tracker"
+        name="fasting-calendar"
         options={{
-          title: 'Takip',
+          title: 'Oruç Takvimi',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="calendar-today" size={size} color={color} />
           ),
