@@ -1,9 +1,10 @@
-import { useRamadanTheme } from '@/hooks/useRamadanTheme';
+import { Colors } from '@/constants/theme';
+import { useTheme } from '@/context/ThemeContext';
 import { Link } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function ModalScreen() {
-  const colors = useRamadanTheme();
+  const colors = Colors[useTheme().activeTheme];
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Text style={[styles.title, { color: colors.text }]}>This is a modal</Text>
