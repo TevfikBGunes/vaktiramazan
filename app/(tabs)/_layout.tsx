@@ -1,24 +1,47 @@
-import {
-    Icon,
-    Label,
-    NativeTabs,
-} from 'expo-router/unstable-native-tabs';
+import { Colors } from '@/constants/theme';
+import { useTheme } from '@/context/ThemeContext';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
+  const colors = Colors[useTheme().activeTheme];
+
   return (
-    <NativeTabs>
-      <NativeTabs.Trigger name="index">
-        <Icon sf="house.fill" md="home" />
-        <Label>Anasayfa</Label>
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="dua">
-        <Icon sf="book.fill" md="menu_book" />
-        <Label>Günün Duası</Label>
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="tracker">
-        <Icon sf="calendar" md="calendar_today" />
-        <Label>Takip</Label>
-      </NativeTabs.Trigger>
-    </NativeTabs>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: colors.accent,
+        tabBarInactiveTintColor: colors.textSecondary,
+        tabBarStyle: { backgroundColor: colors.card },
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Anasayfa',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="dua"
+        options={{
+          title: 'Günün Duası',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="menu-book" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="tracker"
+        options={{
+          title: 'Takip',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="calendar-today" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }

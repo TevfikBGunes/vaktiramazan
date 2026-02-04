@@ -1,15 +1,16 @@
-import { useRamadanTheme } from '@/hooks/useRamadanTheme';
+import { Colors } from '@/constants/theme';
+import { useTheme } from '@/context/ThemeContext';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-
-const DUA_TEXT =
-  '"Allah\'ım! Senin rızan için oruç tuttum, sana inandım, sana güvendim ve senin rızkınla orucumu açtım."';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+const DUA_TEXT =
+  '"Allah\'ım! Senin rızan için oruç tuttum, sana inandım, sana güvendim ve senin rızkınla orucumu açtım."';
+
 export default function DuaScreen() {
-  const colors = useRamadanTheme();
+  const colors = Colors[useTheme().activeTheme];
   const router = useRouter();
   return (
     <LinearGradient

@@ -1,22 +1,23 @@
-import { useRamadanTheme } from '@/hooks/useRamadanTheme';
+import { Colors } from '@/constants/theme';
+import { useTheme } from '@/context/ThemeContext';
 import { setStoredDistrictId } from '@/lib/location-storage';
 import type { District, State } from '@/lib/prayer-times';
 import {
-    getDistrictsForState,
-    getStatesForCountry,
+  getDistrictsForState,
+  getStatesForCountry,
 } from '@/lib/prayer-times';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import * as Haptics from 'expo-haptics';
 import { useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import {
-    FlatList,
-    Keyboard,
-    Pressable,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
+  FlatList,
+  Keyboard,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -30,7 +31,7 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function LocationScreen() {
   const router = useRouter();
-  const colors = useRamadanTheme();
+  const colors = Colors[useTheme().activeTheme];
   const [step, setStep] = useState<'state' | 'district'>('state');
   const [selectedStateId, setSelectedStateId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
