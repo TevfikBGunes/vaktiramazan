@@ -1,4 +1,5 @@
-import { useRamadanTheme } from '@/hooks/useRamadanTheme';
+import { Colors } from '@/constants/theme';
+import { useTheme } from '@/context/ThemeContext';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
@@ -6,7 +7,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function TrackerScreen() {
-  const colors = useRamadanTheme();
+  const colors = Colors[useTheme().activeTheme];
   const router = useRouter();
   return (
     <LinearGradient

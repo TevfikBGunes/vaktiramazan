@@ -9,7 +9,7 @@ module.exports = {
     orientation: "portrait",
     icon: "./assets/images/icon.png",
     scheme: "vaktiramazan",
-    userInterfaceStyle: "automatic",
+    userInterfaceStyle: "light",
     newArchEnabled: true,
     ios: {
       bundleIdentifier: "com.tevfikbgunes.vaktiramazan",

@@ -1,3 +1,5 @@
+import { Colors } from '@/constants/theme';
+import { useTheme } from '@/context/ThemeContext';
 import { getStoredDistrictId } from '@/lib/location-storage';
 import type { District, PrayerTimesRecord, State } from '@/lib/prayer-times';
 import {
@@ -15,7 +17,6 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
-import { useRamadanTheme } from '@/hooks/useRamadanTheme';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
@@ -36,7 +37,7 @@ const CircularTimer = ({
   progress: number;
   label?: string;
 }) => {
-  const colors = useRamadanTheme();
+  const colors = Colors[useTheme().activeTheme];
   const size = 200;
   const strokeWidth = 8;
   const radius = (size - strokeWidth) / 2;
@@ -82,8 +83,8 @@ const CircularTimer = ({
 type PrayerItem = { name: string; time: string; icon: string; active?: boolean };
 
 const PrayerRow = ({ item, index }: { item: PrayerItem; index: number }) => {
-  const colors = useRamadanTheme();
-  
+  const colors = Colors[useTheme().activeTheme];
+
   return (
     <Animated.View 
         entering={FadeInDown.delay(index * 40).springify().damping(16)}
@@ -126,7 +127,7 @@ function formatGregorianLong(d: Date): string {
 
 export default function HomeScreen() {
   const router = useRouter();
-  const colors = useRamadanTheme();
+  const colors = Colors[useTheme().activeTheme];
   const [districtId, setDistrictId] = useState<string>(DEFAULT_DISTRICT_ID);
 
   useFocusEffect(
@@ -170,9 +171,10 @@ export default function HomeScreen() {
     ? `${todayRecord.hijri_date.full_date} / ${formatGregorianLong(new Date())}`
     : formatGregorianLong(new Date());
 
-  const gradientColors = useMemo(() => {
-     return [colors.background, colors.background]; 
-  }, [colors.background]);
+  const gradientColors = useMemo(
+    (): [string, string] => [colors.background, colors.background],
+    [colors.background]
+  );
 
   return (
     <View style={styles.container}>

@@ -6,24 +6,20 @@ import 'react-native-reanimated';
 import { Colors } from '@/constants/theme';
 import { ThemeProvider, useTheme } from '@/context/ThemeContext';
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
-
 function RootLayoutContent() {
   const { activeTheme } = useTheme();
-  const ramadan = Colors[activeTheme].ramadan;
+  const colors = Colors[activeTheme];
   const appTheme = {
     ...DefaultTheme,
-    dark: activeTheme === 'dark',
+    dark: false,
     colors: {
       ...DefaultTheme.colors,
-      primary: ramadan.accent,
-      background: ramadan.background,
-      card: ramadan.card,
-      text: ramadan.text,
-      border: ramadan.textSecondary + '40',
-      notification: ramadan.accent,
+      primary: colors.accent,
+      background: colors.background,
+      card: colors.card,
+      text: colors.text,
+      border: colors.textSecondary + '40',
+      notification: colors.accent,
     },
   };
 
@@ -48,7 +44,7 @@ function RootLayoutContent() {
             }}
         />
       </Stack>
-      <StatusBar style={activeTheme === 'dark' ? 'light' : 'dark'} />
+      <StatusBar style="dark" />
     </NavigationThemeProvider>
   );
 }
