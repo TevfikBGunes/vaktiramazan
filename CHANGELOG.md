@@ -1,5 +1,13 @@
 # vaktiramazan
 
+## 1.4.0
+
+### Minor Changes
+
+- feat(fasting-calendar): Make Ramadan days dynamic and add special day tags (Arefe, first/last day markers)
+- refactor(tabs): Rename tracker to fasting-calendar for better clarity
+- feat(location): Refactor location UI and remove animations for cleaner experience
+
 ## 1.3.0
 
 ### Minor Changes
@@ -20,4 +28,4 @@
 
 ### Minor Changes
 
-- 72caed1: Add Dua and Tracker tabs, EAS build config, and sync app version with package.json
+- 72caed1: Add Dua and Oruç Takvimi tabs, EAS build config, and sync app version with package.json
