@@ -19,7 +19,6 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import Animated, { FadeInDown } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const districts = require('../assets/data/prayer-times.districts.json') as District[];
@@ -27,7 +26,13 @@ const states = require('../assets/data/prayer-times.states.json') as State[];
 
 const TURKEY_COUNTRY_ID = '2';
 
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+function toTitleCase(str: string) {
+  return str
+    .toLocaleLowerCase('tr-TR')
+    .split(' ')
+    .map((word) => word.charAt(0).toLocaleUpperCase('tr-TR') + word.slice(1))
+    .join(' ');
+}
 
 export default function LocationScreen() {
   const router = useRouter();
@@ -49,10 +54,10 @@ export default function LocationScreen() {
   );
 
   const filteredList = useMemo(() => {
-    const query = searchQuery.toLowerCase().trim();
+    const query = searchQuery.toLocaleLowerCase('tr-TR').trim();
     const list = step === 'state' ? stateList : districtList;
     if (!query) return list;
-    return list.filter((item) => item.name.toLowerCase().includes(query));
+    return list.filter((item) => item.name.toLocaleLowerCase('tr-TR').includes(query));
   }, [step, stateList, districtList, searchQuery]);
 
   const handleSelectState = (stateId: string) => {
@@ -81,25 +86,24 @@ export default function LocationScreen() {
     setSearchQuery('');
   };
 
-  const renderItem = ({ item, index }: { item: State | District; index: number }) => (
-    <AnimatedPressable
-      entering={FadeInDown.delay(index * 30).springify().damping(15)}
+  const renderItem = ({ item }: { item: State | District }) => (
+    <Pressable
       onPress={() =>
         step === 'state'
           ? handleSelectState(item._id)
           : handleSelectDistrict(item._id)
       }
       style={({ pressed }) => [
-        styles.row, 
+        styles.row,
         { backgroundColor: colors.card },
-        pressed && { opacity: 0.8, transform: [{ scale: 0.99 }] }
+        pressed && { opacity: 0.7 }
       ]}
     >
       <Text style={[styles.rowText, { color: colors.text }]} numberOfLines={1} ellipsizeMode="tail">
-        {item.name}
+        {toTitleCase(item.name)}
       </Text>
       <MaterialIcons name="chevron-right" size={20} color={colors.textSecondary} />
-    </AnimatedPressable>
+    </Pressable>
   );
 
   return (
@@ -110,12 +114,16 @@ export default function LocationScreen() {
               <MaterialIcons name="arrow-back" size={24} color={colors.text} />
            </Pressable>
         ) : (
-           <View style={{ width: 40 }} /> 
+           <View style={[styles.backButton, { opacity: 0 }]}>
+              <MaterialIcons name="arrow-back" size={24} color="transparent" />
+           </View>
         )}
         <Text style={[styles.headerTitle, { color: colors.text }]}>
           {step === 'state' ? 'İl Seçin' : 'İlçe Seçin'}
         </Text>
-        <View style={{ width: 40 }} /> 
+        <View style={[styles.backButton, { opacity: 0 }]}>
+           <MaterialIcons name="arrow-back" size={24} color="transparent" />
+        </View>
       </View>
 
       <View style={[styles.searchContainer, { borderColor: colors.textSecondary + '40', backgroundColor: colors.card }]}>
@@ -142,6 +150,7 @@ export default function LocationScreen() {
         contentContainerStyle={styles.listContent}
         keyboardShouldPersistTaps="handled"
         onScrollBeginDrag={Keyboard.dismiss}
+        ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: colors.textSecondary + '15' }} />}
         ListEmptyComponent={
             <Text style={[styles.emptyText, { color: colors.textSecondary }]}>Sonuç bulunamadı</Text>
         }
@@ -164,9 +173,10 @@ const styles = StyleSheet.create({
   backButton: {
     padding: 8,
     marginRight: 8,
+    marginLeft: -8,
   },
   headerTitle: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '600',
   },
   searchContainer: {
@@ -174,8 +184,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 16,
     paddingHorizontal: 12,
-    borderRadius: 12,
-    height: 48,
+    borderRadius: 10,
+    height: 44,
     marginBottom: 10,
     borderWidth: 1,
   },
@@ -188,23 +198,19 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   listContent: {
-    paddingHorizontal: 16,
     paddingBottom: 40,
-    gap: 8,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 16,
+    paddingVertical: 14,
     paddingHorizontal: 16,
-    borderRadius: 12,
-    borderCurve: 'continuous',
   },
   rowText: {
     flex: 1,
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: '400',
     marginRight: 8,
   },
   emptyText: {
