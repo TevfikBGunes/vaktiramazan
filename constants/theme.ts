@@ -1,6 +1,5 @@
 /**
  * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
  */
 
 import { Platform } from 'react-native';
@@ -16,6 +15,13 @@ export const Colors = {
     icon: '#687076',
     tabIconDefault: '#687076',
     tabIconSelected: tintColorLight,
+    ramadan: {
+        background: '#F5F5F7', // Light gray/white background
+        card: '#FFFFFF',
+        accent: '#D97706', // Darker orange/amber for visibility on light
+        text: '#1F2937', // Dark gray/black
+        textSecondary: '#6B7280',
+    }
   },
   dark: {
     text: '#ECEDEE',
@@ -24,7 +30,15 @@ export const Colors = {
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
+    ramadan: {
+        background: '#1E1B2E',
+        card: '#2D2A42',
+        accent: '#FFB380',
+        text: '#FFFFFF',
+        textSecondary: '#A0A0A0',
+    }
   },
+  // Legacy/Default fallback (Dark mode preferred for this app style initially)
   ramadan: {
     background: '#1E1B2E',
     card: '#2D2A42',
@@ -36,13 +50,9 @@ export const Colors = {
 
 export const Fonts = Platform.select({
   ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
     sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
     serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
     mono: 'ui-monospace',
   },
   default: {
