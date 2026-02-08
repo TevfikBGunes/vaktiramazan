@@ -42,6 +42,15 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="menu"
+        options={{
+          title: 'Günün Menüsü',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="restaurant" size={size} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
