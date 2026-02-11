@@ -1,5 +1,7 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { useRouter } from 'expo-router';
+import Constants from 'expo-constants';
 import {
   DEFAULT_NOTIFICATION_PREFERENCES,
   getNotificationPreferences,
@@ -20,7 +22,6 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Constants from 'expo-constants';
 
 const PRAYER_LABELS: Record<PrayerTimeKey, string> = {
   imsak: 'İmsak',
@@ -48,7 +49,9 @@ const IFTAR_BEFORE_OPTIONS: { value: NotificationPreferences['iftarMinutesBefore
 export default function SettingsScreen() {
   const { activeTheme } = useTheme();
   const colors = Colors[activeTheme];
+  const router = useRouter();
   const version = Constants.expoConfig?.version ?? '1.0.0';
+  const isDev = __DEV__;
 
   const [prefs, setPrefs] = useState<NotificationPreferences>(DEFAULT_NOTIFICATION_PREFERENCES);
   const [verseTimeModalVisible, setVerseTimeModalVisible] = useState(false);
@@ -183,6 +186,21 @@ export default function SettingsScreen() {
             )}
           </View>
         </Pressable>
+
+        {isDev && (
+          <>
+            <Text style={[styles.sectionHeader, { color: colors.textSecondary }]}>GELIŞTIRICI</Text>
+            <View style={[styles.section, { backgroundColor: colors.card }]}>
+              <Pressable
+                style={styles.row}
+                onPress={() => router.push('/notification-test')}
+              >
+                <Text style={[styles.label, { color: colors.text }]}>Bildirim Test Ekranı</Text>
+                <Text style={[styles.value, { color: colors.accent }]}>›</Text>
+              </Pressable>
+            </View>
+          </>
+        )}
 
         <Text style={[styles.sectionHeader, { color: colors.textSecondary }]}>HAKKINDA</Text>
         <View style={[styles.section, { backgroundColor: colors.card }]}>
