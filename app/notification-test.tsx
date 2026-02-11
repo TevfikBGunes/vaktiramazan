@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { requestNotificationPermissions } from '@/lib/notification-setup';
 import {
   cancelAllTestNotifications,
   listScheduledNotifications,
@@ -9,7 +10,6 @@ import {
   testSahurNotification,
   testVerseNotification,
 } from '@/lib/notification-test-helpers';
-import { requestNotificationPermissions } from '@/lib/notification-setup';
 import { rescheduleAllNotifications } from '@/lib/notifications';
 import type { PrayerTimesRecord } from '@/lib/prayer-times';
 import React, { useState } from 'react';
@@ -166,10 +166,10 @@ export default function NotificationTestScreen() {
             💡 Bildirimler gerçek cihazda test edilmelidir. Simulator'da düzgün çalışmayabilir.
           </Text>
           <Text style={[styles.infoText, { color: colors.textSecondary }]}>
-            📱 iOS: Ayarlar → Bildirimler → Vakit Ramazan
+            📱 iOS: Ayarlar → Bildirimler → Vakt-i Ramazan
           </Text>
           <Text style={[styles.infoText, { color: colors.textSecondary }]}>
-            🤖 Android: Ayarlar → Uygulamalar → Vakit Ramazan → Bildirimler
+            🤖 Android: Ayarlar → Uygulamalar → Vakt-i Ramazan → Bildirimler
           </Text>
         </View>
       </ScrollView>
