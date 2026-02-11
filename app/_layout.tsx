@@ -8,7 +8,13 @@ import 'react-native-reanimated';
 
 import { Colors } from '@/constants/theme';
 import { ThemeProvider, useTheme } from '@/context/ThemeContext';
+import { rescheduleAllNotifications } from '@/lib/notifications';
 import { setupNotifications } from '@/lib/notification-setup';
+import type { PrayerTimesRecord } from '@/lib/prayer-times';
+
+const prayerTimesData = require('../assets/data/prayer-times-2026.json') as {
+  data: PrayerTimesRecord[];
+};
 
 function useNotificationResponse() {
   useEffect(() => {
@@ -77,7 +83,9 @@ export default function RootLayout() {
   useNotificationResponse();
 
   useEffect(() => {
-    setupNotifications();
+    setupNotifications().then(() => {
+      rescheduleAllNotifications(prayerTimesData.data);
+    });
   }, []);
 
   return (

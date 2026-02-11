@@ -187,3 +187,23 @@ export async function scheduleVerseOfDayNotifications(
 export async function cancelAllScheduledNotifications(): Promise<void> {
   await Notifications.cancelAllScheduledNotificationsAsync();
 }
+
+/**
+ * Reschedule all notifications based on current preferences and prayer data.
+ * Call on app launch after setup. Requests permission first; if denied, does nothing.
+ */
+export async function rescheduleAllNotifications(
+  records: PrayerTimesRecord[]
+): Promise<void> {
+  const { getNotificationPreferences } = await import('@/lib/notification-preferences');
+  const { requestNotificationPermissions } = await import('@/lib/notification-setup');
+
+  const granted = await requestNotificationPermissions();
+  if (!granted) return;
+
+  const prefs = await getNotificationPreferences();
+  await cancelAllScheduledNotifications();
+  await schedulePrayerTimeNotifications(records, prefs);
+  await scheduleSahurIftarNotifications(records, prefs);
+  await scheduleVerseOfDayNotifications(prefs);
+}
