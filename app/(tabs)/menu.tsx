@@ -6,56 +6,56 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { fetch as expoFetch } from 'expo/fetch';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  ActivityIndicator,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
+    ActivityIndicator,
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { z } from 'zod';
 
 const menuSchema = z.object({
-  soup: z.string().describe('Çorba adı ve kısa açıklama'),
-  main: z.string().describe('Ana yemek adı ve tarifi'),
-  side: z.string().describe('Yan yemek veya meze'),
+  soup: z.string().describe('Çorba adı'),
+  soupIngredients: z.string().describe('Çorba malzemeleri listesi'),
+  soupInstructions: z.string().describe('Çorba yapılışı tarifi'),
+  main: z.string().describe('Ana yemek adı'),
+  mainIngredients: z.string().describe('Ana yemek malzemeleri listesi'),
+  mainInstructions: z.string().describe('Ana yemek yapılışı tarifi'),
+  side: z.string().describe('Yan yemek veya meze adı'),
+  sideIngredients: z.string().describe('Yan yemek/meze malzemeleri listesi'),
+  sideInstructions: z.string().describe('Yan yemek/meze yapılışı tarifi'),
   dessert: z.string().describe('Tatlı adı'),
-  recipe: z.string().describe('Genel notlar veya pişirme tavsiyeleri'),
+  dessertIngredients: z.string().describe('Tatlı malzemeleri listesi'),
+  dessertInstructions: z.string().describe('Tatlı yapılışı tarifi'),
 });
 
-const RANDOM_MENUS: Array<{
+type RandomMenu = {
   soup: string;
+  soupCal: number;
   main: string;
+  mainCal: number;
   side: string;
+  sideCal: number;
   dessert: string;
-}> = [
-  { soup: 'Mercimek Çorbası', main: 'Etli Nohut', side: 'Bulgur Pilavı, Cacık', dessert: 'Güllaç' },
-  { soup: 'Tarhana Çorbası', main: 'Tavuk Sote', side: 'Pirinç Pilavı, Salata', dessert: 'İrmik Helvası' },
-  { soup: 'Yayla Çorbası', main: 'Kuru Fasulye', side: 'Pilav, Turşu', dessert: 'Revani' },
-  { soup: 'Düğün Çorbası', main: 'Etli Kuru Fasulye', side: 'Pilav, Mevsim Salata', dessert: 'Sütlaç' },
-  { soup: 'Ezogelin Çorbası', main: 'Tavuk Şiş', side: 'Pilav, Cacık', dessert: 'Baklava' },
-  { soup: 'İşkembe Çorbası', main: 'Karnıyarık', side: 'Bulgur, Yoğurt', dessert: 'Kemalpaşa' },
-  { soup: 'Tavuk Suyu Çorbası', main: 'Kebap', side: 'Lavash, Soğan Salatası', dessert: 'Künefe' },
-  { soup: 'Şehriye Çorbası', main: 'Hünkar Beğendi', side: 'Pilav', dessert: 'Tulumba' },
-  { soup: 'Yoğurtlu Çorba', main: 'Etli Yaprak Sarma', side: 'Pilav, Cacık', dessert: 'Aşure' },
-  { soup: 'Sade Mercimek', main: 'İmam Bayıldı', side: 'Bulgur, Salata', dessert: 'Lokum' },
-];
-
-function pickRandomMenu() {
-  return RANDOM_MENUS[Math.floor(Math.random() * RANDOM_MENUS.length)];
-}
+  dessertCal: number;
+  totalCal: number;
+};
 
 export default function MenuScreen() {
   const colors = Colors[useTheme().activeTheme];
   const router = useRouter();
-  const [randomMenu, setRandomMenu] = useState(() => pickRandomMenu());
+  const [randomMenu, setRandomMenu] = useState<RandomMenu | null>(null);
+  const [randomMenuLoading, setRandomMenuLoading] = useState(true);
+  const [randomMenuError, setRandomMenuError] = useState<string | null>(null);
   const [ingredientsInput, setIngredientsInput] = useState('');
+  const menuHistoryRef = useRef<string[]>([]);
 
   const apiUrl = useMemo(() => {
     try {
@@ -65,6 +65,47 @@ export default function MenuScreen() {
     }
   }, []);
 
+  const randomMenuApiUrl = useMemo(() => {
+    try {
+      return generateAPIUrl('/api/random-menu');
+    } catch {
+      return '';
+    }
+  }, []);
+
+  const fetchRandomMenu = useCallback(async () => {
+    if (!randomMenuApiUrl) {
+      setRandomMenuError('API adresi yapılandırılmamış.');
+      setRandomMenuLoading(false);
+      return;
+    }
+    setRandomMenuError(null);
+    setRandomMenuLoading(true);
+    try {
+      const exclude = menuHistoryRef.current;
+      const res = await (expoFetch as unknown as typeof fetch)(randomMenuApiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ exclude }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error ?? `Hata: ${res.status}`);
+      }
+      const data = (await res.json()) as RandomMenu;
+
+      // Add new items to history, keep last 20 to avoid overly long prompts
+      const newItems = [data.soup, data.main, data.side, data.dessert];
+      menuHistoryRef.current = [...menuHistoryRef.current, ...newItems].slice(-20);
+
+      setRandomMenu(data);
+    } catch (err) {
+      setRandomMenuError(err instanceof Error ? err.message : 'Menü yüklenemedi');
+    } finally {
+      setRandomMenuLoading(false);
+    }
+  }, [randomMenuApiUrl]);
+
   const { object, submit, isLoading, error } = useObject({
     api: apiUrl,
     schema: menuSchema,
@@ -73,8 +114,12 @@ export default function MenuScreen() {
   });
 
   const refreshRandomMenu = useCallback(() => {
-    setRandomMenu(pickRandomMenu());
-  }, []);
+    fetchRandomMenu();
+  }, [fetchRandomMenu]);
+
+  useEffect(() => {
+    fetchRandomMenu();
+  }, [fetchRandomMenu]);
 
   const handleCreateMenu = useCallback(() => {
     const text = ingredientsInput.trim();
@@ -109,25 +154,66 @@ export default function MenuScreen() {
             showsVerticalScrollIndicator={false}>
             {/* Random menu card */}
             <View style={[styles.section, { backgroundColor: colors.card }]}>
-              <Text style={[styles.sectionTitle, { color: colors.text }]}>Rastgele Menü</Text>
-              <View style={[styles.menuCard, { backgroundColor: colors.background }]}>
-                <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Çorba</Text>
-                <Text style={[styles.menuItem, { color: colors.text }]}>{randomMenu.soup}</Text>
-                <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Ana Yemek</Text>
-                <Text style={[styles.menuItem, { color: colors.text }]}>{randomMenu.main}</Text>
-                <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Yan / Meze</Text>
-                <Text style={[styles.menuItem, { color: colors.text }]}>{randomMenu.side}</Text>
-                <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Tatlı</Text>
-                <Text style={[styles.menuItem, { color: colors.text }]}>{randomMenu.dessert}</Text>
-              </View>
+              <Text style={[styles.sectionTitle, { color: colors.text }]}>Menü</Text>
+              {randomMenuLoading && !randomMenu ? (
+                <View style={[styles.menuCard, styles.randomMenuLoading, { backgroundColor: colors.background }]}>
+                  <ActivityIndicator size="small" color={colors.accent} />
+                  <Text style={[styles.loadingText, { color: colors.textSecondary }]}>Menü hazırlanıyor...</Text>
+                </View>
+              ) : randomMenuError ? (
+                <View style={[styles.menuCard, { backgroundColor: colors.background }]}>
+                  <Text style={[styles.errorText, { color: colors.accent }]}>{randomMenuError}</Text>
+                </View>
+              ) : randomMenu ? (
+                <View style={[styles.menuCard, { backgroundColor: colors.background }]}>
+                  <View style={styles.menuRow}>
+                    <View style={styles.menuRowLeft}>
+                      <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Çorba</Text>
+                      <Text style={[styles.menuItem, { color: colors.text }]}>{randomMenu.soup}</Text>
+                    </View>
+                    <Text style={[styles.calText, { color: colors.textSecondary }]}>{randomMenu.soupCal} kcal</Text>
+                  </View>
+                  <View style={styles.menuRow}>
+                    <View style={styles.menuRowLeft}>
+                      <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Ana Yemek</Text>
+                      <Text style={[styles.menuItem, { color: colors.text }]}>{randomMenu.main}</Text>
+                    </View>
+                    <Text style={[styles.calText, { color: colors.textSecondary }]}>{randomMenu.mainCal} kcal</Text>
+                  </View>
+                  <View style={styles.menuRow}>
+                    <View style={styles.menuRowLeft}>
+                      <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Yan / Meze</Text>
+                      <Text style={[styles.menuItem, { color: colors.text }]}>{randomMenu.side}</Text>
+                    </View>
+                    <Text style={[styles.calText, { color: colors.textSecondary }]}>{randomMenu.sideCal} kcal</Text>
+                  </View>
+                  <View style={styles.menuRow}>
+                    <View style={styles.menuRowLeft}>
+                      <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Tatlı</Text>
+                      <Text style={[styles.menuItem, { color: colors.text }]}>{randomMenu.dessert}</Text>
+                    </View>
+                    <Text style={[styles.calText, { color: colors.textSecondary }]}>{randomMenu.dessertCal} kcal</Text>
+                  </View>
+                  <View style={[styles.totalRow, { borderTopColor: colors.textSecondary + '30' }]}>
+                    <Text style={[styles.totalLabel, { color: colors.text }]}>Toplam</Text>
+                    <Text style={[styles.totalCal, { color: colors.accent }]}>{randomMenu.totalCal} kcal</Text>
+                  </View>
+                </View>
+              ) : null}
               <Pressable
                 style={({ pressed }) => [
                   styles.refreshButton,
                   { backgroundColor: colors.accent },
+                  (randomMenuLoading || !randomMenuApiUrl) && { opacity: 0.6 },
                   pressed && { opacity: 0.8 },
                 ]}
-                onPress={refreshRandomMenu}>
-                <MaterialIcons name="refresh" size={20} color="#fff" />
+                onPress={refreshRandomMenu}
+                disabled={randomMenuLoading || !randomMenuApiUrl}>
+                {randomMenuLoading ? (
+                  <ActivityIndicator color="#fff" size="small" />
+                ) : (
+                  <MaterialIcons name="refresh" size={20} color="#fff" />
+                )}
                 <Text style={styles.refreshButtonText}>Yenile</Text>
               </Pressable>
             </View>
@@ -191,29 +277,68 @@ export default function MenuScreen() {
 
               {object != null && (
                 <View style={[styles.menuCard, { backgroundColor: colors.background, marginTop: 12 }]}>
+                  {/* Soup */}
                   <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Çorba</Text>
                   <Text style={[styles.menuItem, { color: colors.text }]}>
                     {object.soup ?? '...'}
                   </Text>
-                  <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Ana Yemek</Text>
+                  {object.soupIngredients && (
+                    <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
+                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {object.soupIngredients}
+                    </Text>
+                  )}
+                  {object.soupInstructions && (
+                    <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
+                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {object.soupInstructions}
+                    </Text>
+                  )}
+
+                  {/* Main */}
+                  <Text style={[styles.menuLabel, { color: colors.textSecondary, marginTop: 16 }]}>Ana Yemek</Text>
                   <Text style={[styles.menuItem, { color: colors.text }]}>
                     {object.main ?? '...'}
                   </Text>
-                  <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Yan / Meze</Text>
+                  {object.mainIngredients && (
+                    <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
+                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {object.mainIngredients}
+                    </Text>
+                  )}
+                  {object.mainInstructions && (
+                    <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
+                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {object.mainInstructions}
+                    </Text>
+                  )}
+
+                  {/* Side */}
+                  <Text style={[styles.menuLabel, { color: colors.textSecondary, marginTop: 16 }]}>Yan / Meze</Text>
                   <Text style={[styles.menuItem, { color: colors.text }]}>
                     {object.side ?? '...'}
                   </Text>
-                  <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Tatlı</Text>
+                  {object.sideIngredients && (
+                    <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
+                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {object.sideIngredients}
+                    </Text>
+                  )}
+                  {object.sideInstructions && (
+                    <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
+                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {object.sideInstructions}
+                    </Text>
+                  )}
+
+                  {/* Dessert */}
+                  <Text style={[styles.menuLabel, { color: colors.textSecondary, marginTop: 16 }]}>Tatlı</Text>
                   <Text style={[styles.menuItem, { color: colors.text }]}>
                     {object.dessert ?? '...'}
                   </Text>
-                  {(object as { recipe?: string }).recipe != null && (
-                    <>
-                      <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Notlar</Text>
-                      <Text style={[styles.menuItem, { color: colors.text }]}>
-                        {(object as { recipe?: string }).recipe}
-                      </Text>
-                    </>
+                  {object.dessertIngredients && (
+                    <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
+                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {object.dessertIngredients}
+                    </Text>
+                  )}
+                  {object.dessertInstructions && (
+                    <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
+                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {object.dessertInstructions}
+                    </Text>
                   )}
                 </View>
               )}
@@ -254,8 +379,34 @@ const styles = StyleSheet.create({
     padding: 14,
     marginBottom: 12,
   },
-  menuLabel: { fontSize: 12, marginTop: 8, marginBottom: 2 },
-  menuItem: { fontSize: 15 },
+  randomMenuLoading: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    minHeight: 80,
+  },
+  loadingText: { fontSize: 14 },
+  menuRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginTop: 6,
+  },
+  menuRowLeft: { flex: 1, marginRight: 8 },
+  calText: { fontSize: 12, fontWeight: '500' },
+  totalRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
+    paddingTop: 10,
+    borderTopWidth: 1,
+  },
+  totalLabel: { fontSize: 14, fontWeight: '600' },
+  totalCal: { fontSize: 14, fontWeight: '700' },
+  menuLabel: { fontSize: 12, marginBottom: 2, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.5 },
+  menuItem: { fontSize: 16, fontWeight: '700', marginBottom: 4 },
+  recipeText: { fontSize: 13, marginTop: 4, lineHeight: 18 },
   refreshButton: {
     flexDirection: 'row',
     alignItems: 'center',
