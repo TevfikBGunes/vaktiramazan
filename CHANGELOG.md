@@ -1,5 +1,11 @@
 # vaktiramazan
 
+## 1.5.0
+
+### Minor Changes
+
+- ae48bdd: Add AI-powered random menu generation with calorie tracking and structured recipe details for AI Chef
+
 ## 1.4.0
 
 ### Minor Changes
