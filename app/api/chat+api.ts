@@ -3,11 +3,18 @@ import { streamObject } from 'ai';
 import { z } from 'zod';
 
 const menuSchema = z.object({
-  soup: z.string().describe('Çorba adı ve kısa açıklama'),
-  main: z.string().describe('Ana yemek adı ve tarifi'),
-  side: z.string().describe('Yan yemek veya meze'),
+  soup: z.string().describe('Çorba adı'),
+  soupIngredients: z.string().describe('Çorba malzemeleri listesi'),
+  soupInstructions: z.string().describe('Çorba yapılışı tarifi'),
+  main: z.string().describe('Ana yemek adı'),
+  mainIngredients: z.string().describe('Ana yemek malzemeleri listesi'),
+  mainInstructions: z.string().describe('Ana yemek yapılışı tarifi'),
+  side: z.string().describe('Yan yemek veya meze adı'),
+  sideIngredients: z.string().describe('Yan yemek/meze malzemeleri listesi'),
+  sideInstructions: z.string().describe('Yan yemek/meze yapılışı tarifi'),
   dessert: z.string().describe('Tatlı adı'),
-  recipe: z.string().describe('Genel notlar veya pişirme tavsiyeleri'),
+  dessertIngredients: z.string().describe('Tatlı malzemeleri listesi'),
+  dessertInstructions: z.string().describe('Tatlı yapılışı tarifi'),
 });
 
 export async function POST(req: Request) {
@@ -30,7 +37,7 @@ export async function POST(req: Request) {
   }
 
   const systemPrompt =
-    'Sen Türk mutfağı konusunda uzman bir şefsin. Şu malzemelere göre iftar için uygun, pratik ve lezzetli bir menü öner. Her alan için Türkçe açıklamalar yaz.';
+    'Sen Türk mutfağı konusunda uzman bir şefsin. Şu malzemelere göre iftar için uygun, pratik ve lezzetli bir menü öner. Her yemek için adını, malzemelerini ve yapılış tarifini ayrı ayrı, Türkçe olarak yaz.';
   const result = streamObject({
     model: google('gemini-2.0-flash-lite'),
     schema: menuSchema,
