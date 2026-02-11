@@ -1,5 +1,11 @@
 # vaktiramazan
 
+## 1.6.0
+
+### Minor Changes
+
+- 813ceb8: Add verse of the day screen with offline Quran data, surah filtering, and image sharing
+
 ## 1.5.0
 
 ### Minor Changes
