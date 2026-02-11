@@ -25,11 +25,11 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="dua"
+        name="verse"
         options={{
-          title: 'Günün Duası',
+          title: 'Günün Ayeti',
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="menu-book" size={size} color={color} />
+            <MaterialIcons name="auto-stories" size={size} color={color} />
           ),
         }}
       />
