@@ -108,7 +108,7 @@ export default function SettingsScreen() {
               </View>
             ))}
             <View style={[styles.optionsBlock, styles.rowBorder, { borderColor: colors.border }]}>
-              <Text style={[styles.label, { color: colors.text }]}>Sahur hatırlatması</Text>
+              <Text style={[styles.label, { color: colors.text }]}>İmsak / Sahur bitişi hatırlatması</Text>
               <View style={styles.optionsRow}>
                 {SAHUR_OPTIONS.map((opt) => (
                   <Pressable
