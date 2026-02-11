@@ -1,6 +1,7 @@
 import '@/polyfills';
 import { DefaultTheme, ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
+import { Stack, router } from 'expo-router';
+import * as Notifications from 'expo-notifications';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
@@ -8,6 +9,26 @@ import 'react-native-reanimated';
 import { Colors } from '@/constants/theme';
 import { ThemeProvider, useTheme } from '@/context/ThemeContext';
 import { setupNotifications } from '@/lib/notification-setup';
+
+function useNotificationResponse() {
+  useEffect(() => {
+    const redirect = (notification: Notifications.Notification) => {
+      const url = notification.request.content.data?.url;
+      if (typeof url === 'string') {
+        router.push(url);
+      }
+    };
+
+    Notifications.getLastNotificationResponseAsync().then((response) => {
+      if (response?.notification) redirect(response.notification);
+    });
+
+    const sub = Notifications.addNotificationResponseReceivedListener((response) => {
+      redirect(response.notification);
+    });
+    return () => sub.remove();
+  }, []);
+}
 
 function RootLayoutContent() {
   const { activeTheme } = useTheme();
@@ -53,6 +74,8 @@ function RootLayoutContent() {
 }
 
 export default function RootLayout() {
+  useNotificationResponse();
+
   useEffect(() => {
     setupNotifications();
   }, []);
