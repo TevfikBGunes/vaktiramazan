@@ -80,6 +80,13 @@ function RootLayoutContent() {
                 title: 'Bildirim Test',
             }}
         />
+        <Stack.Screen
+            name="notification-settings"
+            options={{
+                presentation: 'modal',
+                title: 'Bildirim Ayarları',
+            }}
+        />
       </Stack>
       <StatusBar style="dark" />
     </NavigationThemeProvider>
