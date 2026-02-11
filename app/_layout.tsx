@@ -2,10 +2,12 @@ import '@/polyfills';
 import { DefaultTheme, ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { Colors } from '@/constants/theme';
 import { ThemeProvider, useTheme } from '@/context/ThemeContext';
+import { setupNotifications } from '@/lib/notification-setup';
 
 function RootLayoutContent() {
   const { activeTheme } = useTheme();
@@ -51,6 +53,10 @@ function RootLayoutContent() {
 }
 
 export default function RootLayout() {
+  useEffect(() => {
+    setupNotifications();
+  }, []);
+
   return (
     <ThemeProvider>
       <RootLayoutContent />
