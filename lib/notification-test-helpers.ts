@@ -67,7 +67,7 @@ export async function cancelAllTestNotifications(): Promise<void> {
  */
 export async function testPrayerNotification(): Promise<string> {
   return await sendTestNotificationNow(
-    'İkindi vakti',
+    '🌤️ İkindi vakti',
     'İkindi vakti girdi.',
     'PRAYER_TIMES'
   );
@@ -78,7 +78,7 @@ export async function testPrayerNotification(): Promise<string> {
  */
 export async function testIftarNotification(): Promise<string> {
   return await sendTestNotificationNow(
-    'İftar vakti',
+    '🌙 İftar vakti',
     'İftar vakti girdi. Hayırlı iftarlar.',
     'SAHUR_IFTAR'
   );
@@ -89,8 +89,8 @@ export async function testIftarNotification(): Promise<string> {
  */
 export async function testSahurNotification(): Promise<string> {
   return await sendTestNotificationNow(
-    'Sahur hatırlatması',
-    'Sahura 30 dakika kaldı.',
+    '⏰ Sahur hatırlatması',
+    'Sahurun bitmesine 30 dakika kaldı.',
     'SAHUR_IFTAR'
   );
 }
@@ -100,8 +100,8 @@ export async function testSahurNotification(): Promise<string> {
  */
 export async function testVerseNotification(): Promise<string> {
   return await sendTestNotificationNow(
-    'Günün Ayeti',
-    'Bugünkü ayeti okumak için dokunun.',
+    '🌙 Günün Ayeti',
+    'Bugünün ayetini okumak için dokunun.',
     'VERSE_OF_DAY'
   );
 }
@@ -111,7 +111,7 @@ export async function testVerseNotification(): Promise<string> {
  */
 export async function scheduleIftarIn1Minute(): Promise<string> {
   return await scheduleTestNotification(
-    'İftar vakti (TEST)',
+    '🌙 İftar vakti (TEST)',
     'İftar vakti girdi. Hayırlı iftarlar.',
     60,
     'SAHUR_IFTAR'

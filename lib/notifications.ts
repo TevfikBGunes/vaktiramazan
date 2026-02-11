@@ -4,12 +4,12 @@ import type { NotificationPreferences, PrayerTimeKey } from '@/lib/notification-
 import { CHANNEL_IDS } from '@/lib/notification-setup';
 
 const PRAYER_NAMES: Record<PrayerTimeKey, string> = {
-  imsak: 'İmsak',
-  gunes: 'Güneş',
-  ogle: 'Öğle',
-  ikindi: 'İkindi',
-  aksam: 'Akşam (İftar)',
-  yatsi: 'Yatsı',
+  imsak: '🌅 İmsak',
+  gunes: '☀️ Güneş',
+  ogle: '🌞 Öğle',
+  ikindi: '🌤️ İkindi',
+  aksam: '🌙 Akşam (İftar)',
+  yatsi: '🌃 Yatsı',
 };
 
 const MAX_DAYS_AHEAD = 7;
@@ -37,12 +37,12 @@ async function scheduleAt(
       title,
       body,
       data: data ?? {},
-      channelId,
       sound: true,
-    },
+    } as any,
     trigger: {
       type: Notifications.SchedulableTriggerInputTypes.DATE,
       date: triggerDate,
+      channelId,
     },
   });
   return id;
@@ -108,8 +108,8 @@ export async function scheduleSahurIftarNotifications(
       if (sahurDate.getTime() > Date.now()) {
         await scheduleAt(
           `sahur-${dateStr}`,
-          'Sahur hatırlatması',
-          `Sahura ${prefs.sahurMinutesBeforeImsak} dakika kaldı.`,
+          '⏰ Sahur hatırlatması',
+          `Sahurun bitmesine ${prefs.sahurMinutesBeforeImsak} dakika kaldı.`,
           sahurDate,
           CHANNEL_IDS.SAHUR_IFTAR,
           { screen: '/(tabs)', url: '/(tabs)' }
@@ -123,7 +123,7 @@ export async function scheduleSahurIftarNotifications(
       if (iftarDate.getTime() > Date.now()) {
         await scheduleAt(
           `iftar-${dateStr}`,
-          'İftar vakti',
+          '🌙 İftar vakti',
           'İftar vakti girdi. Hayırlı iftarlar.',
           iftarDate,
           CHANNEL_IDS.SAHUR_IFTAR,
@@ -141,7 +141,7 @@ export async function scheduleSahurIftarNotifications(
       if (beforeDate.getTime() > Date.now()) {
         await scheduleAt(
           `iftar-before-${dateStr}`,
-          'İftara kalan süre',
+          '⏰ İftara kalan süre',
           `İftara ${prefs.iftarMinutesBefore} dakika kaldı.`,
           beforeDate,
           CHANNEL_IDS.SAHUR_IFTAR,
@@ -172,8 +172,8 @@ export async function scheduleVerseOfDayNotifications(
     const identifier = `verse-${dateStr}`;
     await scheduleAt(
       identifier,
-      'Günün Ayeti',
-      'Bugünkü ayeti okumak için dokunun.',
+      '🌙 Günün Ayeti',
+      'Bugünün ayetini okumak için dokunun.',
       d,
       CHANNEL_IDS.VERSE_OF_DAY,
       { screen: '/(tabs)/verse', url: '/(tabs)/verse' }
