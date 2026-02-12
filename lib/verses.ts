@@ -110,3 +110,31 @@ export function findVerseIndexInPool(pool: Verse[], verseId: number): number | n
   const idx = pool.findIndex((v) => v.id === verseId);
   return idx >= 0 ? idx : null;
 }
+
+/** Returns a verse by id, or undefined if not found. */
+export function getVerseById(verseId: number): Verse | undefined {
+  return allVerses.find((v) => v.id === verseId);
+}
+
+/**
+ * Hashes a string to a non-negative integer (for deterministic index).
+ */
+function hashString(s: string): number {
+  let hash = 0;
+  for (let i = 0; i < s.length; i++) {
+    hash = (hash << 5) - hash + s.charCodeAt(i);
+    hash = hash & hash;
+  }
+  return Math.abs(hash);
+}
+
+/**
+ * Returns a deterministic verse for a given date string (YYYY-MM-DD).
+ * Optional seed (e.g. vakit adı) ile aynı günde farklı ayetler seçilebilir.
+ * Same (dateStr, seed) always returns the same verse.
+ */
+export function getVerseForDate(dateStr: string, seed?: string): Verse {
+  const input = seed != null ? `${dateStr}-${seed}` : dateStr;
+  const index = hashString(input) % allVerses.length;
+  return allVerses[index];
+}

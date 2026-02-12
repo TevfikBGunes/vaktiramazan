@@ -1,5 +1,33 @@
 import * as Notifications from 'expo-notifications';
 import { CHANNEL_IDS } from '@/lib/notification-setup';
+import { getVerseForDate, type Verse } from '@/lib/verses';
+
+const MAX_VERSE_BODY_LENGTH = 100;
+
+function verseSnippet(verse: Verse): string {
+  const t = verse.text.trim();
+  if (t.length <= MAX_VERSE_BODY_LENGTH) return t;
+  return t.slice(0, MAX_VERSE_BODY_LENGTH - 1).trim() + '…';
+}
+
+function verseNotificationData(verse: Verse) {
+  return {
+    screen: '/(tabs)/verse',
+    url: `/(tabs)/verse?verseId=${verse.id}`,
+    verseId: verse.id,
+  };
+}
+
+/** Test için sabit bir ayet (tarih deterministik). */
+const TEST_VERSE = getVerseForDate('2026-02-12');
+
+/** Sahur bildiriminde gösterilen sabit metin (hadis). */
+const SAHUR_MESSAGE =
+  'Sahurda yemek yiyiniz, Çünkü sahur yemeğinde bereket vardır. (Buhari, Savm, 20)';
+
+/** İftar bildiriminde gösterilen sabit metin (dua). */
+const IFTAR_MESSAGE =
+  "Allah'ım! Senin rızân için oruç tuttum. Senin rızkınla orucumu açıyorum. (Ebû Davud, Savm, 22)";
 
 /**
  * Test için hemen (2 saniye sonra) bir bildirim gönderir.
@@ -7,13 +35,14 @@ import { CHANNEL_IDS } from '@/lib/notification-setup';
 export async function sendTestNotificationNow(
   title: string,
   body: string,
-  channelId: keyof typeof CHANNEL_IDS = 'PRAYER_TIMES'
+  channelId: keyof typeof CHANNEL_IDS = 'PRAYER_TIMES',
+  data?: Record<string, unknown>
 ): Promise<string> {
   return await Notifications.scheduleNotificationAsync({
     content: {
       title,
       body,
-      data: { screen: '/(tabs)', url: '/(tabs)' },
+      data: data ?? { screen: '/(tabs)', url: '/(tabs)' },
       channelId: CHANNEL_IDS[channelId],
       sound: true,
     },
@@ -63,46 +92,50 @@ export async function cancelAllTestNotifications(): Promise<void> {
 }
 
 /**
- * Namaz vakti bildirimi testi (2 sn sonra).
+ * Namaz vakti bildirimi testi (2 sn sonra). Ayet metni ve tıklanınca ayete gider.
  */
 export async function testPrayerNotification(): Promise<string> {
+  const body = `İkindi vakti girdi. "${verseSnippet(TEST_VERSE)}"`;
   return await sendTestNotificationNow(
     '🌤️ İkindi vakti',
-    'İkindi vakti girdi.',
-    'PRAYER_TIMES'
+    body,
+    'PRAYER_TIMES',
+    verseNotificationData(TEST_VERSE)
   );
 }
 
 /**
- * İftar bildirimi testi (2 sn sonra).
+ * İftar bildirimi testi (2 sn sonra). Sabit dua metni, ayet yönlendirmesi yok.
  */
 export async function testIftarNotification(): Promise<string> {
   return await sendTestNotificationNow(
     '🌙 İftar vakti',
-    'İftar vakti girdi. Hayırlı iftarlar.',
+    IFTAR_MESSAGE,
     'SAHUR_IFTAR'
   );
 }
 
 /**
- * Sahur bildirimi testi (2 sn sonra).
+ * Sahur bildirimi testi (2 sn sonra). Sabit hadis metni, ayet yönlendirmesi yok.
  */
 export async function testSahurNotification(): Promise<string> {
   return await sendTestNotificationNow(
     '⏰ Sahur hatırlatması',
-    'Sahurun bitmesine 30 dakika kaldı.',
+    SAHUR_MESSAGE,
     'SAHUR_IFTAR'
   );
 }
 
 /**
- * Günün ayeti bildirimi testi (2 sn sonra).
+ * Günün ayeti bildirimi testi (2 sn sonra). Ayet metni ve tıklanınca ayete gider.
  */
 export async function testVerseNotification(): Promise<string> {
+  const body = `"${verseSnippet(TEST_VERSE)}"`;
   return await sendTestNotificationNow(
     '🌙 Günün Ayeti',
-    'Bugünün ayetini okumak için dokunun.',
-    'VERSE_OF_DAY'
+    body,
+    'VERSE_OF_DAY',
+    verseNotificationData(TEST_VERSE)
   );
 }
 
@@ -112,7 +145,7 @@ export async function testVerseNotification(): Promise<string> {
 export async function scheduleIftarIn1Minute(): Promise<string> {
   return await scheduleTestNotification(
     '🌙 İftar vakti (TEST)',
-    'İftar vakti girdi. Hayırlı iftarlar.',
+    IFTAR_MESSAGE,
     60,
     'SAHUR_IFTAR'
   );

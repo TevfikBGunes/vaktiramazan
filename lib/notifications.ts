@@ -2,6 +2,7 @@ import * as Notifications from 'expo-notifications';
 import type { PrayerTimesRecord } from '@/lib/prayer-times';
 import type { NotificationPreferences, PrayerTimeKey } from '@/lib/notification-preferences';
 import { CHANNEL_IDS } from '@/lib/notification-setup';
+import { getVerseForDate, type Verse } from '@/lib/verses';
 
 const PRAYER_NAMES: Record<PrayerTimeKey, string> = {
   imsak: '🌅 İmsak',
@@ -13,6 +14,30 @@ const PRAYER_NAMES: Record<PrayerTimeKey, string> = {
 };
 
 const MAX_DAYS_AHEAD = 7;
+const MAX_VERSE_BODY_LENGTH = 100;
+
+/** Sahur bildiriminde gösterilen sabit metin (hadis). */
+const SAHUR_MESSAGE =
+  'Sahurda yemek yiyiniz, Çünkü sahur yemeğinde bereket vardır. (Buhari, Savm, 20)';
+
+/** İftar bildiriminde gösterilen sabit metin (dua). */
+const IFTAR_MESSAGE =
+  "Allah'ım! Senin rızân için oruç tuttum. Senin rızkınla orucumu açıyorum. (Ebû Davud, Savm, 22)";
+
+/** Kısa bildirim gövdesi için ayet metnini kısaltır. */
+function verseSnippet(verse: Verse): string {
+  const t = verse.text.trim();
+  if (t.length <= MAX_VERSE_BODY_LENGTH) return t;
+  return t.slice(0, MAX_VERSE_BODY_LENGTH - 1).trim() + '…';
+}
+
+function verseNotificationData(verse: Verse) {
+  return {
+    screen: '/(tabs)/verse',
+    url: `/(tabs)/verse?verseId=${verse.id}`,
+    verseId: verse.id,
+  };
+}
 
 /** Parse "YYYY-MM-DD" or ISO date string and "HH:mm" into local Date */
 function toTriggerDate(dateStr: string, timeStr: string): Date {
@@ -71,14 +96,28 @@ export async function schedulePrayerTimeNotifications(
       const triggerDate = toTriggerDate(record.date, record.times[key]);
       if (triggerDate.getTime() <= Date.now()) continue;
       const identifier = `prayer-${key}-${dateStr}`;
-      await scheduleAt(
-        identifier,
-        `${PRAYER_NAMES[key]} vakti`,
-        `${PRAYER_NAMES[key]} vakti girdi.`,
-        triggerDate,
-        CHANNEL_IDS.PRAYER_TIMES,
-        { screen: '/(tabs)', url: '/(tabs)' }
-      );
+      const isIftar = key === 'aksam';
+      if (isIftar) {
+        await scheduleAt(
+          identifier,
+          `${PRAYER_NAMES[key]} vakti`,
+          `${PRAYER_NAMES[key]} vakti girdi.`,
+          triggerDate,
+          CHANNEL_IDS.PRAYER_TIMES,
+          { screen: '/(tabs)', url: '/(tabs)' }
+        );
+      } else {
+        const verse = getVerseForDate(dateStr, key);
+        const body = `${PRAYER_NAMES[key]} vakti girdi. "${verseSnippet(verse)}"`;
+        await scheduleAt(
+          identifier,
+          `${PRAYER_NAMES[key]} vakti`,
+          body,
+          triggerDate,
+          CHANNEL_IDS.PRAYER_TIMES,
+          verseNotificationData(verse)
+        );
+      }
     }
   }
 }
@@ -99,7 +138,7 @@ export async function scheduleSahurIftarNotifications(
     const record = records.find((r) => r.date.slice(0, 10) === dateStr);
     if (!record) continue;
 
-    // Sahur: X dakika önce
+    // Sahur: X dakika önce (sabit hadis metni, ayet yönlendirmesi yok)
     if (prefs.sahurMinutesBeforeImsak > 0) {
       const imsakDate = toTriggerDate(record.date, record.times.imsak);
       const sahurDate = new Date(
@@ -109,7 +148,7 @@ export async function scheduleSahurIftarNotifications(
         await scheduleAt(
           `sahur-${dateStr}`,
           '⏰ Sahur hatırlatması',
-          `Sahurun bitmesine ${prefs.sahurMinutesBeforeImsak} dakika kaldı.`,
+          SAHUR_MESSAGE,
           sahurDate,
           CHANNEL_IDS.SAHUR_IFTAR,
           { screen: '/(tabs)', url: '/(tabs)' }
@@ -117,14 +156,14 @@ export async function scheduleSahurIftarNotifications(
       }
     }
 
-    // İftar vakti (Akşam)
+    // İftar vakti (Akşam) — sabit dua metni, ayet yönlendirmesi yok
     if (prefs.iftarEnabled) {
       const iftarDate = toTriggerDate(record.date, record.times.aksam);
       if (iftarDate.getTime() > Date.now()) {
         await scheduleAt(
           `iftar-${dateStr}`,
           '🌙 İftar vakti',
-          'İftar vakti girdi. Hayırlı iftarlar.',
+          IFTAR_MESSAGE,
           iftarDate,
           CHANNEL_IDS.SAHUR_IFTAR,
           { screen: '/(tabs)', url: '/(tabs)' }
@@ -132,20 +171,22 @@ export async function scheduleSahurIftarNotifications(
       }
     }
 
-    // İftara X dakika kala
+    // İftara X dakika kala (ayet eklenir, tıklanınca ayete gider)
     if (prefs.iftarMinutesBefore > 0) {
       const iftarDate = toTriggerDate(record.date, record.times.aksam);
       const beforeDate = new Date(
         iftarDate.getTime() - prefs.iftarMinutesBefore * 60 * 1000
       );
       if (beforeDate.getTime() > Date.now()) {
+        const verse = getVerseForDate(dateStr);
+        const body = `İftara ${prefs.iftarMinutesBefore} dakika kaldı. "${verseSnippet(verse)}"`;
         await scheduleAt(
           `iftar-before-${dateStr}`,
           '⏰ İftara kalan süre',
-          `İftara ${prefs.iftarMinutesBefore} dakika kaldı.`,
+          body,
           beforeDate,
           CHANNEL_IDS.SAHUR_IFTAR,
-          { screen: '/(tabs)', url: '/(tabs)' }
+          verseNotificationData(verse)
         );
       }
     }
@@ -169,14 +210,15 @@ export async function scheduleVerseOfDayNotifications(
     d.setHours(verseOfDayHour, verseOfDayMinute, 0, 0);
     if (d.getTime() <= Date.now()) continue;
     const dateStr = d.toISOString().slice(0, 10);
+    const verse = getVerseForDate(dateStr);
     const identifier = `verse-${dateStr}`;
     await scheduleAt(
       identifier,
       '🌙 Günün Ayeti',
-      'Bugünün ayetini okumak için dokunun.',
+      `"${verseSnippet(verse)}"`,
       d,
       CHANNEL_IDS.VERSE_OF_DAY,
-      { screen: '/(tabs)/verse', url: '/(tabs)/verse' }
+      verseNotificationData(verse)
     );
   }
 }
