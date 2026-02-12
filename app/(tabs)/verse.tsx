@@ -112,12 +112,22 @@ export default function AyetScreen() {
   }, [surahs, searchQuery]);
 
   const goPrev = useCallback(() => {
-    setVerseIndex((i) => (i - 1 + pool.length) % pool.length);
-  }, [pool.length]);
+    setVerseIndex((i) => {
+      if (pool.length === 0) return 0;
+      // When a surah is selected, do not wrap; stay at first verse
+      if (selectedSurah != null) return Math.max(0, i - 1);
+      return (i - 1 + pool.length) % pool.length;
+    });
+  }, [pool.length, selectedSurah]);
 
   const goNext = useCallback(() => {
-    setVerseIndex((i) => (i + 1) % pool.length);
-  }, [pool.length]);
+    setVerseIndex((i) => {
+      if (pool.length === 0) return 0;
+      // When a surah is selected, do not wrap to start; stay at last verse
+      if (selectedSurah != null) return Math.min(pool.length - 1, i + 1);
+      return (i + 1) % pool.length;
+    });
+  }, [pool.length, selectedSurah]);
 
   const refresh = useCallback(() => {
     setVerseIndex(getRandomIndex(pool.length));
@@ -128,7 +138,8 @@ export default function AyetScreen() {
       const num = surah?.number ?? null;
       setSelectedSurah(num);
       const newPool = getVersePool(num ?? undefined);
-      setVerseIndex(getRandomIndex(newPool.length));
+      // When a surah is selected, start at verse 1; Next/Prev then move within that surah without wrapping
+      setVerseIndex(num != null ? 0 : getRandomIndex(newPool.length));
       setModalVisible(false);
     },
     []
