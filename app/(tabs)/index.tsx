@@ -222,6 +222,35 @@ export default function HomeScreen() {
                   <Text style={[styles.emptyText, { color: colors.textSecondary }]}>Bugün için vakit verisi yok</Text>
                 )}
           </View>
+
+          <Animated.View 
+            entering={FadeInDown.delay(400).springify()} 
+            style={styles.notificationCardWrapper}
+          >
+            <Pressable
+              style={({ pressed }) => [
+                styles.notificationCard,
+                { backgroundColor: colors.card },
+                pressed && { opacity: 0.7 },
+              ]}
+              onPress={() => router.push('/notification-settings')}
+            >
+              <View style={styles.notificationCardContent}>
+                <View style={[styles.notificationIcon, { backgroundColor: colors.accent + '20' }]}>
+                  <MaterialIcons name="notifications" size={24} color={colors.accent} />
+                </View>
+                <View style={styles.notificationTextContainer}>
+                  <Text style={[styles.notificationTitle, { color: colors.text }]}>
+                    Bildirim Ayarları
+                  </Text>
+                  <Text style={[styles.notificationSubtitle, { color: colors.textSecondary }]}>
+                    Namaz ve oruç bildirimlerini özelleştir
+                  </Text>
+                </View>
+                <MaterialIcons name="chevron-right" size={24} color={colors.textSecondary} />
+              </View>
+            </Pressable>
+          </Animated.View>
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -303,6 +332,48 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textTransform: 'uppercase',
     letterSpacing: 2,
+  },
+  notificationCardWrapper: {
+    paddingHorizontal: 24,
+    marginBottom: 20,
+  },
+  notificationCard: {
+    borderRadius: 16,
+    padding: 16,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  notificationCardContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  notificationIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notificationTextContainer: {
+    flex: 1,
+    gap: 2,
+  },
+  notificationTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    letterSpacing: 0.3,
+  },
+  notificationSubtitle: {
+    fontSize: 13,
+    fontWeight: '400',
+    opacity: 0.8,
   },
   listSection: {
     paddingHorizontal: 24,

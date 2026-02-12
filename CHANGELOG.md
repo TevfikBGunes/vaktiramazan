@@ -1,5 +1,17 @@
 # vaktiramazan
 
+## 1.7.0
+
+### Minor Changes
+
+- 09ee5dc: Add notification settings and scheduling for prayer times, sahur/iftar, and verse of the day
+
+  - Dedicated notification settings screen with test helpers
+  - Scheduling service for prayer, sahur/iftar and verse of day
+  - Handle notification tap and navigate to relevant screen
+  - Reschedule all notifications on app launch
+  - expo-notifications setup, permissions and Android channels
+
 ## 1.6.0
 
 ### Minor Changes

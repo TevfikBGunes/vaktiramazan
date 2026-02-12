@@ -33,6 +33,12 @@ module.exports = {
     plugins: [
       "expo-router",
       [
+        "expo-notifications",
+        {
+          defaultChannel: "prayer-times",
+        },
+      ],
+      [
         "expo-splash-screen",
         {
           image: "./assets/images/splash-icon.png",
