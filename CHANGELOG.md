@@ -1,5 +1,14 @@
 # vaktiramazan
 
+## 1.8.1
+
+### Patch Changes
+
+- 8ec40bf: Add missing PrayerTimeModal component
+
+  - Component was referenced by \_layout and notification-test but not committed
+  - Shows iftar/sahur modal with hadith and dua texts
+
 ## 1.8.0
 
 ### Minor Changes
