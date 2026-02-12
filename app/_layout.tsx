@@ -1,6 +1,6 @@
 import '@/polyfills';
 import { DefaultTheme, ThemeProvider as NavigationThemeProvider } from '@react-navigation/native';
-import { Stack, router } from 'expo-router';
+import { type Href, Stack, router } from 'expo-router';
 import * as Notifications from 'expo-notifications';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useState } from 'react';
@@ -25,13 +25,12 @@ function useNotificationResponse() {
     const redirect = (notification: Notifications.Notification) => {
       const url = notification.request.content.data?.url;
       if (typeof url === 'string') {
-        router.push(url);
+        router.push(url as Href);
       }
     };
 
-    Notifications.getLastNotificationResponseAsync().then((response) => {
-      if (response?.notification) redirect(response.notification);
-    });
+    const response = Notifications.getLastNotificationResponse();
+    if (response?.notification) redirect(response.notification);
 
     const sub = Notifications.addNotificationResponseReceivedListener((response) => {
       redirect(response.notification);
