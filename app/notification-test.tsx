@@ -12,6 +12,7 @@ import {
 } from '@/lib/notification-test-helpers';
 import { rescheduleAllNotifications } from '@/lib/notifications';
 import type { PrayerTimesRecord } from '@/lib/prayer-times';
+import { PrayerTimeModal, type PrayerTimeModalType } from '@/components/prayer-time-modal';
 import React, { useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -24,6 +25,12 @@ export default function NotificationTestScreen() {
   const { activeTheme } = useTheme();
   const colors = Colors[activeTheme];
   const [scheduledCount, setScheduledCount] = useState<number | null>(null);
+  
+  // Modal state
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalType, setModalType] = useState<PrayerTimeModalType>('iftar');
+  const [modalTime, setModalTime] = useState('00:00');
+  const [sahurMinutesRemaining, setSahurMinutesRemaining] = useState<number | undefined>();
 
   const handleTest = async (testFn: () => Promise<string>, name: string) => {
     try {
@@ -92,11 +99,37 @@ export default function NotificationTestScreen() {
     }
   };
 
+  const handleShowIftarModal = () => {
+    const now = new Date();
+    const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    setModalType('iftar');
+    setModalTime(currentTime);
+    setSahurMinutesRemaining(undefined);
+    setModalVisible(true);
+  };
+
+  const handleShowSahurModal = () => {
+    const now = new Date();
+    const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    setModalType('sahur');
+    setModalTime(currentTime);
+    setSahurMinutesRemaining(30);
+    setModalVisible(true);
+  };
+
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: colors.background }]}
       edges={['bottom', 'left', 'right']}
     >
+      <PrayerTimeModal
+        visible={modalVisible}
+        type={modalType}
+        time={modalTime}
+        minutesRemaining={sahurMinutesRemaining}
+        onClose={() => setModalVisible(false)}
+      />
+      
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Text style={[styles.title, { color: colors.text }]}>Bildirim Test Ekranı</Text>
         <Text style={[styles.subtitle, { color: colors.textSecondary }]}>
@@ -137,6 +170,24 @@ export default function NotificationTestScreen() {
             label="İftar 1 Dakika Sonra"
             onPress={handleSchedule1Min}
             colors={colors}
+          />
+        </View>
+
+        <Text style={[styles.sectionHeader, { color: colors.textSecondary }]}>
+          UYGULAMA İÇİ MODAL TEST
+        </Text>
+        <View style={[styles.section, { backgroundColor: colors.card }]}>
+          <TestButton
+            label="İftar Modal'ı Göster"
+            onPress={handleShowIftarModal}
+            colors={colors}
+            accent
+          />
+          <TestButton
+            label="Sahur Modal'ı Göster"
+            onPress={handleShowSahurModal}
+            colors={colors}
+            accent
           />
         </View>
 

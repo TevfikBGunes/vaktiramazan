@@ -12,7 +12,7 @@ import {
 } from '@/lib/verses';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   FlatList,
@@ -42,6 +42,7 @@ function normalize(str: string): string {
 export default function AyetScreen() {
   const colors = Colors[useTheme().activeTheme];
   const router = useRouter();
+  const { verseId: verseIdParam } = useLocalSearchParams<{ verseId?: string }>();
 
   const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -55,8 +56,22 @@ export default function AyetScreen() {
   const [verseIndex, setVerseIndex] = useState(0);
   const verse: Verse = pool[verseIndex] ?? pool[0];
 
-  // Load last viewed verse on mount
+  // Load verse on mount: notification verseId > last viewed > random
   useEffect(() => {
+    const verseIdFromUrl = verseIdParam != null ? Number(verseIdParam) : null;
+    const idToUse = Number.isFinite(verseIdFromUrl) ? verseIdFromUrl! : null;
+
+    if (idToUse != null) {
+      const allPool = getVersePool();
+      const idx = findVerseIndexInPool(allPool, idToUse);
+      if (idx != null) {
+        setSelectedSurah(null);
+        setVerseIndex(idx);
+      }
+      setReady(true);
+      return;
+    }
+
     loadLastVerseId().then((id) => {
       if (id != null) {
         const allPool = getVersePool();
@@ -70,7 +85,7 @@ export default function AyetScreen() {
       }
       setReady(true);
     });
-  }, []);
+  }, [verseIdParam]);
 
   // Save verse id on every change
   useEffect(() => {
