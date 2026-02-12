@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { hapticLight, hapticSelection } from '@/lib/haptics';
 import { generateAPIUrl } from '@/utils';
 import { experimental_useObject as useObject } from '@ai-sdk/react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -138,7 +139,10 @@ export default function MenuScreen() {
           <Text style={[styles.headerTitle, { color: colors.text }]}>Günün Menüsü</Text>
           <Pressable
             style={({ pressed }) => [styles.settingsButton, pressed && { opacity: 0.7 }]}
-            onPress={() => router.push('/settings')}>
+            onPress={() => {
+              hapticSelection();
+              router.push('/settings');
+            }}>
             <MaterialIcons name="settings" size={24} color={colors.textSecondary} />
           </Pressable>
         </View>
@@ -207,7 +211,10 @@ export default function MenuScreen() {
                   (randomMenuLoading || !randomMenuApiUrl) && { opacity: 0.6 },
                   pressed && { opacity: 0.8 },
                 ]}
-                onPress={refreshRandomMenu}
+                onPress={() => {
+                  hapticLight();
+                  refreshRandomMenu();
+                }}
                 disabled={randomMenuLoading || !randomMenuApiUrl}>
                 {randomMenuLoading ? (
                   <ActivityIndicator color="#fff" size="small" />
@@ -248,7 +255,10 @@ export default function MenuScreen() {
                   (isLoading || !ingredientsInput.trim()) && { opacity: 0.6 },
                   pressed && !isLoading && { opacity: 0.8 },
                 ]}
-                onPress={handleCreateMenu}
+                onPress={() => {
+                  hapticLight();
+                  handleCreateMenu();
+                }}
                 disabled={isLoading || !ingredientsInput.trim()}>
                 {isLoading ? (
                   <ActivityIndicator color="#fff" size="small" />

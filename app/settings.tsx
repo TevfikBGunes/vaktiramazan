@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { hapticSelection } from '@/lib/haptics';
 import { useRouter } from 'expo-router';
 import Constants from 'expo-constants';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -62,7 +63,10 @@ export default function SettingsScreen() {
                 { borderColor: colors.border },
                 pressed && { opacity: 0.7 },
               ]}
-              onPress={() => router.push(item.route as any)}
+              onPress={() => {
+                hapticSelection();
+                router.push(item.route as any);
+              }}
             >
               <View style={[styles.iconContainer, { backgroundColor: item.color + '20' }]}>
                 <MaterialIcons name={item.icon as any} size={24} color={item.color} />
@@ -91,7 +95,10 @@ export default function SettingsScreen() {
                     { borderColor: colors.border },
                     pressed && { opacity: 0.7 },
                   ]}
-                  onPress={() => router.push(item.route as any)}
+                  onPress={() => {
+                    hapticSelection();
+                    router.push(item.route as any);
+                  }}
                 >
                   <View style={[styles.iconContainer, { backgroundColor: item.color + '20' }]}>
                     <MaterialIcons name={item.icon as any} size={24} color={item.color} />

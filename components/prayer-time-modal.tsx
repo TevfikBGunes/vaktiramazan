@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { hapticSelection } from '@/lib/haptics';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { BlurView } from 'expo-blur';
 import React from 'react';
@@ -63,7 +64,13 @@ export function PrayerTimeModal({
         tint={colors.background === '#FFFFFF' ? 'light' : 'dark'}
         style={styles.backdrop}
       >
-        <Pressable style={styles.backdropTouchable} onPress={onClose} />
+        <Pressable
+          style={styles.backdropTouchable}
+          onPress={() => {
+            hapticSelection();
+            onClose();
+          }}
+        />
         
         <AnimatedPressable
           entering={SlideInDown.springify().damping(20).stiffness(200)}
@@ -125,7 +132,10 @@ export function PrayerTimeModal({
               { backgroundColor: colors.accent },
               pressed && styles.closeButtonPressed,
             ]}
-            onPress={onClose}
+            onPress={() => {
+              hapticSelection();
+              onClose();
+            }}
           >
             <Text style={styles.closeButtonText}>Kapat</Text>
           </Pressable>

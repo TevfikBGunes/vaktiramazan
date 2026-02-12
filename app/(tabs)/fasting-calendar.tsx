@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { hapticSelection } from '@/lib/haptics';
 import type { PrayerTimesRecord } from '@/lib/prayer-times';
 import { getTodayRamadanDay, getTodayRecord } from '@/lib/prayer-times';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -139,11 +140,13 @@ export default function FastingCalendarScreen() {
 
   const handleSaveDay = (day: number) => {
     if (day < 1 || day > RAMADAN_DAYS) return;
+    hapticSelection();
     setCompletedSet((prev) => new Set(prev).add(day));
     setSelectedDay(null);
   };
 
   const handleDeleteDay = (day: number) => {
+    hapticSelection();
     setCompletedSet((prev) => {
       const next = new Set(prev);
       next.delete(day);
@@ -154,6 +157,7 @@ export default function FastingCalendarScreen() {
 
   const openDayModal = (slot: number) => {
     if (slot <= RAMADAN_DAYS && isFutureDay(slot)) return;
+    hapticSelection();
     setSelectedDay(slot);
   };
 
@@ -181,7 +185,10 @@ export default function FastingCalendarScreen() {
           <Text style={[styles.headerTitle, { color: colors.text }]}>Oruç Takvimi</Text>
           <Pressable
             style={({ pressed }) => [styles.settingsButton, pressed && { opacity: 0.7 }]}
-            onPress={() => router.push('/settings')}>
+            onPress={() => {
+              hapticSelection();
+              router.push('/settings');
+            }}>
             <MaterialIcons name="settings" size={24} color={colors.textSecondary} />
           </Pressable>
         </View>
@@ -339,7 +346,10 @@ export default function FastingCalendarScreen() {
           onRequestClose={() => setSelectedDay(null)}>
           <Pressable
             style={styles.modalOverlay}
-            onPress={() => setSelectedDay(null)}>
+            onPress={() => {
+              hapticSelection();
+              setSelectedDay(null);
+            }}>
             <Pressable
               style={[styles.modalCard, { backgroundColor: colors.card }]}
               onPress={(e) => e.stopPropagation()}>
@@ -377,7 +387,10 @@ export default function FastingCalendarScreen() {
                     )}
                     <Pressable
                       style={[styles.modalButton, { borderColor: colors.textSecondary }]}
-                      onPress={() => setSelectedDay(null)}>
+                      onPress={() => {
+                        hapticSelection();
+                        setSelectedDay(null);
+                      }}>
                       <Text style={[styles.modalButtonText, { color: colors.textSecondary }]}>İptal</Text>
                     </Pressable>
                   </View>
