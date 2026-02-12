@@ -17,6 +17,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   FlatList,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -24,7 +25,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import ShareVerseModal from '@/components/share-verse-modal';
 
 /** Removes circumflex accents (â→a, û→u, î→i) and apostrophes for fuzzy search. */
@@ -39,10 +40,15 @@ function normalize(str: string): string {
     .trim();
 }
 
+/** Platform standart tab bar yükseklikleri (pt/dp). Sabit sayı yerine platform bazlı. */
+const TAB_BAR_HEIGHT = Platform.select({ ios: 49, android: 56, default: 56 });
+
 export default function AyetScreen() {
   const colors = Colors[useTheme().activeTheme];
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const { verseId: verseIdParam } = useLocalSearchParams<{ verseId?: string }>();
+  const scrollBottomPadding = 32 + insets.bottom + (TAB_BAR_HEIGHT ?? 56);
 
   const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -149,7 +155,7 @@ export default function AyetScreen() {
         </View>
 
         <ScrollView
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={[styles.scrollContent, { paddingBottom: scrollBottomPadding }]}
           showsVerticalScrollIndicator={false}>
           {/* Surah filter chip */}
           <Pressable
