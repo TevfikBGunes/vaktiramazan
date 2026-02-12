@@ -1,5 +1,15 @@
 # vaktiramazan
 
+## 1.10.0
+
+### Minor Changes
+
+- a840da8: Add app-wide haptic feedback via expo-haptics
+
+  - Add shared lib/haptics with hapticSelection and hapticLight (no-op on web)
+  - Apply haptics to key interactions: navigation, modals, settings, verse/menu/calendar screens
+  - HapticTab component uses shared helper for custom tab bar usage
+
 ## 1.9.1
 
 ### Patch Changes
