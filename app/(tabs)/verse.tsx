@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { hapticLight, hapticSelection } from '@/lib/haptics';
 import {
   findVerseIndexInPool,
   getRandomIndex,
@@ -135,6 +136,7 @@ export default function AyetScreen() {
 
   const handleSurahSelect = useCallback(
     (surah: Surah | null) => {
+      hapticSelection();
       const num = surah?.number ?? null;
       setSelectedSurah(num);
       const newPool = getVersePool(num ?? undefined);
@@ -160,7 +162,10 @@ export default function AyetScreen() {
           <Text style={[styles.headerTitle, { color: colors.text }]}>Günün Ayeti</Text>
           <Pressable
             style={({ pressed }) => [styles.settingsButton, pressed && { opacity: 0.7 }]}
-            onPress={() => router.push('/settings')}>
+            onPress={() => {
+              hapticSelection();
+              router.push('/settings');
+            }}>
             <MaterialIcons name="settings" size={24} color={colors.textSecondary} />
           </Pressable>
         </View>
@@ -175,7 +180,10 @@ export default function AyetScreen() {
               { backgroundColor: colors.card, borderColor: colors.accent + '40' },
               pressed && { opacity: 0.7 },
             ]}
-            onPress={() => setModalVisible(true)}>
+            onPress={() => {
+              hapticSelection();
+              setModalVisible(true);
+            }}>
             <MaterialIcons name="filter-list" size={18} color={colors.accent} />
             <Text style={[styles.filterChipText, { color: colors.text }]}>{filterLabel}</Text>
             <MaterialIcons name="keyboard-arrow-down" size={18} color={colors.textSecondary} />
@@ -228,7 +236,10 @@ export default function AyetScreen() {
               { backgroundColor: colors.card, borderColor: colors.accent + '40' },
               pressed && { opacity: 0.7 },
             ]}
-            onPress={() => setShareModalVisible(true)}>
+            onPress={() => {
+              hapticSelection();
+              setShareModalVisible(true);
+            }}>
             <MaterialIcons name="share" size={18} color={colors.accent} />
             <Text style={[styles.shareButtonText, { color: colors.accent }]}>Ayeti Paylaş</Text>
           </Pressable>
@@ -241,7 +252,10 @@ export default function AyetScreen() {
                 { backgroundColor: colors.card, borderColor: colors.accent + '40' },
                 pressed && { opacity: 0.7 },
               ]}
-              onPress={goPrev}>
+              onPress={() => {
+                hapticLight();
+                goPrev();
+              }}>
               <MaterialIcons name="chevron-left" size={22} color={colors.accent} />
               <Text style={[styles.navButtonText, { color: colors.accent }]}>Önceki</Text>
             </Pressable>
@@ -252,7 +266,10 @@ export default function AyetScreen() {
                 { backgroundColor: colors.accent },
                 pressed && { opacity: 0.8 },
               ]}
-              onPress={refresh}>
+              onPress={() => {
+                hapticLight();
+                refresh();
+              }}>
               <MaterialIcons name="refresh" size={20} color="#FFFFFF" />
               <Text style={styles.refreshText}>Yenile</Text>
             </Pressable>
@@ -263,7 +280,10 @@ export default function AyetScreen() {
                 { backgroundColor: colors.card, borderColor: colors.accent + '40' },
                 pressed && { opacity: 0.7 },
               ]}
-              onPress={goNext}>
+              onPress={() => {
+                hapticLight();
+                goNext();
+              }}>
               <Text style={[styles.navButtonText, { color: colors.accent }]}>Sonraki</Text>
               <MaterialIcons name="chevron-right" size={22} color={colors.accent} />
             </Pressable>
@@ -284,7 +304,10 @@ export default function AyetScreen() {
             <Text style={[styles.modalTitle, { color: colors.text }]}>Sure Seç</Text>
             <Pressable
               style={({ pressed }) => [styles.modalClose, pressed && { opacity: 0.7 }]}
-              onPress={() => setModalVisible(false)}>
+              onPress={() => {
+                hapticSelection();
+                setModalVisible(false);
+              }}>
               <MaterialIcons name="close" size={24} color={colors.textSecondary} />
             </Pressable>
           </View>
@@ -307,7 +330,11 @@ export default function AyetScreen() {
                 returnKeyType="search"
               />
               {searchQuery.length > 0 && (
-                <Pressable onPress={() => setSearchQuery('')}>
+                <Pressable
+                  onPress={() => {
+                    hapticSelection();
+                    setSearchQuery('');
+                  }}>
                   <MaterialIcons name="close" size={18} color={colors.textSecondary} />
                 </Pressable>
               )}

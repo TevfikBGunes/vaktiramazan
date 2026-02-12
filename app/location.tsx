@@ -7,7 +7,7 @@ import {
   getStatesForCountry,
 } from '@/lib/prayer-times';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import * as Haptics from 'expo-haptics';
+import { hapticSelection } from '@/lib/haptics';
 import { useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import {
@@ -61,26 +61,20 @@ export default function LocationScreen() {
   }, [step, stateList, districtList, searchQuery]);
 
   const handleSelectState = (stateId: string) => {
-    if (process.env.EXPO_OS === 'ios') {
-      Haptics.selectionAsync();
-    }
+    hapticSelection();
     setSelectedStateId(stateId);
     setStep('district');
     setSearchQuery(''); // Clear search for next step
   };
 
   const handleSelectDistrict = async (districtId: string) => {
-    if (process.env.EXPO_OS === 'ios') {
-      Haptics.selectionAsync();
-    }
+    hapticSelection();
     await setStoredDistrictId(districtId);
     router.back();
   };
 
   const handleBackToStates = () => {
-    if (process.env.EXPO_OS === 'ios') {
-      Haptics.selectionAsync();
-    }
+    hapticSelection();
     setSelectedStateId(null);
     setStep('state');
     setSearchQuery('');

@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { hapticSelection } from '@/lib/haptics';
 import type { Verse } from '@/lib/verses';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import * as Sharing from 'expo-sharing';
@@ -24,6 +25,7 @@ export default function ShareVerseModal({
 
   /** Capture the card as PNG and open native share sheet. */
   const handleShare = useCallback(async () => {
+    hapticSelection();
     if (!cardRef.current) return;
     try {
       const uri = await captureRef(cardRef, {
@@ -58,7 +60,10 @@ export default function ShareVerseModal({
               styles.closeButton,
               pressed && { opacity: 0.7 },
             ]}
-            onPress={onClose}>
+            onPress={() => {
+              hapticSelection();
+              onClose();
+            }}>
             <MaterialIcons
               name="close"
               size={24}

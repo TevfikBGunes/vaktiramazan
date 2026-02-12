@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { hapticSelection } from '@/lib/haptics';
 import { getStoredDistrictId } from '@/lib/location-storage';
 import type { District, PrayerTimesRecord, State } from '@/lib/prayer-times';
 import {
@@ -189,7 +190,10 @@ export default function HomeScreen() {
              <View style={styles.headerCenter}>
                 <Pressable
                   style={({pressed}) => [styles.locationContainer, pressed && {opacity: 0.7}]}
-                  onPress={() => router.push('/location')}
+                  onPress={() => {
+                    hapticSelection();
+                    router.push('/location');
+                  }}
                 >
                   <MaterialIcons name="location-on" size={16} color={colors.accent} />
                   <Text style={[styles.locationText, { color: colors.text }]} numberOfLines={1}>{locationName}</Text>
@@ -199,7 +203,10 @@ export default function HomeScreen() {
 
              <Pressable 
                 style={({pressed}) => [styles.settingsButton, pressed && {opacity: 0.7}]}
-                onPress={() => router.push('/settings')}
+                onPress={() => {
+                  hapticSelection();
+                  router.push('/settings');
+                }}
              >
                 <MaterialIcons name="settings" size={24} color={colors.textSecondary} />
              </Pressable>
@@ -233,7 +240,10 @@ export default function HomeScreen() {
                 { backgroundColor: colors.card },
                 pressed && { opacity: 0.7 },
               ]}
-              onPress={() => router.push('/notification-settings')}
+              onPress={() => {
+                hapticSelection();
+                router.push('/notification-settings');
+              }}
             >
               <View style={styles.notificationCardContent}>
                 <View style={[styles.notificationIcon, { backgroundColor: colors.accent + '20' }]}>

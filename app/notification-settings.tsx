@@ -1,5 +1,6 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
+import { hapticSelection } from '@/lib/haptics';
 import {
   DEFAULT_NOTIFICATION_PREFERENCES,
   getNotificationPreferences,
@@ -73,6 +74,7 @@ export default function NotificationSettingsScreen() {
   }, [prefs.prayerTimes, updatePrefs]);
 
   const handleNotificationSectionPress = useCallback(async () => {
+    hapticSelection();
     const granted = await requestNotificationPermissions();
     if (!granted) {
       Alert.alert(
@@ -113,7 +115,10 @@ export default function NotificationSettingsScreen() {
               {SAHUR_OPTIONS.map((opt) => (
                 <Pressable
                   key={opt.value}
-                  onPress={() => updatePrefs({ sahurMinutesBeforeImsak: opt.value })}
+                  onPress={() => {
+                    hapticSelection();
+                    updatePrefs({ sahurMinutesBeforeImsak: opt.value });
+                  }}
                   style={[
                     styles.optionChip,
                     { backgroundColor: prefs.sahurMinutesBeforeImsak === opt.value ? colors.accent : colors.textSecondary + '20' },
@@ -150,7 +155,10 @@ export default function NotificationSettingsScreen() {
               {IFTAR_BEFORE_OPTIONS.map((opt) => (
                 <Pressable
                   key={opt.value}
-                  onPress={() => updatePrefs({ iftarMinutesBefore: opt.value })}
+                  onPress={() => {
+                    hapticSelection();
+                    updatePrefs({ iftarMinutesBefore: opt.value });
+                  }}
                   style={[
                     styles.optionChip,
                     { backgroundColor: prefs.iftarMinutesBefore === opt.value ? colors.accent : colors.textSecondary + '20' },
@@ -184,7 +192,10 @@ export default function NotificationSettingsScreen() {
           {prefs.verseOfDayEnabled && (
             <Pressable
               style={styles.row}
-              onPress={() => setVerseTimeModalVisible(true)}
+              onPress={() => {
+                hapticSelection();
+                setVerseTimeModalVisible(true);
+              }}
             >
               <Text style={[styles.label, { color: colors.text }]}>Bildirim saati</Text>
               <Text style={[styles.value, { color: colors.accent }]}>
@@ -207,7 +218,13 @@ export default function NotificationSettingsScreen() {
         animationType="fade"
         onRequestClose={() => setVerseTimeModalVisible(false)}
       >
-        <Pressable style={styles.modalOverlay} onPress={() => setVerseTimeModalVisible(false)}>
+        <Pressable
+          style={styles.modalOverlay}
+          onPress={() => {
+            hapticSelection();
+            setVerseTimeModalVisible(false);
+          }}
+        >
           <Pressable style={[styles.modalContent, { backgroundColor: colors.card }]} onPress={(e) => e.stopPropagation()}>
             <Text style={[styles.modalTitle, { color: colors.text }]}>Bildirim saati</Text>
             <View style={styles.timeRow}>
@@ -221,7 +238,10 @@ export default function NotificationSettingsScreen() {
                         styles.timeOption,
                         prefs.verseOfDayHour === h && { backgroundColor: colors.accent + '30' },
                       ]}
-                      onPress={() => updatePrefs({ verseOfDayHour: h })}
+                      onPress={() => {
+                        hapticSelection();
+                        updatePrefs({ verseOfDayHour: h });
+                      }}
                     >
                       <Text style={[styles.timeOptionText, { color: colors.text }]}>{String(h).padStart(2, '0')}</Text>
                     </Pressable>
@@ -238,7 +258,10 @@ export default function NotificationSettingsScreen() {
                         styles.timeOption,
                         prefs.verseOfDayMinute === m && { backgroundColor: colors.accent + '30' },
                       ]}
-                      onPress={() => updatePrefs({ verseOfDayMinute: m })}
+                      onPress={() => {
+                        hapticSelection();
+                        updatePrefs({ verseOfDayMinute: m });
+                      }}
                     >
                       <Text style={[styles.timeOptionText, { color: colors.text }]}>{String(m).padStart(2, '0')}</Text>
                     </Pressable>
@@ -248,7 +271,10 @@ export default function NotificationSettingsScreen() {
             </View>
             <Pressable
               style={[styles.modalButton, { backgroundColor: colors.accent }]}
-              onPress={() => setVerseTimeModalVisible(false)}
+              onPress={() => {
+                hapticSelection();
+                setVerseTimeModalVisible(false);
+              }}
             >
               <Text style={styles.modalButtonText}>Tamam</Text>
             </Pressable>
