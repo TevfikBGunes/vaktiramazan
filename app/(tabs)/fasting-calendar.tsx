@@ -1,28 +1,20 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
 import { hapticSelection } from '@/lib/haptics';
+import { fetchPrayerTimesRange } from '@/lib/aladhan-api';
+import { getStoredLocation } from '@/lib/location-storage';
 import type { PrayerTimesRecord } from '@/lib/prayer-times';
-import { getTodayRamadanDay, getTodayRecord } from '@/lib/prayer-times';
+import { getTodayRamadanDay } from '@/lib/prayer-times';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useMemo, useState } from 'react';
+import { ActivityIndicator, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 
-const prayerTimes2026 = require('../../assets/data/prayer-times-2026.json') as {
-  data: PrayerTimesRecord[];
-};
-
-// Ramazan gün sayısı veriden (hicrî ay 9 kayıt sayısı); 29 veya 30 olabilir
-const RAMADAN_DAYS = prayerTimes2026.data.filter(
-  (r) => r.hijri_date?.month === 9
-).length;
 const BAYRAM_DAYS = 3;
-// Son Ramazan gününden sonra Bayram 1, 2, 3. Toplam takvim slotu:
-const TOTAL_CALENDAR_DAYS = RAMADAN_DAYS + BAYRAM_DAYS;
 const CELL_WIDTH = 48;
 const CELL_GAP = 4;
 const GRID_WIDTH = 7 * CELL_WIDTH + 6 * CELL_GAP;
@@ -59,37 +51,67 @@ export default function FastingCalendarScreen() {
   const [completedSet, setCompletedSet] = useState<Set<number>>(
     () => new Set(INITIAL_COMPLETED)
   );
-  const [selectedDay, setSelectedDay] = useState<number | null>(null); // 1..RAMADAN_DAYS Ramazan, sonrası Bayram 1–3
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [allRecords, setAllRecords] = useState<PrayerTimesRecord[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const todayRecord = useMemo(
-    () => getTodayRecord(prayerTimes2026.data),
-    []
+  // Fetch Ramazan months data (Feb + March + April 2026 covers Ramazan 1447)
+  useEffect(() => {
+    (async () => {
+      try {
+        const loc = await getStoredLocation();
+        const months = [
+          { year: 2026, month: 2 },
+          { year: 2026, month: 3 },
+          { year: 2026, month: 4 },
+        ];
+        const records = await fetchPrayerTimesRange(loc.lat, loc.lng, months);
+        setAllRecords(records);
+      } catch (err) {
+        console.error('Failed to fetch Ramadan data:', err);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
+  // Ramazan günlerini (hicrî ay 9) filtrele
+  const ramadanRecords = useMemo(
+    () => allRecords.filter((r) => r.hijri_date?.month === 9),
+    [allRecords]
   );
-  const todayRamadanDay = getTodayRamadanDay(todayRecord) ?? 5;
+
+  const RAMADAN_DAYS = ramadanRecords.length || 30;
+  const TOTAL_CALENDAR_DAYS = RAMADAN_DAYS + BAYRAM_DAYS;
+
+  const todayRamadanDay = useMemo(() => {
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const todayRecord = allRecords.find((r) => r.date.slice(0, 10) === todayStr) ?? null;
+    return getTodayRamadanDay(todayRecord) ?? 5;
+  }, [allRecords]);
 
   // Ramazan günlerini (1..RAMADAN_DAYS) key, o günün kaydını value yapan map
   const ramadanDaysMap = useMemo(() => {
     const map = new Map<number, PrayerTimesRecord>();
-    prayerTimes2026.data.forEach((r) => {
-      if (r.hijri_date.month === 9) {
-        map.set(r.hijri_date.day, r);
-      }
+    ramadanRecords.forEach((r) => {
+      map.set(r.hijri_date.day, r);
     });
     return map;
-  }, []);
+  }, [ramadanRecords]);
 
   // Şevval (ay 10) 1–3. gün = Bayram tarihleri
   const bayramDates = useMemo(() => {
     const out: string[] = [];
     for (let d = 1; d <= 3; d++) {
-      const record = prayerTimes2026.data.find(
+      const record = allRecords.find(
         (r) => r.hijri_date.month === 10 && r.hijri_date.day === d
       );
       if (record?.date) out.push(record.date);
-      else out.push(''); // fallback aşağıda
+      else out.push('');
     }
     return out;
-  }, []);
+  }, [allRecords]);
 
   // Ramazan 1. gün hangi haftanın gününe denk geliyor? Pazartesi=0, Pazar=6
   const startCol = useMemo(() => {
@@ -107,13 +129,10 @@ export default function FastingCalendarScreen() {
     return `${d.getDate()} ${months[d.getMonth()]}`;
   };
 
-  /** Özel günler: 16 Mart = Kadir Gecesi, 19 Mart = Arife (oruç tutuluyor). */
+  /** Özel günler: Kadir Gecesi (27. gece = 26. gün akşamı), Arife (son gün). */
   const getSpecialDayTag = (dayIndex: number): 'kadir' | 'arife' | null => {
-    const record = ramadanDaysMap.get(dayIndex);
-    if (!record?.date) return null;
-    const d = new Date(record.date);
-    if (d.getMonth() === 2 && d.getDate() === 16) return 'kadir';
-    if (d.getMonth() === 2 && d.getDate() === 19) return 'arife';
+    if (dayIndex === 27) return 'kadir'; // Kadir Gecesi (27. gece)
+    if (dayIndex === RAMADAN_DAYS) return 'arife'; // Son gün = Arife
     return null;
   };
 
@@ -125,9 +144,7 @@ export default function FastingCalendarScreen() {
       const months = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
       return `${d.getDate()} ${months[d.getMonth()]}`;
     }
-    // Fallback: 2026 tahmini (Arife 18 Mart ise Bayram 19-21 Mart)
-    const fallback = [19, 20, 21];
-    return `${fallback[bayramDay - 1]} Mar`;
+    return '';
   };
 
   const completedCount = completedSet.size;
@@ -174,6 +191,19 @@ export default function FastingCalendarScreen() {
   const CIRCLE_STROKE = 6;
   const CIRCLE_CIRCUMFERENCE = 2 * Math.PI * CIRCLE_RADIUS;
   const strokeDashoffset = CIRCLE_CIRCUMFERENCE - (progressPercent / 100) * CIRCLE_CIRCUMFERENCE;
+
+  if (loading) {
+    return (
+      <LinearGradient colors={[colors.background, colors.background]} style={styles.container}>
+        <SafeAreaView style={[styles.safeArea, { justifyContent: 'center', alignItems: 'center' }]}>
+          <ActivityIndicator size="large" color={colors.accent} />
+          <Text style={[{ color: colors.textSecondary, marginTop: 12, fontSize: 15 }]}>
+            Ramazan takvimi yükleniyor...
+          </Text>
+        </SafeAreaView>
+      </LinearGradient>
+    );
+  }
 
   return (
     <LinearGradient
@@ -304,12 +334,12 @@ export default function FastingCalendarScreen() {
                       {getGregorianDate(dayIndex)}
                     </Text>
                     {getSpecialDayTag(dayIndex) === 'kadir' && (
-                      <View style={[styles.dayTag, styles.dayTagKadir, { backgroundColor: `${colors.accent}30` }]}>
+                      <View style={[styles.dayTag, { backgroundColor: `${colors.accent}30` }]}>
                         <Text style={[styles.dayTagText, { color: colors.accent }]}>Kadir Gecesi</Text>
                       </View>
                     )}
                     {getSpecialDayTag(dayIndex) === 'arife' && (
-                      <View style={[styles.dayTag, styles.dayTagArife, { backgroundColor: `${colors.accent}30` }]}>
+                      <View style={[styles.dayTag, { backgroundColor: `${colors.accent}30` }]}>
                         <Text style={[styles.dayTagText, { color: colors.accent }]}>Arife</Text>
                       </View>
                     )}
@@ -321,7 +351,7 @@ export default function FastingCalendarScreen() {
                 <Pressable
                   key={cellIndex}
                   style={styles.gridCell}
-                  disabled={true} // Bayram günlerinde tıklama yok
+                  disabled={true}
                   onPress={null}>
                   <View style={[styles.dayCircle, styles.bayramCircle, { borderColor: BAYRAM_COLOR }]}>
                     <MaterialCommunityIcons name="mosque" size={24} color={BAYRAM_COLOR} />
@@ -436,15 +466,6 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
     alignItems: 'center',
   },
-  ramadanTitle: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  dateText: {
-    fontSize: 15,
-    marginBottom: 24,
-  },
   weekdayRow: {
     flexDirection: 'row',
     gap: CELL_GAP,
@@ -477,116 +498,10 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 6,
   },
-  dayTagKadir: {},
-  dayTagArife: {},
-  dayTagBayram: {
-    backgroundColor: `${BAYRAM_COLOR}25`,
-  },
   dayTagText: {
     fontSize: 9,
     fontWeight: '600',
     textAlign: 'center',
-  },
-  dayTagTextBayram: {
-    fontSize: 9,
-    fontWeight: '600',
-    color: BAYRAM_COLOR,
-  },
-  statsCard: {
-    width: '100%',
-    maxWidth: 340,
-    borderRadius: 24,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.1)',
-  },
-  statsHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  statsTitle: {
-    fontSize: 16,
-    fontWeight: '700',
-    marginBottom: 4,
-  },
-  statsSubtitle: {
-    fontSize: 14,
-  },
-  percentBadge: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 12,
-  },
-  percentText: {
-    fontSize: 14,
-    fontWeight: '700',
-  },
-  statsFooter: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 16,
-  },
-  statItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-  },
-  statLabel: {
-    fontSize: 13,
-  },
-  statValue: {
-    fontWeight: '700',
-  },
-  progressBarBg: {
-    height: 10,
-    borderRadius: 5,
-    width: '100%',
-    overflow: 'hidden',
-  },
-  progressBarFill: {
-    height: '100%',
-    borderRadius: 5,
-  },
-  dayCircle: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    borderWidth: 1.5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 4,
-  },
-  bayramCircle: {
-    backgroundColor: `${BAYRAM_COLOR}15`,
-  },
-  bayramLabel: {
-    fontSize: 9,
-    fontWeight: '600',
-    marginTop: 0,
-    marginBottom: 0,
-    textAlign: 'center',
-  },
-  dateLabel: {
-    fontSize: 10,
-    marginTop: 0,
-    fontWeight: '500',
-  },
-  currentBadge: {
-    position: 'absolute',
-    top: -4,
-    right: -4,
-    width: 18,
-    height: 18,
-    borderRadius: 9,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  currentBadgeText: {
-    color: '#1E1B2E',
-    fontSize: 12,
-    fontWeight: '700',
   },
   statsCard: {
     width: '100%',
@@ -659,6 +574,45 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     marginTop: -2,
+  },
+  dayCircle: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 4,
+  },
+  bayramCircle: {
+    backgroundColor: `${BAYRAM_COLOR}15`,
+  },
+  bayramLabel: {
+    fontSize: 9,
+    fontWeight: '600',
+    marginTop: 0,
+    marginBottom: 0,
+    textAlign: 'center',
+  },
+  dateLabel: {
+    fontSize: 10,
+    marginTop: 0,
+    fontWeight: '500',
+  },
+  currentBadge: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  currentBadgeText: {
+    color: '#1E1B2E',
+    fontSize: 12,
+    fontWeight: '700',
   },
   modalOverlay: {
     flex: 1,

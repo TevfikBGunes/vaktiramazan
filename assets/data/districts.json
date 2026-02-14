@@ -1,0 +1,6456 @@
+[
+  {
+    "id": "1",
+    "name": "ALADAĞ",
+    "state_id": "1",
+    "lat": 37.5485,
+    "lng": 35.39603
+  },
+  {
+    "id": "2",
+    "name": "CEYHAN",
+    "state_id": "1",
+    "lat": 37.02472,
+    "lng": 35.8175
+  },
+  {
+    "id": "3",
+    "name": "ÇUKUROVA",
+    "state_id": "1",
+    "lat": 38.46967,
+    "lng": 28.18319
+  },
+  {
+    "id": "4",
+    "name": "FEKE",
+    "state_id": "1",
+    "lat": 37.81446,
+    "lng": 35.91233
+  },
+  {
+    "id": "5",
+    "name": "İMAMOĞLU",
+    "state_id": "1",
+    "lat": 37.26506,
+    "lng": 35.65717
+  },
+  {
+    "id": "6",
+    "name": "KARAİSALI",
+    "state_id": "1",
+    "lat": 36.98615,
+    "lng": 35.32531
+  },
+  {
+    "id": "7",
+    "name": "KARATAŞ",
+    "state_id": "1",
+    "lat": 36.58204,
+    "lng": 35.37014
+  },
+  {
+    "id": "8",
+    "name": "KOZAN",
+    "state_id": "1",
+    "lat": 37.45517,
+    "lng": 35.81573
+  },
+  {
+    "id": "9",
+    "name": "POZANTI",
+    "state_id": "1",
+    "lat": 36.98615,
+    "lng": 35.32531
+  },
+  {
+    "id": "10",
+    "name": "SAİMBEYLİ",
+    "state_id": "1",
+    "lat": 37.98632,
+    "lng": 36.09056
+  },
+  {
+    "id": "11",
+    "name": "SARIÇAM",
+    "state_id": "1",
+    "lat": 36.98615,
+    "lng": 35.32531
+  },
+  {
+    "id": "12",
+    "name": "SEYHAN",
+    "state_id": "1",
+    "lat": 36.98747,
+    "lng": 35.30592
+  },
+  {
+    "id": "13",
+    "name": "TUFANBEYLİ",
+    "state_id": "1",
+    "lat": 38.26333,
+    "lng": 36.22056
+  },
+  {
+    "id": "14",
+    "name": "YUMURTALIK",
+    "state_id": "1",
+    "lat": 36.98615,
+    "lng": 35.32531
+  },
+  {
+    "id": "15",
+    "name": "YÜREĞİR",
+    "state_id": "1",
+    "lat": 36.97439,
+    "lng": 35.35916
+  },
+  {
+    "id": "16",
+    "name": "BESNİ",
+    "state_id": "2",
+    "lat": 37.69278,
+    "lng": 37.86111
+  },
+  {
+    "id": "17",
+    "name": "ÇELİKHAN",
+    "state_id": "2",
+    "lat": 38.0256,
+    "lng": 38.23665
+  },
+  {
+    "id": "18",
+    "name": "GERGER",
+    "state_id": "2",
+    "lat": 38.02807,
+    "lng": 39.03418
+  },
+  {
+    "id": "19",
+    "name": "GÖLBAŞI",
+    "state_id": "2",
+    "lat": 37.73139,
+    "lng": 38.46889
+  },
+  {
+    "id": "20",
+    "name": "KAHTA",
+    "state_id": "2",
+    "lat": 37.78552,
+    "lng": 38.6237
+  },
+  {
+    "id": "21",
+    "name": "SAMSAT",
+    "state_id": "2",
+    "lat": 37.58194,
+    "lng": 38.47417
+  },
+  {
+    "id": "22",
+    "name": "SİNCİK",
+    "state_id": "2",
+    "lat": 38.03645,
+    "lng": 38.61257
+  },
+  {
+    "id": "23",
+    "name": "TUT",
+    "state_id": "2",
+    "lat": 37.79529,
+    "lng": 37.9161
+  },
+  {
+    "id": "24",
+    "name": "BAŞMAKÇI",
+    "state_id": "3",
+    "lat": 38.75667,
+    "lng": 30.54333
+  },
+  {
+    "id": "25",
+    "name": "BAYAT",
+    "state_id": "3",
+    "lat": 38.98306,
+    "lng": 30.92472
+  },
+  {
+    "id": "26",
+    "name": "BOLVADİN",
+    "state_id": "3",
+    "lat": 38.71111,
+    "lng": 31.04861
+  },
+  {
+    "id": "27",
+    "name": "ÇAY",
+    "state_id": "3",
+    "lat": 38.59167,
+    "lng": 31.02861
+  },
+  {
+    "id": "28",
+    "name": "ÇOBANLAR",
+    "state_id": "3",
+    "lat": 38.70139,
+    "lng": 30.78278
+  },
+  {
+    "id": "29",
+    "name": "DAZKIRI",
+    "state_id": "3",
+    "lat": 38.75667,
+    "lng": 30.54333
+  },
+  {
+    "id": "30",
+    "name": "DİNAR",
+    "state_id": "3",
+    "lat": 38.065,
+    "lng": 30.16557
+  },
+  {
+    "id": "31",
+    "name": "EMİRDAĞ",
+    "state_id": "3",
+    "lat": 39.01972,
+    "lng": 31.15
+  },
+  {
+    "id": "32",
+    "name": "EVCİLER",
+    "state_id": "3",
+    "lat": 38.04139,
+    "lng": 29.88667
+  },
+  {
+    "id": "33",
+    "name": "HOCALAR",
+    "state_id": "3",
+    "lat": 38.57824,
+    "lng": 29.96768
+  },
+  {
+    "id": "34",
+    "name": "İHSANİYE",
+    "state_id": "3",
+    "lat": 39.02916,
+    "lng": 30.41639
+  },
+  {
+    "id": "35",
+    "name": "İSCEHİSAR",
+    "state_id": "3",
+    "lat": 38.86194,
+    "lng": 30.75028
+  },
+  {
+    "id": "36",
+    "name": "KIZILÖREN",
+    "state_id": "3",
+    "lat": 38.75667,
+    "lng": 30.54333
+  },
+  {
+    "id": "37",
+    "name": "SANDIKLI",
+    "state_id": "3",
+    "lat": 38.75667,
+    "lng": 30.54333
+  },
+  {
+    "id": "38",
+    "name": "SİNANPAŞA",
+    "state_id": "3",
+    "lat": 38.74444,
+    "lng": 30.24278
+  },
+  {
+    "id": "39",
+    "name": "SULTANDAĞI",
+    "state_id": "3",
+    "lat": 38.75667,
+    "lng": 30.54333
+  },
+  {
+    "id": "40",
+    "name": "ŞUHUT",
+    "state_id": "3",
+    "lat": 38.53111,
+    "lng": 30.54583
+  },
+  {
+    "id": "41",
+    "name": "DİYADİN",
+    "state_id": "4",
+    "lat": 39.54056,
+    "lng": 43.67135
+  },
+  {
+    "id": "42",
+    "name": "DOĞUBAYAZIT",
+    "state_id": "4",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "43",
+    "name": "ELEŞKİRT",
+    "state_id": "4",
+    "lat": 39.79803,
+    "lng": 42.67574
+  },
+  {
+    "id": "44",
+    "name": "HAMUR",
+    "state_id": "4",
+    "lat": 39.60561,
+    "lng": 42.985
+  },
+  {
+    "id": "45",
+    "name": "PATNOS",
+    "state_id": "4",
+    "lat": 39.22493,
+    "lng": 42.85693
+  },
+  {
+    "id": "46",
+    "name": "TAŞLIÇAY",
+    "state_id": "4",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "47",
+    "name": "TUTAK",
+    "state_id": "4",
+    "lat": 39.53854,
+    "lng": 42.76587
+  },
+  {
+    "id": "48",
+    "name": "GÖYNÜCEK",
+    "state_id": "6",
+    "lat": 40.39917,
+    "lng": 35.525
+  },
+  {
+    "id": "49",
+    "name": "GÜMÜŞHACIKÖY",
+    "state_id": "6",
+    "lat": 40.65333,
+    "lng": 35.83306
+  },
+  {
+    "id": "50",
+    "name": "HAMAMÖZÜ",
+    "state_id": "6",
+    "lat": 40.78476,
+    "lng": 35.0258
+  },
+  {
+    "id": "51",
+    "name": "MERZİFON",
+    "state_id": "6",
+    "lat": 40.87333,
+    "lng": 35.46306
+  },
+  {
+    "id": "52",
+    "name": "SULUOVA",
+    "state_id": "6",
+    "lat": 40.83129,
+    "lng": 35.64788
+  },
+  {
+    "id": "53",
+    "name": "TAŞOVA",
+    "state_id": "6",
+    "lat": 40.75972,
+    "lng": 36.3225
+  },
+  {
+    "id": "54",
+    "name": "AKYURT",
+    "state_id": "7",
+    "lat": 40.13512,
+    "lng": 33.08614
+  },
+  {
+    "id": "55",
+    "name": "ALTINDAĞ",
+    "state_id": "7",
+    "lat": 39.91987,
+    "lng": 32.85427
+  },
+  {
+    "id": "56",
+    "name": "AYAŞ",
+    "state_id": "7",
+    "lat": 40.01933,
+    "lng": 32.33221
+  },
+  {
+    "id": "57",
+    "name": "BALA",
+    "state_id": "7",
+    "lat": 39.55422,
+    "lng": 33.12344
+  },
+  {
+    "id": "58",
+    "name": "BEYPAZARI",
+    "state_id": "7",
+    "lat": 39.91987,
+    "lng": 32.85427
+  },
+  {
+    "id": "59",
+    "name": "ÇAMLIDERE",
+    "state_id": "7",
+    "lat": 39.91987,
+    "lng": 32.85427
+  },
+  {
+    "id": "60",
+    "name": "ÇANKAYA",
+    "state_id": "7",
+    "lat": 39.9179,
+    "lng": 32.86268
+  },
+  {
+    "id": "61",
+    "name": "ÇUBUK",
+    "state_id": "7",
+    "lat": 40.23861,
+    "lng": 33.03222
+  },
+  {
+    "id": "62",
+    "name": "ELMADAĞ",
+    "state_id": "7",
+    "lat": 39.92083,
+    "lng": 33.23083
+  },
+  {
+    "id": "63",
+    "name": "ETİMESGUT",
+    "state_id": "7",
+    "lat": 39.95328,
+    "lng": 32.63285
+  },
+  {
+    "id": "64",
+    "name": "EVREN",
+    "state_id": "7",
+    "lat": 39.02402,
+    "lng": 33.80626
+  },
+  {
+    "id": "65",
+    "name": "GÖLBAŞI",
+    "state_id": "7",
+    "lat": 39.91987,
+    "lng": 32.85427
+  },
+  {
+    "id": "66",
+    "name": "GÜDÜL",
+    "state_id": "7",
+    "lat": 40.21051,
+    "lng": 32.24552
+  },
+  {
+    "id": "67",
+    "name": "HAYMANA",
+    "state_id": "7",
+    "lat": 39.43212,
+    "lng": 32.49732
+  },
+  {
+    "id": "68",
+    "name": "KAHRAMANKAZAN",
+    "state_id": "7",
+    "lat": 39.91987,
+    "lng": 32.85427
+  },
+  {
+    "id": "69",
+    "name": "KALECİK",
+    "state_id": "7",
+    "lat": 40.09722,
+    "lng": 33.40833
+  },
+  {
+    "id": "70",
+    "name": "KEÇİÖREN",
+    "state_id": "7",
+    "lat": 40.00132,
+    "lng": 32.87238
+  },
+  {
+    "id": "71",
+    "name": "KIZILCAHAMAM",
+    "state_id": "7",
+    "lat": 39.91987,
+    "lng": 32.85427
+  },
+  {
+    "id": "72",
+    "name": "MAMAK",
+    "state_id": "7",
+    "lat": 39.94044,
+    "lng": 32.91012
+  },
+  {
+    "id": "73",
+    "name": "NALLIHAN",
+    "state_id": "7",
+    "lat": 39.91987,
+    "lng": 32.85427
+  },
+  {
+    "id": "74",
+    "name": "POLATLI",
+    "state_id": "7",
+    "lat": 39.91987,
+    "lng": 32.85427
+  },
+  {
+    "id": "75",
+    "name": "PURSAKLAR",
+    "state_id": "7",
+    "lat": 40.03203,
+    "lng": 32.89528
+  },
+  {
+    "id": "76",
+    "name": "SİNCAN",
+    "state_id": "7",
+    "lat": 39.9723,
+    "lng": 32.58414
+  },
+  {
+    "id": "77",
+    "name": "ŞEREFLİKOÇHİSAR",
+    "state_id": "7",
+    "lat": 38.93925,
+    "lng": 33.5386
+  },
+  {
+    "id": "78",
+    "name": "YENİMAHALLE",
+    "state_id": "7",
+    "lat": 39.97787,
+    "lng": 32.80147
+  },
+  {
+    "id": "79",
+    "name": "AKSEKİ",
+    "state_id": "8",
+    "lat": 37.04861,
+    "lng": 31.79
+  },
+  {
+    "id": "80",
+    "name": "AKSU",
+    "state_id": "8",
+    "lat": 36.95389,
+    "lng": 30.84778
+  },
+  {
+    "id": "81",
+    "name": "ALANYA",
+    "state_id": "8",
+    "lat": 36.54375,
+    "lng": 31.99982
+  },
+  {
+    "id": "82",
+    "name": "DEMRE",
+    "state_id": "8",
+    "lat": 36.24444,
+    "lng": 29.985
+  },
+  {
+    "id": "83",
+    "name": "DÖŞEMEALTI",
+    "state_id": "8",
+    "lat": 36.90812,
+    "lng": 30.69556
+  },
+  {
+    "id": "84",
+    "name": "ELMALI",
+    "state_id": "8",
+    "lat": 36.90812,
+    "lng": 30.69556
+  },
+  {
+    "id": "85",
+    "name": "FİNİKE",
+    "state_id": "8",
+    "lat": 36.295,
+    "lng": 30.14056
+  },
+  {
+    "id": "86",
+    "name": "GAZİPAŞA",
+    "state_id": "8",
+    "lat": 36.26942,
+    "lng": 32.31792
+  },
+  {
+    "id": "87",
+    "name": "GÜNDOĞMUŞ",
+    "state_id": "8",
+    "lat": 36.81339,
+    "lng": 31.99971
+  },
+  {
+    "id": "88",
+    "name": "İBRADI",
+    "state_id": "8",
+    "lat": 36.90812,
+    "lng": 30.69556
+  },
+  {
+    "id": "89",
+    "name": "KAŞ",
+    "state_id": "8",
+    "lat": 36.20176,
+    "lng": 29.63766
+  },
+  {
+    "id": "90",
+    "name": "KEMER",
+    "state_id": "8",
+    "lat": 36.59778,
+    "lng": 30.56056
+  },
+  {
+    "id": "91",
+    "name": "KEPEZ",
+    "state_id": "8",
+    "lat": 36.91579,
+    "lng": 30.70782
+  },
+  {
+    "id": "92",
+    "name": "KONYAALTI",
+    "state_id": "8",
+    "lat": 36.90812,
+    "lng": 30.69556
+  },
+  {
+    "id": "93",
+    "name": "KORKUTELİ",
+    "state_id": "8",
+    "lat": 37.06498,
+    "lng": 30.19565
+  },
+  {
+    "id": "94",
+    "name": "KUMLUCA",
+    "state_id": "8",
+    "lat": 36.37028,
+    "lng": 30.28694
+  },
+  {
+    "id": "95",
+    "name": "MANAVGAT",
+    "state_id": "8",
+    "lat": 36.78667,
+    "lng": 31.44306
+  },
+  {
+    "id": "96",
+    "name": "MURATPAŞA",
+    "state_id": "8",
+    "lat": 36.89157,
+    "lng": 30.76498
+  },
+  {
+    "id": "97",
+    "name": "SERİK",
+    "state_id": "8",
+    "lat": 36.91694,
+    "lng": 31.09889
+  },
+  {
+    "id": "98",
+    "name": "ARDANUÇ",
+    "state_id": "10",
+    "lat": 41.11955,
+    "lng": 42.06882
+  },
+  {
+    "id": "99",
+    "name": "ARHAVİ",
+    "state_id": "10",
+    "lat": 41.35121,
+    "lng": 41.30456
+  },
+  {
+    "id": "100",
+    "name": "BORÇKA",
+    "state_id": "10",
+    "lat": 41.35792,
+    "lng": 41.66579
+  },
+  {
+    "id": "101",
+    "name": "HOPA",
+    "state_id": "10",
+    "lat": 41.39046,
+    "lng": 41.41966
+  },
+  {
+    "id": "102",
+    "name": "KEMALPAŞA",
+    "state_id": "10",
+    "lat": 41.48336,
+    "lng": 41.5275
+  },
+  {
+    "id": "103",
+    "name": "MURGUL",
+    "state_id": "10",
+    "lat": 41.28049,
+    "lng": 41.56438
+  },
+  {
+    "id": "104",
+    "name": "ŞAVŞAT",
+    "state_id": "10",
+    "lat": 41.25336,
+    "lng": 42.35531
+  },
+  {
+    "id": "105",
+    "name": "YUSUFELİ",
+    "state_id": "10",
+    "lat": 40.82042,
+    "lng": 41.53743
+  },
+  {
+    "id": "106",
+    "name": "BOZDOĞAN",
+    "state_id": "11",
+    "lat": 37.67134,
+    "lng": 28.31395
+  },
+  {
+    "id": "107",
+    "name": "BUHARKENT",
+    "state_id": "11",
+    "lat": 37.96397,
+    "lng": 28.7427
+  },
+  {
+    "id": "108",
+    "name": "ÇİNE",
+    "state_id": "11",
+    "lat": 37.61266,
+    "lng": 28.05912
+  },
+  {
+    "id": "109",
+    "name": "DİDİM",
+    "state_id": "11",
+    "lat": 37.38496,
+    "lng": 27.25643
+  },
+  {
+    "id": "110",
+    "name": "EFELER",
+    "state_id": "11",
+    "lat": 41.44081,
+    "lng": 41.92631
+  },
+  {
+    "id": "111",
+    "name": "GERMENCİK",
+    "state_id": "11",
+    "lat": 37.87056,
+    "lng": 27.60283
+  },
+  {
+    "id": "112",
+    "name": "İNCİRLİOVA",
+    "state_id": "11",
+    "lat": 37.85222,
+    "lng": 27.72361
+  },
+  {
+    "id": "113",
+    "name": "KARACASU",
+    "state_id": "11",
+    "lat": 37.72816,
+    "lng": 28.60569
+  },
+  {
+    "id": "114",
+    "name": "KARPUZLU",
+    "state_id": "11",
+    "lat": 37.55861,
+    "lng": 27.83528
+  },
+  {
+    "id": "115",
+    "name": "KOÇARLI",
+    "state_id": "11",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "116",
+    "name": "KÖŞK",
+    "state_id": "11",
+    "lat": 37.85333,
+    "lng": 28.05167
+  },
+  {
+    "id": "117",
+    "name": "KUŞADASI",
+    "state_id": "11",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "118",
+    "name": "KUYUCAK",
+    "state_id": "11",
+    "lat": 37.9133,
+    "lng": 28.45917
+  },
+  {
+    "id": "119",
+    "name": "NAZİLLİ",
+    "state_id": "11",
+    "lat": 37.91631,
+    "lng": 28.32225
+  },
+  {
+    "id": "120",
+    "name": "SÖKE",
+    "state_id": "11",
+    "lat": 37.7482,
+    "lng": 27.40614
+  },
+  {
+    "id": "121",
+    "name": "SULTANHİSAR",
+    "state_id": "11",
+    "lat": 37.88989,
+    "lng": 28.15436
+  },
+  {
+    "id": "122",
+    "name": "YENİPAZAR",
+    "state_id": "11",
+    "lat": 37.82332,
+    "lng": 28.19573
+  },
+  {
+    "id": "123",
+    "name": "ALTIEYLÜL",
+    "state_id": "12",
+    "lat": 39.61926,
+    "lng": 27.92596
+  },
+  {
+    "id": "124",
+    "name": "AYVALIK",
+    "state_id": "12",
+    "lat": 39.61926,
+    "lng": 27.92596
+  },
+  {
+    "id": "125",
+    "name": "BALYA",
+    "state_id": "12",
+    "lat": 39.74861,
+    "lng": 27.57889
+  },
+  {
+    "id": "126",
+    "name": "BANDIRMA",
+    "state_id": "12",
+    "lat": 39.61926,
+    "lng": 27.92596
+  },
+  {
+    "id": "127",
+    "name": "BİGADİÇ",
+    "state_id": "12",
+    "lat": 39.3925,
+    "lng": 28.13111
+  },
+  {
+    "id": "128",
+    "name": "BURHANİYE",
+    "state_id": "12",
+    "lat": 39.50041,
+    "lng": 26.97269
+  },
+  {
+    "id": "129",
+    "name": "DURSUNBEY",
+    "state_id": "12",
+    "lat": 39.58596,
+    "lng": 28.62568
+  },
+  {
+    "id": "130",
+    "name": "EDREMİT",
+    "state_id": "12",
+    "lat": 39.59611,
+    "lng": 27.02444
+  },
+  {
+    "id": "131",
+    "name": "ERDEK",
+    "state_id": "12",
+    "lat": 40.3996,
+    "lng": 27.79348
+  },
+  {
+    "id": "132",
+    "name": "GÖMEÇ",
+    "state_id": "12",
+    "lat": 39.39016,
+    "lng": 26.84127
+  },
+  {
+    "id": "133",
+    "name": "GÖNEN",
+    "state_id": "12",
+    "lat": 40.1049,
+    "lng": 27.65399
+  },
+  {
+    "id": "134",
+    "name": "HAVRAN",
+    "state_id": "12",
+    "lat": 39.55833,
+    "lng": 27.09833
+  },
+  {
+    "id": "135",
+    "name": "İVRİNDİ",
+    "state_id": "12",
+    "lat": 39.58389,
+    "lng": 27.48639
+  },
+  {
+    "id": "136",
+    "name": "KARESİ",
+    "state_id": "12",
+    "lat": 39.61926,
+    "lng": 27.92596
+  },
+  {
+    "id": "137",
+    "name": "KEPSUT",
+    "state_id": "12",
+    "lat": 39.68889,
+    "lng": 28.15222
+  },
+  {
+    "id": "138",
+    "name": "MANYAS",
+    "state_id": "12",
+    "lat": 40.04639,
+    "lng": 27.97
+  },
+  {
+    "id": "139",
+    "name": "MARMARA",
+    "state_id": "12",
+    "lat": 40.58633,
+    "lng": 27.55541
+  },
+  {
+    "id": "140",
+    "name": "SAVAŞTEPE",
+    "state_id": "12",
+    "lat": 39.38319,
+    "lng": 27.65612
+  },
+  {
+    "id": "141",
+    "name": "SINDIRGI",
+    "state_id": "12",
+    "lat": 39.61926,
+    "lng": 27.92596
+  },
+  {
+    "id": "142",
+    "name": "SUSURLUK",
+    "state_id": "12",
+    "lat": 39.91361,
+    "lng": 28.15778
+  },
+  {
+    "id": "143",
+    "name": "BOZÜYÜK",
+    "state_id": "16",
+    "lat": 39.90778,
+    "lng": 30.03667
+  },
+  {
+    "id": "144",
+    "name": "GÖLPAZARI",
+    "state_id": "16",
+    "lat": 40.14192,
+    "lng": 29.97932
+  },
+  {
+    "id": "145",
+    "name": "İNHİSAR",
+    "state_id": "16",
+    "lat": 40.04932,
+    "lng": 30.38521
+  },
+  {
+    "id": "146",
+    "name": "OSMANELİ",
+    "state_id": "16",
+    "lat": 40.35722,
+    "lng": 30.01417
+  },
+  {
+    "id": "147",
+    "name": "PAZARYERİ",
+    "state_id": "16",
+    "lat": 39.99395,
+    "lng": 29.90424
+  },
+  {
+    "id": "148",
+    "name": "SÖĞÜT",
+    "state_id": "16",
+    "lat": 40.0143,
+    "lng": 30.18486
+  },
+  {
+    "id": "149",
+    "name": "YENİPAZAR",
+    "state_id": "16",
+    "lat": 40.17833,
+    "lng": 30.52
+  },
+  {
+    "id": "150",
+    "name": "ADAKLI",
+    "state_id": "17",
+    "lat": 38.88472,
+    "lng": 40.49389
+  },
+  {
+    "id": "151",
+    "name": "GENÇ",
+    "state_id": "17",
+    "lat": 38.74773,
+    "lng": 40.55343
+  },
+  {
+    "id": "152",
+    "name": "KARLIOVA",
+    "state_id": "17",
+    "lat": 38.88472,
+    "lng": 40.49389
+  },
+  {
+    "id": "153",
+    "name": "KİĞI",
+    "state_id": "17",
+    "lat": 39.31361,
+    "lng": 40.35028
+  },
+  {
+    "id": "154",
+    "name": "SOLHAN",
+    "state_id": "17",
+    "lat": 38.96525,
+    "lng": 41.05443
+  },
+  {
+    "id": "155",
+    "name": "YAYLADERE",
+    "state_id": "17",
+    "lat": 39.22614,
+    "lng": 40.0695
+  },
+  {
+    "id": "156",
+    "name": "YEDİSU",
+    "state_id": "17",
+    "lat": 39.43277,
+    "lng": 40.53368
+  },
+  {
+    "id": "157",
+    "name": "ADİLCEVAZ",
+    "state_id": "18",
+    "lat": 38.79911,
+    "lng": 42.73159
+  },
+  {
+    "id": "158",
+    "name": "AHLAT",
+    "state_id": "18",
+    "lat": 38.7489,
+    "lng": 42.48007
+  },
+  {
+    "id": "159",
+    "name": "GÜROYMAK",
+    "state_id": "18",
+    "lat": 38.5758,
+    "lng": 42.01558
+  },
+  {
+    "id": "160",
+    "name": "HİZAN",
+    "state_id": "18",
+    "lat": 38.22498,
+    "lng": 42.4183
+  },
+  {
+    "id": "161",
+    "name": "MUTKİ",
+    "state_id": "18",
+    "lat": 38.40624,
+    "lng": 41.92018
+  },
+  {
+    "id": "162",
+    "name": "TATVAN",
+    "state_id": "18",
+    "lat": 38.49221,
+    "lng": 42.28269
+  },
+  {
+    "id": "163",
+    "name": "DÖRTDİVAN",
+    "state_id": "19",
+    "lat": 40.72052,
+    "lng": 32.06314
+  },
+  {
+    "id": "164",
+    "name": "GEREDE",
+    "state_id": "19",
+    "lat": 40.80083,
+    "lng": 32.19694
+  },
+  {
+    "id": "165",
+    "name": "GÖYNÜK",
+    "state_id": "19",
+    "lat": 40.40028,
+    "lng": 30.78833
+  },
+  {
+    "id": "166",
+    "name": "KIBRISCIK",
+    "state_id": "19",
+    "lat": 40.73583,
+    "lng": 31.60611
+  },
+  {
+    "id": "167",
+    "name": "MENGEN",
+    "state_id": "19",
+    "lat": 40.93877,
+    "lng": 32.07642
+  },
+  {
+    "id": "168",
+    "name": "MUDURNU",
+    "state_id": "19",
+    "lat": 40.473,
+    "lng": 31.20755
+  },
+  {
+    "id": "169",
+    "name": "SEBEN",
+    "state_id": "19",
+    "lat": 40.41134,
+    "lng": 31.57359
+  },
+  {
+    "id": "170",
+    "name": "YENİÇAĞA",
+    "state_id": "19",
+    "lat": 40.77115,
+    "lng": 32.03375
+  },
+  {
+    "id": "171",
+    "name": "AĞLASUN",
+    "state_id": "20",
+    "lat": 37.64944,
+    "lng": 30.53417
+  },
+  {
+    "id": "172",
+    "name": "ALTINYAYLA",
+    "state_id": "20",
+    "lat": 37.72028,
+    "lng": 30.29083
+  },
+  {
+    "id": "173",
+    "name": "BUCAK",
+    "state_id": "20",
+    "lat": 37.45917,
+    "lng": 30.595
+  },
+  {
+    "id": "174",
+    "name": "ÇAVDIR",
+    "state_id": "20",
+    "lat": 37.72028,
+    "lng": 30.29083
+  },
+  {
+    "id": "175",
+    "name": "ÇELTİKÇİ",
+    "state_id": "20",
+    "lat": 37.52947,
+    "lng": 30.48028
+  },
+  {
+    "id": "176",
+    "name": "GÖLHİSAR",
+    "state_id": "20",
+    "lat": 37.1459,
+    "lng": 29.50876
+  },
+  {
+    "id": "177",
+    "name": "KARAMANLI",
+    "state_id": "20",
+    "lat": 37.72028,
+    "lng": 30.29083
+  },
+  {
+    "id": "178",
+    "name": "KEMER",
+    "state_id": "20",
+    "lat": 37.35222,
+    "lng": 30.06306
+  },
+  {
+    "id": "179",
+    "name": "TEFENNİ",
+    "state_id": "20",
+    "lat": 37.30968,
+    "lng": 29.77538
+  },
+  {
+    "id": "180",
+    "name": "YEŞİLOVA",
+    "state_id": "20",
+    "lat": 37.50806,
+    "lng": 29.75472
+  },
+  {
+    "id": "181",
+    "name": "BÜYÜKORHAN",
+    "state_id": "21",
+    "lat": 39.77102,
+    "lng": 28.88614
+  },
+  {
+    "id": "182",
+    "name": "GEMLİK",
+    "state_id": "21",
+    "lat": 40.43094,
+    "lng": 29.15969
+  },
+  {
+    "id": "183",
+    "name": "GÜRSU",
+    "state_id": "21",
+    "lat": 40.21876,
+    "lng": 29.19487
+  },
+  {
+    "id": "184",
+    "name": "HARMANCIK",
+    "state_id": "21",
+    "lat": 40.19559,
+    "lng": 29.06013
+  },
+  {
+    "id": "185",
+    "name": "İNEGÖL",
+    "state_id": "21",
+    "lat": 40.07806,
+    "lng": 29.51333
+  },
+  {
+    "id": "186",
+    "name": "İZNİK",
+    "state_id": "21",
+    "lat": 40.42861,
+    "lng": 29.72111
+  },
+  {
+    "id": "187",
+    "name": "KARACABEY",
+    "state_id": "21",
+    "lat": 40.21323,
+    "lng": 28.3612
+  },
+  {
+    "id": "188",
+    "name": "KELES",
+    "state_id": "21",
+    "lat": 39.91361,
+    "lng": 29.22944
+  },
+  {
+    "id": "189",
+    "name": "KESTEL",
+    "state_id": "21",
+    "lat": 40.19828,
+    "lng": 29.21237
+  },
+  {
+    "id": "190",
+    "name": "MUDANYA",
+    "state_id": "21",
+    "lat": 40.37524,
+    "lng": 28.8838
+  },
+  {
+    "id": "191",
+    "name": "MUSTAFAKEMALPAŞA",
+    "state_id": "21",
+    "lat": 40.03815,
+    "lng": 28.40866
+  },
+  {
+    "id": "192",
+    "name": "NİLÜFER",
+    "state_id": "21",
+    "lat": 40.21401,
+    "lng": 28.91567
+  },
+  {
+    "id": "193",
+    "name": "ORHANELİ",
+    "state_id": "21",
+    "lat": 39.90333,
+    "lng": 28.99056
+  },
+  {
+    "id": "194",
+    "name": "ORHANGAZİ",
+    "state_id": "21",
+    "lat": 40.48917,
+    "lng": 29.30889
+  },
+  {
+    "id": "195",
+    "name": "OSMANGAZİ",
+    "state_id": "21",
+    "lat": 40.19671,
+    "lng": 29.05935
+  },
+  {
+    "id": "196",
+    "name": "YENİŞEHİR",
+    "state_id": "21",
+    "lat": 40.26444,
+    "lng": 29.65306
+  },
+  {
+    "id": "197",
+    "name": "YILDIRIM",
+    "state_id": "21",
+    "lat": 40.19559,
+    "lng": 29.06013
+  },
+  {
+    "id": "198",
+    "name": "AYVACIK",
+    "state_id": "22",
+    "lat": 40.15552,
+    "lng": 26.41271
+  },
+  {
+    "id": "199",
+    "name": "BAYRAMİÇ",
+    "state_id": "22",
+    "lat": 39.80862,
+    "lng": 26.60983
+  },
+  {
+    "id": "200",
+    "name": "BİGA",
+    "state_id": "22",
+    "lat": 40.22806,
+    "lng": 27.24222
+  },
+  {
+    "id": "201",
+    "name": "BOZCAADA",
+    "state_id": "22",
+    "lat": 39.835,
+    "lng": 26.06972
+  },
+  {
+    "id": "202",
+    "name": "ÇAN",
+    "state_id": "22",
+    "lat": 40.03328,
+    "lng": 27.05236
+  },
+  {
+    "id": "203",
+    "name": "ECEABAT",
+    "state_id": "22",
+    "lat": 40.18416,
+    "lng": 26.3574
+  },
+  {
+    "id": "204",
+    "name": "EZİNE",
+    "state_id": "22",
+    "lat": 39.78561,
+    "lng": 26.34083
+  },
+  {
+    "id": "205",
+    "name": "GELİBOLU",
+    "state_id": "22",
+    "lat": 40.40836,
+    "lng": 26.67174
+  },
+  {
+    "id": "206",
+    "name": "GÖKÇEADA",
+    "state_id": "22",
+    "lat": 40.20107,
+    "lng": 25.90902
+  },
+  {
+    "id": "207",
+    "name": "LAPSEKİ",
+    "state_id": "22",
+    "lat": 40.34417,
+    "lng": 26.68556
+  },
+  {
+    "id": "208",
+    "name": "YENİCE",
+    "state_id": "22",
+    "lat": 39.93083,
+    "lng": 27.25806
+  },
+  {
+    "id": "209",
+    "name": "ATKARACALAR",
+    "state_id": "23",
+    "lat": 40.81593,
+    "lng": 33.07556
+  },
+  {
+    "id": "210",
+    "name": "BAYRAMÖREN",
+    "state_id": "23",
+    "lat": 40.94329,
+    "lng": 33.203
+  },
+  {
+    "id": "211",
+    "name": "ÇERKEŞ",
+    "state_id": "23",
+    "lat": 40.81164,
+    "lng": 32.89358
+  },
+  {
+    "id": "212",
+    "name": "ELDİVAN",
+    "state_id": "23",
+    "lat": 40.52975,
+    "lng": 33.49903
+  },
+  {
+    "id": "213",
+    "name": "ILGAZ",
+    "state_id": "23",
+    "lat": 40.92511,
+    "lng": 33.62586
+  },
+  {
+    "id": "214",
+    "name": "KIZILIRMAK",
+    "state_id": "23",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "215",
+    "name": "KORGUN",
+    "state_id": "23",
+    "lat": 40.73479,
+    "lng": 33.51844
+  },
+  {
+    "id": "216",
+    "name": "KURŞUNLU",
+    "state_id": "23",
+    "lat": 40.84101,
+    "lng": 33.26028
+  },
+  {
+    "id": "217",
+    "name": "ORTA",
+    "state_id": "23",
+    "lat": 40.6242,
+    "lng": 33.10928
+  },
+  {
+    "id": "218",
+    "name": "ŞABANÖZÜ",
+    "state_id": "23",
+    "lat": 40.48249,
+    "lng": 33.28352
+  },
+  {
+    "id": "219",
+    "name": "YAPRAKLI",
+    "state_id": "23",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "220",
+    "name": "ALACA",
+    "state_id": "24",
+    "lat": 40.16833,
+    "lng": 34.8425
+  },
+  {
+    "id": "221",
+    "name": "BAYAT",
+    "state_id": "24",
+    "lat": 40.64583,
+    "lng": 34.26139
+  },
+  {
+    "id": "222",
+    "name": "BOĞAZKALE",
+    "state_id": "24",
+    "lat": 40.02191,
+    "lng": 34.60947
+  },
+  {
+    "id": "223",
+    "name": "DODURGA",
+    "state_id": "24",
+    "lat": 40.85489,
+    "lng": 34.80703
+  },
+  {
+    "id": "224",
+    "name": "İSKİLİP",
+    "state_id": "24",
+    "lat": 40.73528,
+    "lng": 34.47389
+  },
+  {
+    "id": "225",
+    "name": "KARGI",
+    "state_id": "24",
+    "lat": 40.54889,
+    "lng": 34.95333
+  },
+  {
+    "id": "226",
+    "name": "LAÇİN",
+    "state_id": "24",
+    "lat": 40.77486,
+    "lng": 34.88068
+  },
+  {
+    "id": "227",
+    "name": "MECİTÖZÜ",
+    "state_id": "24",
+    "lat": 40.52,
+    "lng": 35.29528
+  },
+  {
+    "id": "228",
+    "name": "OĞUZLAR",
+    "state_id": "24",
+    "lat": 40.75353,
+    "lng": 34.70275
+  },
+  {
+    "id": "229",
+    "name": "ORTAKÖY",
+    "state_id": "24",
+    "lat": 40.27352,
+    "lng": 35.25175
+  },
+  {
+    "id": "230",
+    "name": "OSMANCIK",
+    "state_id": "24",
+    "lat": 40.54889,
+    "lng": 34.95333
+  },
+  {
+    "id": "231",
+    "name": "SUNGURLU",
+    "state_id": "24",
+    "lat": 40.1675,
+    "lng": 34.37389
+  },
+  {
+    "id": "232",
+    "name": "UĞURLUDAĞ",
+    "state_id": "24",
+    "lat": 40.44631,
+    "lng": 34.45259
+  },
+  {
+    "id": "233",
+    "name": "ACIPAYAM",
+    "state_id": "25",
+    "lat": 37.77417,
+    "lng": 29.0875
+  },
+  {
+    "id": "234",
+    "name": "BABADAĞ",
+    "state_id": "25",
+    "lat": 37.80764,
+    "lng": 28.85665
+  },
+  {
+    "id": "235",
+    "name": "BAKLAN",
+    "state_id": "25",
+    "lat": 37.97694,
+    "lng": 29.60861
+  },
+  {
+    "id": "236",
+    "name": "BEKİLLİ",
+    "state_id": "25",
+    "lat": 38.23105,
+    "lng": 29.4197
+  },
+  {
+    "id": "237",
+    "name": "BEYAĞAÇ",
+    "state_id": "25",
+    "lat": 37.23526,
+    "lng": 28.89612
+  },
+  {
+    "id": "238",
+    "name": "BOZKURT",
+    "state_id": "25",
+    "lat": 37.82417,
+    "lng": 29.60972
+  },
+  {
+    "id": "239",
+    "name": "BULDAN",
+    "state_id": "25",
+    "lat": 38.045,
+    "lng": 28.83056
+  },
+  {
+    "id": "240",
+    "name": "ÇAL",
+    "state_id": "25",
+    "lat": 38.08361,
+    "lng": 29.39889
+  },
+  {
+    "id": "241",
+    "name": "ÇAMELİ",
+    "state_id": "25",
+    "lat": 37.07611,
+    "lng": 29.34472
+  },
+  {
+    "id": "242",
+    "name": "ÇARDAK",
+    "state_id": "25",
+    "lat": 37.82694,
+    "lng": 29.66833
+  },
+  {
+    "id": "243",
+    "name": "ÇİVRİL",
+    "state_id": "25",
+    "lat": 38.30139,
+    "lng": 29.73861
+  },
+  {
+    "id": "244",
+    "name": "GÜNEY",
+    "state_id": "25",
+    "lat": 38.15444,
+    "lng": 29.06778
+  },
+  {
+    "id": "245",
+    "name": "HONAZ",
+    "state_id": "25",
+    "lat": 37.7573,
+    "lng": 29.26996
+  },
+  {
+    "id": "246",
+    "name": "KALE",
+    "state_id": "25",
+    "lat": 37.43917,
+    "lng": 28.84528
+  },
+  {
+    "id": "247",
+    "name": "MERKEZEFENDİ",
+    "state_id": "25",
+    "lat": 37.80544,
+    "lng": 29.04236
+  },
+  {
+    "id": "248",
+    "name": "PAMUKKALE",
+    "state_id": "25",
+    "lat": 37.7912,
+    "lng": 29.10141
+  },
+  {
+    "id": "249",
+    "name": "SARAYKÖY",
+    "state_id": "25",
+    "lat": 37.92448,
+    "lng": 28.92516
+  },
+  {
+    "id": "250",
+    "name": "SERİNHİSAR",
+    "state_id": "25",
+    "lat": 37.58105,
+    "lng": 29.26639
+  },
+  {
+    "id": "251",
+    "name": "TAVAS",
+    "state_id": "25",
+    "lat": 37.57351,
+    "lng": 29.07058
+  },
+  {
+    "id": "252",
+    "name": "BAĞLAR",
+    "state_id": "26",
+    "lat": 37.91375,
+    "lng": 40.20584
+  },
+  {
+    "id": "253",
+    "name": "BİSMİL",
+    "state_id": "26",
+    "lat": 37.84514,
+    "lng": 40.65931
+  },
+  {
+    "id": "254",
+    "name": "ÇERMİK",
+    "state_id": "26",
+    "lat": 38.13538,
+    "lng": 39.445
+  },
+  {
+    "id": "255",
+    "name": "ÇINAR",
+    "state_id": "26",
+    "lat": 39.55,
+    "lng": 39.08333
+  },
+  {
+    "id": "256",
+    "name": "ÇÜNGÜŞ",
+    "state_id": "26",
+    "lat": 38.20798,
+    "lng": 39.28554
+  },
+  {
+    "id": "257",
+    "name": "DİCLE",
+    "state_id": "26",
+    "lat": 38.36571,
+    "lng": 40.0645
+  },
+  {
+    "id": "258",
+    "name": "EĞİL",
+    "state_id": "26",
+    "lat": 38.25748,
+    "lng": 40.07435
+  },
+  {
+    "id": "259",
+    "name": "ERGANİ",
+    "state_id": "26",
+    "lat": 38.26899,
+    "lng": 39.75446
+  },
+  {
+    "id": "260",
+    "name": "HANİ",
+    "state_id": "26",
+    "lat": 38.40741,
+    "lng": 40.38578
+  },
+  {
+    "id": "261",
+    "name": "HAZRO",
+    "state_id": "26",
+    "lat": 38.24903,
+    "lng": 40.77129
+  },
+  {
+    "id": "262",
+    "name": "KAYAPINAR",
+    "state_id": "26",
+    "lat": 38.01222,
+    "lng": 39.95472
+  },
+  {
+    "id": "263",
+    "name": "KOCAKÖY",
+    "state_id": "26",
+    "lat": 38.28889,
+    "lng": 40.49786
+  },
+  {
+    "id": "264",
+    "name": "KULP",
+    "state_id": "26",
+    "lat": 38.49754,
+    "lng": 41.00668
+  },
+  {
+    "id": "265",
+    "name": "LİCE",
+    "state_id": "26",
+    "lat": 38.45821,
+    "lng": 40.63888
+  },
+  {
+    "id": "266",
+    "name": "SİLVAN",
+    "state_id": "26",
+    "lat": 38.13708,
+    "lng": 41.00817
+  },
+  {
+    "id": "267",
+    "name": "SUR",
+    "state_id": "26",
+    "lat": 37.91351,
+    "lng": 40.22859
+  },
+  {
+    "id": "268",
+    "name": "YENİŞEHİR",
+    "state_id": "26",
+    "lat": 37.94146,
+    "lng": 40.13801
+  },
+  {
+    "id": "269",
+    "name": "ENEZ",
+    "state_id": "28",
+    "lat": 40.72472,
+    "lng": 26.0825
+  },
+  {
+    "id": "270",
+    "name": "HAVSA",
+    "state_id": "28",
+    "lat": 41.54898,
+    "lng": 26.82207
+  },
+  {
+    "id": "271",
+    "name": "İPSALA",
+    "state_id": "28",
+    "lat": 40.92115,
+    "lng": 26.38273
+  },
+  {
+    "id": "272",
+    "name": "KEŞAN",
+    "state_id": "28",
+    "lat": 40.85525,
+    "lng": 26.63266
+  },
+  {
+    "id": "273",
+    "name": "LALAPAŞA",
+    "state_id": "28",
+    "lat": 41.83951,
+    "lng": 26.73561
+  },
+  {
+    "id": "274",
+    "name": "MERİÇ",
+    "state_id": "28",
+    "lat": 41.19183,
+    "lng": 26.42097
+  },
+  {
+    "id": "275",
+    "name": "SÜLOĞLU",
+    "state_id": "28",
+    "lat": 41.76901,
+    "lng": 26.90999
+  },
+  {
+    "id": "276",
+    "name": "UZUNKÖPRÜ",
+    "state_id": "28",
+    "lat": 41.26914,
+    "lng": 26.68598
+  },
+  {
+    "id": "277",
+    "name": "AĞIN",
+    "state_id": "29",
+    "lat": 36.14846,
+    "lng": 32.93531
+  },
+  {
+    "id": "278",
+    "name": "ALACAKAYA",
+    "state_id": "29",
+    "lat": 38.46201,
+    "lng": 39.86234
+  },
+  {
+    "id": "279",
+    "name": "ARICAK",
+    "state_id": "29",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "280",
+    "name": "BASKİL",
+    "state_id": "29",
+    "lat": 38.56866,
+    "lng": 38.81634
+  },
+  {
+    "id": "281",
+    "name": "KARAKOÇAN",
+    "state_id": "29",
+    "lat": 38.95178,
+    "lng": 40.02706
+  },
+  {
+    "id": "282",
+    "name": "KEBAN",
+    "state_id": "29",
+    "lat": 38.7938,
+    "lng": 38.73517
+  },
+  {
+    "id": "283",
+    "name": "KOVANCILAR",
+    "state_id": "29",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "284",
+    "name": "MADEN",
+    "state_id": "29",
+    "lat": 38.38669,
+    "lng": 39.66408
+  },
+  {
+    "id": "285",
+    "name": "PALU",
+    "state_id": "29",
+    "lat": 38.69135,
+    "lng": 39.91984
+  },
+  {
+    "id": "286",
+    "name": "SİVRİCE",
+    "state_id": "29",
+    "lat": 38.44223,
+    "lng": 39.30938
+  },
+  {
+    "id": "287",
+    "name": "ÇAYIRLI",
+    "state_id": "30",
+    "lat": 39.73919,
+    "lng": 39.49015
+  },
+  {
+    "id": "288",
+    "name": "İLİÇ",
+    "state_id": "30",
+    "lat": 39.45106,
+    "lng": 38.55836
+  },
+  {
+    "id": "289",
+    "name": "KEMAH",
+    "state_id": "30",
+    "lat": 39.59606,
+    "lng": 39.02329
+  },
+  {
+    "id": "290",
+    "name": "KEMALİYE",
+    "state_id": "30",
+    "lat": 39.26288,
+    "lng": 38.49674
+  },
+  {
+    "id": "291",
+    "name": "OTLUKBELİ",
+    "state_id": "30",
+    "lat": 39.97,
+    "lng": 40.01872
+  },
+  {
+    "id": "292",
+    "name": "REFAHİYE",
+    "state_id": "30",
+    "lat": 39.89315,
+    "lng": 38.76607
+  },
+  {
+    "id": "293",
+    "name": "TERCAN",
+    "state_id": "30",
+    "lat": 39.77709,
+    "lng": 40.37783
+  },
+  {
+    "id": "294",
+    "name": "ÜZÜMLÜ",
+    "state_id": "30",
+    "lat": 39.70947,
+    "lng": 39.70015
+  },
+  {
+    "id": "295",
+    "name": "AŞKALE",
+    "state_id": "31",
+    "lat": 39.92083,
+    "lng": 40.695
+  },
+  {
+    "id": "296",
+    "name": "AZİZİYE",
+    "state_id": "31",
+    "lat": 39.95407,
+    "lng": 41.13477
+  },
+  {
+    "id": "297",
+    "name": "ÇAT",
+    "state_id": "31",
+    "lat": 39.60641,
+    "lng": 40.96844
+  },
+  {
+    "id": "298",
+    "name": "HINIS",
+    "state_id": "31",
+    "lat": 39.90861,
+    "lng": 41.27694
+  },
+  {
+    "id": "299",
+    "name": "HORASAN",
+    "state_id": "31",
+    "lat": 40.03885,
+    "lng": 42.16366
+  },
+  {
+    "id": "300",
+    "name": "İSPİR",
+    "state_id": "31",
+    "lat": 40.47981,
+    "lng": 40.99373
+  },
+  {
+    "id": "301",
+    "name": "KARAÇOBAN",
+    "state_id": "31",
+    "lat": 39.34364,
+    "lng": 42.09918
+  },
+  {
+    "id": "302",
+    "name": "KARAYAZI",
+    "state_id": "31",
+    "lat": 39.90861,
+    "lng": 41.27694
+  },
+  {
+    "id": "303",
+    "name": "KÖPRÜKÖY",
+    "state_id": "31",
+    "lat": 39.966,
+    "lng": 41.86844
+  },
+  {
+    "id": "304",
+    "name": "NARMAN",
+    "state_id": "31",
+    "lat": 40.34449,
+    "lng": 41.86088
+  },
+  {
+    "id": "305",
+    "name": "OLTU",
+    "state_id": "31",
+    "lat": 40.53945,
+    "lng": 41.98722
+  },
+  {
+    "id": "306",
+    "name": "OLUR",
+    "state_id": "31",
+    "lat": 40.82165,
+    "lng": 42.13055
+  },
+  {
+    "id": "307",
+    "name": "PALANDÖKEN",
+    "state_id": "31",
+    "lat": 39.88898,
+    "lng": 41.28055
+  },
+  {
+    "id": "308",
+    "name": "PASİNLER",
+    "state_id": "31",
+    "lat": 39.97975,
+    "lng": 41.66997
+  },
+  {
+    "id": "309",
+    "name": "PAZARYOLU",
+    "state_id": "31",
+    "lat": 40.41142,
+    "lng": 40.7678
+  },
+  {
+    "id": "310",
+    "name": "ŞENKAYA",
+    "state_id": "31",
+    "lat": 40.55652,
+    "lng": 42.34266
+  },
+  {
+    "id": "311",
+    "name": "TEKMAN",
+    "state_id": "31",
+    "lat": 39.64111,
+    "lng": 41.50542
+  },
+  {
+    "id": "312",
+    "name": "TORTUM",
+    "state_id": "31",
+    "lat": 40.28892,
+    "lng": 41.54096
+  },
+  {
+    "id": "313",
+    "name": "UZUNDERE",
+    "state_id": "31",
+    "lat": 40.53218,
+    "lng": 41.53832
+  },
+  {
+    "id": "314",
+    "name": "YAKUTİYE",
+    "state_id": "31",
+    "lat": 39.89821,
+    "lng": 41.26916
+  },
+  {
+    "id": "315",
+    "name": "ALPU",
+    "state_id": "32",
+    "lat": 39.76903,
+    "lng": 30.9606
+  },
+  {
+    "id": "316",
+    "name": "BEYLİKOVA",
+    "state_id": "32",
+    "lat": 39.68694,
+    "lng": 31.20556
+  },
+  {
+    "id": "317",
+    "name": "ÇİFTELER",
+    "state_id": "32",
+    "lat": 39.38306,
+    "lng": 31.03917
+  },
+  {
+    "id": "318",
+    "name": "GÜNYÜZÜ",
+    "state_id": "32",
+    "lat": 39.38345,
+    "lng": 31.80995
+  },
+  {
+    "id": "319",
+    "name": "HAN",
+    "state_id": "32",
+    "lat": 39.15917,
+    "lng": 30.86139
+  },
+  {
+    "id": "320",
+    "name": "İNÖNÜ",
+    "state_id": "32",
+    "lat": 39.81534,
+    "lng": 30.14549
+  },
+  {
+    "id": "321",
+    "name": "MAHMUDİYE",
+    "state_id": "32",
+    "lat": 39.49778,
+    "lng": 30.98722
+  },
+  {
+    "id": "322",
+    "name": "MİHALGAZİ",
+    "state_id": "32",
+    "lat": 40.02621,
+    "lng": 30.57707
+  },
+  {
+    "id": "323",
+    "name": "MİHALIÇÇIK",
+    "state_id": "32",
+    "lat": 39.77667,
+    "lng": 30.52056
+  },
+  {
+    "id": "324",
+    "name": "ODUNPAZARI",
+    "state_id": "32",
+    "lat": 39.77667,
+    "lng": 30.52056
+  },
+  {
+    "id": "325",
+    "name": "SARICAKAYA",
+    "state_id": "32",
+    "lat": 39.77667,
+    "lng": 30.52056
+  },
+  {
+    "id": "326",
+    "name": "SEYİTGAZİ",
+    "state_id": "32",
+    "lat": 39.44472,
+    "lng": 30.69472
+  },
+  {
+    "id": "327",
+    "name": "SİVRİHİSAR",
+    "state_id": "32",
+    "lat": 39.45037,
+    "lng": 31.53409
+  },
+  {
+    "id": "328",
+    "name": "TEPEBAŞI",
+    "state_id": "32",
+    "lat": 39.77667,
+    "lng": 30.52056
+  },
+  {
+    "id": "329",
+    "name": "ARABAN",
+    "state_id": "33",
+    "lat": 37.42667,
+    "lng": 37.689
+  },
+  {
+    "id": "330",
+    "name": "İSLAHİYE",
+    "state_id": "33",
+    "lat": 37.025,
+    "lng": 36.63056
+  },
+  {
+    "id": "331",
+    "name": "KARKAMIŞ",
+    "state_id": "33",
+    "lat": 37.05944,
+    "lng": 37.3825
+  },
+  {
+    "id": "332",
+    "name": "NİZİP",
+    "state_id": "33",
+    "lat": 37.00972,
+    "lng": 37.79417
+  },
+  {
+    "id": "333",
+    "name": "NURDAĞI",
+    "state_id": "33",
+    "lat": 37.05944,
+    "lng": 37.3825
+  },
+  {
+    "id": "334",
+    "name": "OĞUZELİ",
+    "state_id": "33",
+    "lat": 36.96572,
+    "lng": 37.51339
+  },
+  {
+    "id": "335",
+    "name": "ŞAHİNBEY",
+    "state_id": "33",
+    "lat": 37.04836,
+    "lng": 37.34371
+  },
+  {
+    "id": "336",
+    "name": "ŞEHİTKAMİL",
+    "state_id": "33",
+    "lat": 37.07962,
+    "lng": 37.38003
+  },
+  {
+    "id": "337",
+    "name": "YAVUZELİ",
+    "state_id": "33",
+    "lat": 37.31772,
+    "lng": 37.56824
+  },
+  {
+    "id": "338",
+    "name": "ALUCRA",
+    "state_id": "34",
+    "lat": 40.32021,
+    "lng": 38.7641
+  },
+  {
+    "id": "339",
+    "name": "BULANCAK",
+    "state_id": "34",
+    "lat": 40.93805,
+    "lng": 38.23148
+  },
+  {
+    "id": "340",
+    "name": "ÇAMOLUK",
+    "state_id": "34",
+    "lat": 40.12732,
+    "lng": 38.73006
+  },
+  {
+    "id": "341",
+    "name": "ÇANAKÇI",
+    "state_id": "34",
+    "lat": 40.91698,
+    "lng": 38.38741
+  },
+  {
+    "id": "342",
+    "name": "DERELİ",
+    "state_id": "34",
+    "lat": 40.7389,
+    "lng": 38.44337
+  },
+  {
+    "id": "343",
+    "name": "DOĞANKENT",
+    "state_id": "34",
+    "lat": 40.8075,
+    "lng": 38.91722
+  },
+  {
+    "id": "344",
+    "name": "ESPİYE",
+    "state_id": "34",
+    "lat": 40.94705,
+    "lng": 38.70299
+  },
+  {
+    "id": "345",
+    "name": "EYNESİL",
+    "state_id": "34",
+    "lat": 41.06436,
+    "lng": 39.14274
+  },
+  {
+    "id": "346",
+    "name": "GÖRELE",
+    "state_id": "34",
+    "lat": 41.03083,
+    "lng": 39.00306
+  },
+  {
+    "id": "347",
+    "name": "GÜCE",
+    "state_id": "34",
+    "lat": 40.8932,
+    "lng": 38.7982
+  },
+  {
+    "id": "348",
+    "name": "KEŞAP",
+    "state_id": "34",
+    "lat": 40.91032,
+    "lng": 38.5013
+  },
+  {
+    "id": "349",
+    "name": "PİRAZİZ",
+    "state_id": "34",
+    "lat": 40.92244,
+    "lng": 38.12458
+  },
+  {
+    "id": "350",
+    "name": "ŞEBİNKARAHİSAR",
+    "state_id": "34",
+    "lat": 40.28333,
+    "lng": 35.42054
+  },
+  {
+    "id": "351",
+    "name": "TİREBOLU",
+    "state_id": "34",
+    "lat": 41.00694,
+    "lng": 38.81389
+  },
+  {
+    "id": "352",
+    "name": "YAĞLIDERE",
+    "state_id": "34",
+    "lat": 40.91698,
+    "lng": 38.38741
+  },
+  {
+    "id": "353",
+    "name": "KELKİT",
+    "state_id": "35",
+    "lat": 40.12682,
+    "lng": 39.43424
+  },
+  {
+    "id": "354",
+    "name": "KÖSE",
+    "state_id": "35",
+    "lat": 40.20692,
+    "lng": 39.64626
+  },
+  {
+    "id": "355",
+    "name": "KÜRTÜN",
+    "state_id": "35",
+    "lat": 40.69516,
+    "lng": 39.09468
+  },
+  {
+    "id": "356",
+    "name": "ŞİRAN",
+    "state_id": "35",
+    "lat": 40.19064,
+    "lng": 39.11747
+  },
+  {
+    "id": "357",
+    "name": "TORUL",
+    "state_id": "35",
+    "lat": 40.55071,
+    "lng": 39.28344
+  },
+  {
+    "id": "358",
+    "name": "ÇUKURCA",
+    "state_id": "36",
+    "lat": 37.24806,
+    "lng": 43.61361
+  },
+  {
+    "id": "359",
+    "name": "DERECİK",
+    "state_id": "36",
+    "lat": 37.08365,
+    "lng": 44.30949
+  },
+  {
+    "id": "360",
+    "name": "ŞEMDİNLİ",
+    "state_id": "36",
+    "lat": 37.30514,
+    "lng": 44.5742
+  },
+  {
+    "id": "361",
+    "name": "YÜKSEKOVA",
+    "state_id": "36",
+    "lat": 37.57362,
+    "lng": 44.28716
+  },
+  {
+    "id": "362",
+    "name": "ALTINÖZÜ",
+    "state_id": "37",
+    "lat": 38.40227,
+    "lng": 27.10486
+  },
+  {
+    "id": "363",
+    "name": "ANTAKYA",
+    "state_id": "37",
+    "lat": 36.20655,
+    "lng": 36.15722
+  },
+  {
+    "id": "364",
+    "name": "ARSUZ",
+    "state_id": "37",
+    "lat": 36.41305,
+    "lng": 35.89033
+  },
+  {
+    "id": "365",
+    "name": "BELEN",
+    "state_id": "37",
+    "lat": 36.48866,
+    "lng": 36.19489
+  },
+  {
+    "id": "366",
+    "name": "DEFNE",
+    "state_id": "37",
+    "lat": 38.40227,
+    "lng": 27.10486
+  },
+  {
+    "id": "367",
+    "name": "DÖRTYOL",
+    "state_id": "37",
+    "lat": 36.83917,
+    "lng": 36.23025
+  },
+  {
+    "id": "368",
+    "name": "ERZİN",
+    "state_id": "37",
+    "lat": 36.95348,
+    "lng": 36.19839
+  },
+  {
+    "id": "369",
+    "name": "HASSA",
+    "state_id": "37",
+    "lat": 36.79944,
+    "lng": 36.51778
+  },
+  {
+    "id": "370",
+    "name": "İSKENDERUN",
+    "state_id": "37",
+    "lat": 36.58718,
+    "lng": 36.17347
+  },
+  {
+    "id": "371",
+    "name": "KIRIKHAN",
+    "state_id": "37",
+    "lat": 38.40227,
+    "lng": 27.10486
+  },
+  {
+    "id": "372",
+    "name": "KUMLU",
+    "state_id": "37",
+    "lat": 36.36353,
+    "lng": 36.45502
+  },
+  {
+    "id": "373",
+    "name": "PAYAS",
+    "state_id": "37",
+    "lat": 36.756,
+    "lng": 36.21432
+  },
+  {
+    "id": "374",
+    "name": "REYHANLI",
+    "state_id": "37",
+    "lat": 38.40227,
+    "lng": 27.10486
+  },
+  {
+    "id": "375",
+    "name": "SAMANDAĞ",
+    "state_id": "37",
+    "lat": 36.08012,
+    "lng": 35.97603
+  },
+  {
+    "id": "376",
+    "name": "YAYLADAĞI",
+    "state_id": "37",
+    "lat": 38.40227,
+    "lng": 27.10486
+  },
+  {
+    "id": "377",
+    "name": "AKSU",
+    "state_id": "39",
+    "lat": 37.79889,
+    "lng": 31.07111
+  },
+  {
+    "id": "378",
+    "name": "ATABEY",
+    "state_id": "39",
+    "lat": 37.95083,
+    "lng": 30.63861
+  },
+  {
+    "id": "379",
+    "name": "EĞİRDİR",
+    "state_id": "39",
+    "lat": 37.87462,
+    "lng": 30.85042
+  },
+  {
+    "id": "380",
+    "name": "GELENDOST",
+    "state_id": "39",
+    "lat": 38.12083,
+    "lng": 31.01528
+  },
+  {
+    "id": "381",
+    "name": "GÖNEN",
+    "state_id": "39",
+    "lat": 37.95639,
+    "lng": 30.5114
+  },
+  {
+    "id": "382",
+    "name": "KEÇİBORLU",
+    "state_id": "39",
+    "lat": 37.9425,
+    "lng": 30.30222
+  },
+  {
+    "id": "383",
+    "name": "SENİRKENT",
+    "state_id": "39",
+    "lat": 38.10444,
+    "lng": 30.54861
+  },
+  {
+    "id": "384",
+    "name": "SÜTÇÜLER",
+    "state_id": "39",
+    "lat": 37.49737,
+    "lng": 30.97727
+  },
+  {
+    "id": "385",
+    "name": "ŞARKİKARAAĞAÇ",
+    "state_id": "39",
+    "lat": 38.07944,
+    "lng": 31.36639
+  },
+  {
+    "id": "386",
+    "name": "ULUBORLU",
+    "state_id": "39",
+    "lat": 38.07825,
+    "lng": 30.45019
+  },
+  {
+    "id": "387",
+    "name": "YALVAÇ",
+    "state_id": "39",
+    "lat": 38.29556,
+    "lng": 31.17778
+  },
+  {
+    "id": "388",
+    "name": "YENİŞARBADEMLİ",
+    "state_id": "39",
+    "lat": 37.70778,
+    "lng": 31.38639
+  },
+  {
+    "id": "389",
+    "name": "AKDENİZ",
+    "state_id": "58",
+    "lat": 36.09718,
+    "lng": 33.05306
+  },
+  {
+    "id": "390",
+    "name": "ANAMUR",
+    "state_id": "58",
+    "lat": 36.07508,
+    "lng": 32.83691
+  },
+  {
+    "id": "391",
+    "name": "AYDINCIK",
+    "state_id": "58",
+    "lat": 36.81196,
+    "lng": 34.63886
+  },
+  {
+    "id": "392",
+    "name": "BOZYAZI",
+    "state_id": "58",
+    "lat": 36.81196,
+    "lng": 34.63886
+  },
+  {
+    "id": "393",
+    "name": "ÇAMLIYAYLA",
+    "state_id": "58",
+    "lat": 36.81196,
+    "lng": 34.63886
+  },
+  {
+    "id": "394",
+    "name": "ERDEMLİ",
+    "state_id": "58",
+    "lat": 36.60498,
+    "lng": 34.30836
+  },
+  {
+    "id": "395",
+    "name": "GÜLNAR",
+    "state_id": "58",
+    "lat": 36.34148,
+    "lng": 33.39921
+  },
+  {
+    "id": "396",
+    "name": "MEZİTLİ",
+    "state_id": "58",
+    "lat": 36.74541,
+    "lng": 34.52256
+  },
+  {
+    "id": "397",
+    "name": "MUT",
+    "state_id": "58",
+    "lat": 36.64389,
+    "lng": 33.43885
+  },
+  {
+    "id": "398",
+    "name": "SİLİFKE",
+    "state_id": "58",
+    "lat": 36.37778,
+    "lng": 33.93444
+  },
+  {
+    "id": "399",
+    "name": "TARSUS",
+    "state_id": "58",
+    "lat": 36.91766,
+    "lng": 34.89277
+  },
+  {
+    "id": "400",
+    "name": "TOROSLAR",
+    "state_id": "58",
+    "lat": 36.82971,
+    "lng": 34.6132
+  },
+  {
+    "id": "401",
+    "name": "YENİŞEHİR",
+    "state_id": "58",
+    "lat": 36.8,
+    "lng": 34.56667
+  },
+  {
+    "id": "402",
+    "name": "ADALAR",
+    "state_id": "40",
+    "lat": 40.86778,
+    "lng": 29.13306
+  },
+  {
+    "id": "403",
+    "name": "ARNAVUTKÖY",
+    "state_id": "40",
+    "lat": 41.18355,
+    "lng": 28.7402
+  },
+  {
+    "id": "404",
+    "name": "ATAŞEHİR",
+    "state_id": "40",
+    "lat": 40.9833,
+    "lng": 29.1167
+  },
+  {
+    "id": "405",
+    "name": "AVCILAR",
+    "state_id": "40",
+    "lat": 41.01384,
+    "lng": 28.94966
+  },
+  {
+    "id": "406",
+    "name": "BAĞCILAR",
+    "state_id": "40",
+    "lat": 41.01384,
+    "lng": 28.94966
+  },
+  {
+    "id": "407",
+    "name": "BAHÇELİEVLER",
+    "state_id": "40",
+    "lat": 41.00231,
+    "lng": 28.8598
+  },
+  {
+    "id": "408",
+    "name": "BAKIRKÖY",
+    "state_id": "40",
+    "lat": 41.01384,
+    "lng": 28.94966
+  },
+  {
+    "id": "409",
+    "name": "BAŞAKŞEHİR",
+    "state_id": "40",
+    "lat": 41.09307,
+    "lng": 28.80203
+  },
+  {
+    "id": "410",
+    "name": "BAYRAMPAŞA",
+    "state_id": "40",
+    "lat": 41.0523,
+    "lng": 28.89894
+  },
+  {
+    "id": "411",
+    "name": "BEŞİKTAŞ",
+    "state_id": "40",
+    "lat": 41.04541,
+    "lng": 29.00991
+  },
+  {
+    "id": "412",
+    "name": "BEYKOZ",
+    "state_id": "40",
+    "lat": 41.14389,
+    "lng": 29.09056
+  },
+  {
+    "id": "413",
+    "name": "BEYLİKDÜZÜ",
+    "state_id": "40",
+    "lat": 40.982,
+    "lng": 28.6399
+  },
+  {
+    "id": "414",
+    "name": "BEYOĞLU",
+    "state_id": "40",
+    "lat": 41.03694,
+    "lng": 28.9775
+  },
+  {
+    "id": "415",
+    "name": "BÜYÜKÇEKMECE",
+    "state_id": "40",
+    "lat": 41.02072,
+    "lng": 28.58502
+  },
+  {
+    "id": "416",
+    "name": "ÇATALCA",
+    "state_id": "40",
+    "lat": 41.14073,
+    "lng": 28.45967
+  },
+  {
+    "id": "417",
+    "name": "ÇEKMEKÖY",
+    "state_id": "40",
+    "lat": 41.04118,
+    "lng": 29.17838
+  },
+  {
+    "id": "418",
+    "name": "ESENLER",
+    "state_id": "40",
+    "lat": 41.0435,
+    "lng": 28.87619
+  },
+  {
+    "id": "419",
+    "name": "ESENYURT",
+    "state_id": "40",
+    "lat": 41.02697,
+    "lng": 28.67732
+  },
+  {
+    "id": "420",
+    "name": "EYÜPSULTAN",
+    "state_id": "40",
+    "lat": 41.05877,
+    "lng": 28.92305
+  },
+  {
+    "id": "421",
+    "name": "FATİH",
+    "state_id": "40",
+    "lat": 41.0225,
+    "lng": 28.94083
+  },
+  {
+    "id": "422",
+    "name": "GAZİOSMANPAŞA",
+    "state_id": "40",
+    "lat": 41.07696,
+    "lng": 28.90009
+  },
+  {
+    "id": "423",
+    "name": "GÜNGÖREN",
+    "state_id": "40",
+    "lat": 36.23105,
+    "lng": 32.633
+  },
+  {
+    "id": "424",
+    "name": "KADIKÖY",
+    "state_id": "40",
+    "lat": 41.06639,
+    "lng": 41.01294
+  },
+  {
+    "id": "425",
+    "name": "KAĞITHANE",
+    "state_id": "40",
+    "lat": 41.01384,
+    "lng": 28.94966
+  },
+  {
+    "id": "426",
+    "name": "KARTAL",
+    "state_id": "40",
+    "lat": 40.90495,
+    "lng": 29.18861
+  },
+  {
+    "id": "427",
+    "name": "KÜÇÜKÇEKMECE",
+    "state_id": "40",
+    "lat": 40.99104,
+    "lng": 28.77123
+  },
+  {
+    "id": "428",
+    "name": "MALTEPE",
+    "state_id": "40",
+    "lat": 40.93567,
+    "lng": 29.15507
+  },
+  {
+    "id": "429",
+    "name": "PENDİK",
+    "state_id": "40",
+    "lat": 40.8775,
+    "lng": 29.2725
+  },
+  {
+    "id": "430",
+    "name": "SANCAKTEPE",
+    "state_id": "40",
+    "lat": 41.00244,
+    "lng": 29.23187
+  },
+  {
+    "id": "431",
+    "name": "SARIYER",
+    "state_id": "40",
+    "lat": 41.01384,
+    "lng": 28.94966
+  },
+  {
+    "id": "432",
+    "name": "SİLİVRİ",
+    "state_id": "40",
+    "lat": 41.07393,
+    "lng": 28.24644
+  },
+  {
+    "id": "433",
+    "name": "SULTANBEYLİ",
+    "state_id": "40",
+    "lat": 40.96072,
+    "lng": 29.27067
+  },
+  {
+    "id": "434",
+    "name": "SULTANGAZİ",
+    "state_id": "40",
+    "lat": 41.10652,
+    "lng": 28.86847
+  },
+  {
+    "id": "435",
+    "name": "ŞİLE",
+    "state_id": "40",
+    "lat": 41.17891,
+    "lng": 29.61085
+  },
+  {
+    "id": "436",
+    "name": "ŞİŞLİ",
+    "state_id": "40",
+    "lat": 41.06046,
+    "lng": 28.98717
+  },
+  {
+    "id": "437",
+    "name": "TUZLA",
+    "state_id": "40",
+    "lat": 36.70074,
+    "lng": 35.08726
+  },
+  {
+    "id": "438",
+    "name": "ÜMRANİYE",
+    "state_id": "40",
+    "lat": 41.01643,
+    "lng": 29.12476
+  },
+  {
+    "id": "439",
+    "name": "ÜSKÜDAR",
+    "state_id": "40",
+    "lat": 41.02274,
+    "lng": 29.01366
+  },
+  {
+    "id": "440",
+    "name": "ZEYTİNBURNU",
+    "state_id": "40",
+    "lat": 40.99441,
+    "lng": 28.90417
+  },
+  {
+    "id": "441",
+    "name": "ALİAĞA",
+    "state_id": "41",
+    "lat": 38.79975,
+    "lng": 26.97203
+  },
+  {
+    "id": "442",
+    "name": "BALÇOVA",
+    "state_id": "41",
+    "lat": 38.39201,
+    "lng": 27.04258
+  },
+  {
+    "id": "443",
+    "name": "BAYINDIR",
+    "state_id": "41",
+    "lat": 38.41273,
+    "lng": 27.13838
+  },
+  {
+    "id": "444",
+    "name": "BAYRAKLI",
+    "state_id": "41",
+    "lat": 38.41273,
+    "lng": 27.13838
+  },
+  {
+    "id": "445",
+    "name": "BERGAMA",
+    "state_id": "41",
+    "lat": 39.12074,
+    "lng": 27.18052
+  },
+  {
+    "id": "446",
+    "name": "BEYDAĞ",
+    "state_id": "41",
+    "lat": 38.08593,
+    "lng": 28.20843
+  },
+  {
+    "id": "447",
+    "name": "BORNOVA",
+    "state_id": "41",
+    "lat": 38.47921,
+    "lng": 27.2399
+  },
+  {
+    "id": "448",
+    "name": "BUCA",
+    "state_id": "41",
+    "lat": 38.3983,
+    "lng": 27.16662
+  },
+  {
+    "id": "449",
+    "name": "ÇEŞME",
+    "state_id": "41",
+    "lat": 38.32614,
+    "lng": 26.30574
+  },
+  {
+    "id": "450",
+    "name": "ÇİĞLİ",
+    "state_id": "41",
+    "lat": 38.49645,
+    "lng": 27.07029
+  },
+  {
+    "id": "451",
+    "name": "DİKİLİ",
+    "state_id": "41",
+    "lat": 39.071,
+    "lng": 26.89017
+  },
+  {
+    "id": "452",
+    "name": "FOÇA",
+    "state_id": "41",
+    "lat": 38.6703,
+    "lng": 26.75656
+  },
+  {
+    "id": "453",
+    "name": "GAZİEMİR",
+    "state_id": "41",
+    "lat": 38.32392,
+    "lng": 27.12918
+  },
+  {
+    "id": "454",
+    "name": "GÜZELBAHÇE",
+    "state_id": "41",
+    "lat": 38.36042,
+    "lng": 26.88654
+  },
+  {
+    "id": "455",
+    "name": "KARABAĞLAR",
+    "state_id": "41",
+    "lat": 38.37396,
+    "lng": 27.1352
+  },
+  {
+    "id": "456",
+    "name": "KARABURUN",
+    "state_id": "41",
+    "lat": 38.6364,
+    "lng": 26.51094
+  },
+  {
+    "id": "457",
+    "name": "KARŞIYAKA",
+    "state_id": "41",
+    "lat": 40.13969,
+    "lng": 32.8925
+  },
+  {
+    "id": "458",
+    "name": "KEMALPAŞA",
+    "state_id": "41",
+    "lat": 38.42621,
+    "lng": 27.41731
+  },
+  {
+    "id": "459",
+    "name": "KINIK",
+    "state_id": "41",
+    "lat": 38.41273,
+    "lng": 27.13838
+  },
+  {
+    "id": "460",
+    "name": "KİRAZ",
+    "state_id": "41",
+    "lat": 38.23056,
+    "lng": 28.20444
+  },
+  {
+    "id": "461",
+    "name": "KONAK",
+    "state_id": "41",
+    "lat": 38.4,
+    "lng": 27.1
+  },
+  {
+    "id": "462",
+    "name": "MENDERES",
+    "state_id": "41",
+    "lat": 38.24963,
+    "lng": 27.13429
+  },
+  {
+    "id": "463",
+    "name": "MENEMEN",
+    "state_id": "41",
+    "lat": 38.60754,
+    "lng": 27.06938
+  },
+  {
+    "id": "464",
+    "name": "NARLIDERE",
+    "state_id": "41",
+    "lat": 38.41273,
+    "lng": 27.13838
+  },
+  {
+    "id": "465",
+    "name": "ÖDEMİŞ",
+    "state_id": "41",
+    "lat": 38.2278,
+    "lng": 27.96955
+  },
+  {
+    "id": "466",
+    "name": "SEFERİHİSAR",
+    "state_id": "41",
+    "lat": 38.1975,
+    "lng": 26.83881
+  },
+  {
+    "id": "467",
+    "name": "SELÇUK",
+    "state_id": "41",
+    "lat": 37.95137,
+    "lng": 27.36849
+  },
+  {
+    "id": "468",
+    "name": "TİRE",
+    "state_id": "41",
+    "lat": 38.08877,
+    "lng": 27.73508
+  },
+  {
+    "id": "469",
+    "name": "TORBALI",
+    "state_id": "41",
+    "lat": 38.41273,
+    "lng": 27.13838
+  },
+  {
+    "id": "470",
+    "name": "URLA",
+    "state_id": "41",
+    "lat": 38.32292,
+    "lng": 26.76403
+  },
+  {
+    "id": "471",
+    "name": "AKYAKA",
+    "state_id": "45",
+    "lat": 40.74093,
+    "lng": 43.61432
+  },
+  {
+    "id": "472",
+    "name": "ARPAÇAY",
+    "state_id": "45",
+    "lat": 40.84522,
+    "lng": 43.32747
+  },
+  {
+    "id": "473",
+    "name": "DİGOR",
+    "state_id": "45",
+    "lat": 40.36896,
+    "lng": 43.40997
+  },
+  {
+    "id": "474",
+    "name": "KAĞIZMAN",
+    "state_id": "45",
+    "lat": 40.59825,
+    "lng": 43.08548
+  },
+  {
+    "id": "475",
+    "name": "SARIKAMIŞ",
+    "state_id": "45",
+    "lat": 40.59825,
+    "lng": 43.08548
+  },
+  {
+    "id": "476",
+    "name": "SELİM",
+    "state_id": "45",
+    "lat": 40.45772,
+    "lng": 42.78287
+  },
+  {
+    "id": "477",
+    "name": "SUSUZ",
+    "state_id": "45",
+    "lat": 40.7791,
+    "lng": 43.12769
+  },
+  {
+    "id": "478",
+    "name": "ABANA",
+    "state_id": "46",
+    "lat": 41.97858,
+    "lng": 34.011
+  },
+  {
+    "id": "479",
+    "name": "AĞLI",
+    "state_id": "46",
+    "lat": 41.37805,
+    "lng": 33.77528
+  },
+  {
+    "id": "480",
+    "name": "ARAÇ",
+    "state_id": "46",
+    "lat": 41.24222,
+    "lng": 33.32767
+  },
+  {
+    "id": "481",
+    "name": "AZDAVAY",
+    "state_id": "46",
+    "lat": 41.64267,
+    "lng": 33.3
+  },
+  {
+    "id": "482",
+    "name": "BOZKURT",
+    "state_id": "46",
+    "lat": 41.95769,
+    "lng": 34.01087
+  },
+  {
+    "id": "483",
+    "name": "CİDE",
+    "state_id": "46",
+    "lat": 41.89211,
+    "lng": 33.00439
+  },
+  {
+    "id": "484",
+    "name": "ÇATALZEYTİN",
+    "state_id": "46",
+    "lat": 41.95314,
+    "lng": 34.21627
+  },
+  {
+    "id": "485",
+    "name": "DADAY",
+    "state_id": "46",
+    "lat": 41.47866,
+    "lng": 33.46667
+  },
+  {
+    "id": "486",
+    "name": "DEVREKANİ",
+    "state_id": "46",
+    "lat": 41.60303,
+    "lng": 33.83922
+  },
+  {
+    "id": "487",
+    "name": "DOĞANYURT",
+    "state_id": "46",
+    "lat": 42.00457,
+    "lng": 33.46029
+  },
+  {
+    "id": "488",
+    "name": "HANÖNÜ",
+    "state_id": "46",
+    "lat": 41.62705,
+    "lng": 34.46667
+  },
+  {
+    "id": "489",
+    "name": "İHSANGAZİ",
+    "state_id": "46",
+    "lat": 41.20432,
+    "lng": 33.55455
+  },
+  {
+    "id": "490",
+    "name": "İNEBOLU",
+    "state_id": "46",
+    "lat": 41.97893,
+    "lng": 33.76012
+  },
+  {
+    "id": "491",
+    "name": "KÜRE",
+    "state_id": "46",
+    "lat": 41.80578,
+    "lng": 33.71161
+  },
+  {
+    "id": "492",
+    "name": "PINARBAŞI",
+    "state_id": "46",
+    "lat": 41.37805,
+    "lng": 33.77528
+  },
+  {
+    "id": "493",
+    "name": "SEYDİLER",
+    "state_id": "46",
+    "lat": 41.62005,
+    "lng": 33.71815
+  },
+  {
+    "id": "494",
+    "name": "ŞENPAZAR",
+    "state_id": "46",
+    "lat": 41.8089,
+    "lng": 33.23135
+  },
+  {
+    "id": "495",
+    "name": "TAŞKÖPRÜ",
+    "state_id": "46",
+    "lat": 41.5098,
+    "lng": 34.21414
+  },
+  {
+    "id": "496",
+    "name": "TOSYA",
+    "state_id": "46",
+    "lat": 41.01545,
+    "lng": 34.04013
+  },
+  {
+    "id": "497",
+    "name": "AKKIŞLA",
+    "state_id": "47",
+    "lat": 38.73222,
+    "lng": 35.48528
+  },
+  {
+    "id": "498",
+    "name": "BÜNYAN",
+    "state_id": "47",
+    "lat": 38.8463,
+    "lng": 35.86033
+  },
+  {
+    "id": "499",
+    "name": "DEVELİ",
+    "state_id": "47",
+    "lat": 38.39056,
+    "lng": 35.49222
+  },
+  {
+    "id": "500",
+    "name": "FELAHİYE",
+    "state_id": "47",
+    "lat": 39.09056,
+    "lng": 35.56722
+  },
+  {
+    "id": "501",
+    "name": "HACILAR",
+    "state_id": "47",
+    "lat": 38.73222,
+    "lng": 35.48528
+  },
+  {
+    "id": "502",
+    "name": "İNCESU",
+    "state_id": "47",
+    "lat": 38.6224,
+    "lng": 35.18261
+  },
+  {
+    "id": "503",
+    "name": "KOCASİNAN",
+    "state_id": "47",
+    "lat": 38.77147,
+    "lng": 35.5725
+  },
+  {
+    "id": "504",
+    "name": "MELİKGAZİ",
+    "state_id": "47",
+    "lat": 38.75,
+    "lng": 35.45
+  },
+  {
+    "id": "505",
+    "name": "ÖZVATAN",
+    "state_id": "47",
+    "lat": 39.1069,
+    "lng": 35.69994
+  },
+  {
+    "id": "506",
+    "name": "PINARBAŞI",
+    "state_id": "47",
+    "lat": 38.73222,
+    "lng": 35.48528
+  },
+  {
+    "id": "507",
+    "name": "SARIOĞLAN",
+    "state_id": "47",
+    "lat": 38.73222,
+    "lng": 35.48528
+  },
+  {
+    "id": "508",
+    "name": "SARIZ",
+    "state_id": "47",
+    "lat": 38.73222,
+    "lng": 35.48528
+  },
+  {
+    "id": "509",
+    "name": "TALAS",
+    "state_id": "47",
+    "lat": 38.6908,
+    "lng": 35.5538
+  },
+  {
+    "id": "510",
+    "name": "TOMARZA",
+    "state_id": "47",
+    "lat": 38.44722,
+    "lng": 35.79917
+  },
+  {
+    "id": "511",
+    "name": "YAHYALI",
+    "state_id": "47",
+    "lat": 38.73222,
+    "lng": 35.48528
+  },
+  {
+    "id": "512",
+    "name": "YEŞİLHİSAR",
+    "state_id": "47",
+    "lat": 38.35232,
+    "lng": 35.08873
+  },
+  {
+    "id": "513",
+    "name": "BABAESKİ",
+    "state_id": "49",
+    "lat": 41.42809,
+    "lng": 27.0966
+  },
+  {
+    "id": "514",
+    "name": "DEMİRKÖY",
+    "state_id": "49",
+    "lat": 41.82413,
+    "lng": 27.76515
+  },
+  {
+    "id": "515",
+    "name": "KOFÇAZ",
+    "state_id": "49",
+    "lat": 41.94481,
+    "lng": 27.15829
+  },
+  {
+    "id": "516",
+    "name": "LÜLEBURGAZ",
+    "state_id": "49",
+    "lat": 41.40173,
+    "lng": 27.35746
+  },
+  {
+    "id": "517",
+    "name": "PEHLİVANKÖY",
+    "state_id": "49",
+    "lat": 41.34812,
+    "lng": 26.92522
+  },
+  {
+    "id": "518",
+    "name": "PINARHİSAR",
+    "state_id": "49",
+    "lat": 38.12471,
+    "lng": 41.40663
+  },
+  {
+    "id": "519",
+    "name": "VİZE",
+    "state_id": "49",
+    "lat": 41.57629,
+    "lng": 27.76732
+  },
+  {
+    "id": "520",
+    "name": "AKÇAKENT",
+    "state_id": "50",
+    "lat": 39.62278,
+    "lng": 34.09583
+  },
+  {
+    "id": "521",
+    "name": "AKPINAR",
+    "state_id": "50",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "522",
+    "name": "BOZTEPE",
+    "state_id": "50",
+    "lat": 39.26972,
+    "lng": 34.26111
+  },
+  {
+    "id": "523",
+    "name": "ÇİÇEKDAĞI",
+    "state_id": "50",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "524",
+    "name": "KAMAN",
+    "state_id": "50",
+    "lat": 39.3575,
+    "lng": 33.72389
+  },
+  {
+    "id": "525",
+    "name": "MUCUR",
+    "state_id": "50",
+    "lat": 39.06147,
+    "lng": 34.38286
+  },
+  {
+    "id": "526",
+    "name": "BAŞİSKELE",
+    "state_id": "52",
+    "lat": 40.74012,
+    "lng": 30.00556
+  },
+  {
+    "id": "527",
+    "name": "ÇAYIROVA",
+    "state_id": "52",
+    "lat": 40.74012,
+    "lng": 30.00556
+  },
+  {
+    "id": "528",
+    "name": "DARICA",
+    "state_id": "52",
+    "lat": 40.74012,
+    "lng": 30.00556
+  },
+  {
+    "id": "529",
+    "name": "DERİNCE",
+    "state_id": "52",
+    "lat": 40.75694,
+    "lng": 29.81472
+  },
+  {
+    "id": "530",
+    "name": "DİLOVASI",
+    "state_id": "52",
+    "lat": 40.78899,
+    "lng": 29.54206
+  },
+  {
+    "id": "531",
+    "name": "GEBZE",
+    "state_id": "52",
+    "lat": 40.80276,
+    "lng": 29.43068
+  },
+  {
+    "id": "532",
+    "name": "GÖLCÜK",
+    "state_id": "52",
+    "lat": 40.71501,
+    "lng": 29.81824
+  },
+  {
+    "id": "533",
+    "name": "İZMİT",
+    "state_id": "52",
+    "lat": 40.76499,
+    "lng": 29.92928
+  },
+  {
+    "id": "534",
+    "name": "KANDIRA",
+    "state_id": "52",
+    "lat": 40.74012,
+    "lng": 30.00556
+  },
+  {
+    "id": "535",
+    "name": "KARAMÜRSEL",
+    "state_id": "52",
+    "lat": 40.69129,
+    "lng": 29.61649
+  },
+  {
+    "id": "536",
+    "name": "KARTEPE",
+    "state_id": "52",
+    "lat": 40.7522,
+    "lng": 30.02349
+  },
+  {
+    "id": "537",
+    "name": "KÖRFEZ",
+    "state_id": "52",
+    "lat": 40.76704,
+    "lng": 29.78275
+  },
+  {
+    "id": "538",
+    "name": "AHIRLI",
+    "state_id": "53",
+    "lat": 37.87135,
+    "lng": 32.48464
+  },
+  {
+    "id": "539",
+    "name": "AKÖREN",
+    "state_id": "53",
+    "lat": 37.45345,
+    "lng": 32.3707
+  },
+  {
+    "id": "540",
+    "name": "AKŞEHİR",
+    "state_id": "53",
+    "lat": 38.3575,
+    "lng": 31.41639
+  },
+  {
+    "id": "541",
+    "name": "ALTINEKİN",
+    "state_id": "53",
+    "lat": 37.87135,
+    "lng": 32.48464
+  },
+  {
+    "id": "542",
+    "name": "BEYŞEHİR",
+    "state_id": "53",
+    "lat": 37.67735,
+    "lng": 31.72458
+  },
+  {
+    "id": "543",
+    "name": "BOZKIR",
+    "state_id": "53",
+    "lat": 37.87135,
+    "lng": 32.48464
+  },
+  {
+    "id": "544",
+    "name": "CİHANBEYLİ",
+    "state_id": "53",
+    "lat": 38.66072,
+    "lng": 32.92437
+  },
+  {
+    "id": "545",
+    "name": "ÇELTİK",
+    "state_id": "53",
+    "lat": 39.02444,
+    "lng": 31.79056
+  },
+  {
+    "id": "546",
+    "name": "ÇUMRA",
+    "state_id": "53",
+    "lat": 37.5732,
+    "lng": 32.77446
+  },
+  {
+    "id": "547",
+    "name": "DERBENT",
+    "state_id": "53",
+    "lat": 38.01422,
+    "lng": 32.01639
+  },
+  {
+    "id": "548",
+    "name": "DEREBUCAK",
+    "state_id": "53",
+    "lat": 37.39179,
+    "lng": 31.50918
+  },
+  {
+    "id": "549",
+    "name": "DOĞANHİSAR",
+    "state_id": "53",
+    "lat": 38.1463,
+    "lng": 31.67648
+  },
+  {
+    "id": "550",
+    "name": "EMİRGAZİ",
+    "state_id": "53",
+    "lat": 37.90222,
+    "lng": 33.83722
+  },
+  {
+    "id": "551",
+    "name": "EREĞLİ",
+    "state_id": "53",
+    "lat": 37.51333,
+    "lng": 34.04672
+  },
+  {
+    "id": "552",
+    "name": "GÜNEYSINIR",
+    "state_id": "53",
+    "lat": 37.87135,
+    "lng": 32.48464
+  },
+  {
+    "id": "553",
+    "name": "HADİM",
+    "state_id": "53",
+    "lat": 36.98776,
+    "lng": 32.45674
+  },
+  {
+    "id": "554",
+    "name": "HALKAPINAR",
+    "state_id": "53",
+    "lat": 37.87135,
+    "lng": 32.48464
+  },
+  {
+    "id": "555",
+    "name": "HÜYÜK",
+    "state_id": "53",
+    "lat": 37.95388,
+    "lng": 31.59639
+  },
+  {
+    "id": "556",
+    "name": "ILGIN",
+    "state_id": "53",
+    "lat": 37.87135,
+    "lng": 32.48464
+  },
+  {
+    "id": "557",
+    "name": "KADINHANI",
+    "state_id": "53",
+    "lat": 37.87135,
+    "lng": 32.48464
+  },
+  {
+    "id": "558",
+    "name": "KARAPINAR",
+    "state_id": "53",
+    "lat": 37.67,
+    "lng": 33.65
+  },
+  {
+    "id": "559",
+    "name": "KARATAY",
+    "state_id": "53",
+    "lat": 37.86726,
+    "lng": 32.52863
+  },
+  {
+    "id": "560",
+    "name": "KULU",
+    "state_id": "53",
+    "lat": 39.09513,
+    "lng": 33.07989
+  },
+  {
+    "id": "561",
+    "name": "MERAM",
+    "state_id": "53",
+    "lat": 37.82985,
+    "lng": 32.46777
+  },
+  {
+    "id": "562",
+    "name": "SARAYÖNÜ",
+    "state_id": "53",
+    "lat": 38.26201,
+    "lng": 32.40457
+  },
+  {
+    "id": "563",
+    "name": "SELÇUKLU",
+    "state_id": "53",
+    "lat": 37.8842,
+    "lng": 32.49222
+  },
+  {
+    "id": "564",
+    "name": "SEYDİŞEHİR",
+    "state_id": "53",
+    "lat": 37.41926,
+    "lng": 31.84527
+  },
+  {
+    "id": "565",
+    "name": "TAŞKENT",
+    "state_id": "53",
+    "lat": 36.9243,
+    "lng": 32.49131
+  },
+  {
+    "id": "566",
+    "name": "TUZLUKÇU",
+    "state_id": "53",
+    "lat": 38.47778,
+    "lng": 31.62639
+  },
+  {
+    "id": "567",
+    "name": "YALIHÜYÜK",
+    "state_id": "53",
+    "lat": 37.87135,
+    "lng": 32.48464
+  },
+  {
+    "id": "568",
+    "name": "YUNAK",
+    "state_id": "53",
+    "lat": 38.81418,
+    "lng": 31.73223
+  },
+  {
+    "id": "569",
+    "name": "ALTINTAŞ",
+    "state_id": "54",
+    "lat": 39.42417,
+    "lng": 29.98333
+  },
+  {
+    "id": "570",
+    "name": "ASLANAPA",
+    "state_id": "54",
+    "lat": 39.21581,
+    "lng": 29.8699
+  },
+  {
+    "id": "571",
+    "name": "ÇAVDARHİSAR",
+    "state_id": "54",
+    "lat": 39.19344,
+    "lng": 29.61915
+  },
+  {
+    "id": "572",
+    "name": "DOMANİÇ",
+    "state_id": "54",
+    "lat": 39.80194,
+    "lng": 29.60918
+  },
+  {
+    "id": "573",
+    "name": "DUMLUPINAR",
+    "state_id": "54",
+    "lat": 39.42417,
+    "lng": 29.98333
+  },
+  {
+    "id": "574",
+    "name": "EMET",
+    "state_id": "54",
+    "lat": 39.343,
+    "lng": 29.25847
+  },
+  {
+    "id": "575",
+    "name": "GEDİZ",
+    "state_id": "54",
+    "lat": 38.99389,
+    "lng": 29.39131
+  },
+  {
+    "id": "576",
+    "name": "HİSARCIK",
+    "state_id": "54",
+    "lat": 39.42417,
+    "lng": 29.98333
+  },
+  {
+    "id": "577",
+    "name": "PAZARLAR",
+    "state_id": "54",
+    "lat": 38.995,
+    "lng": 29.12583
+  },
+  {
+    "id": "578",
+    "name": "SİMAV",
+    "state_id": "54",
+    "lat": 39.0882,
+    "lng": 28.97767
+  },
+  {
+    "id": "579",
+    "name": "ŞAPHANE",
+    "state_id": "54",
+    "lat": 39.0273,
+    "lng": 29.22218
+  },
+  {
+    "id": "580",
+    "name": "TAVŞANLI",
+    "state_id": "54",
+    "lat": 39.42417,
+    "lng": 29.98333
+  },
+  {
+    "id": "581",
+    "name": "AKÇADAĞ",
+    "state_id": "55",
+    "lat": 38.33899,
+    "lng": 37.97021
+  },
+  {
+    "id": "582",
+    "name": "ARAPGİR",
+    "state_id": "55",
+    "lat": 39.04117,
+    "lng": 38.49516
+  },
+  {
+    "id": "583",
+    "name": "ARGUVAN",
+    "state_id": "55",
+    "lat": 38.77375,
+    "lng": 38.26328
+  },
+  {
+    "id": "584",
+    "name": "BATTALGAZİ",
+    "state_id": "55",
+    "lat": 38.42286,
+    "lng": 38.3585
+  },
+  {
+    "id": "585",
+    "name": "DARENDE",
+    "state_id": "55",
+    "lat": 38.54583,
+    "lng": 37.50583
+  },
+  {
+    "id": "586",
+    "name": "DOĞANŞEHİR",
+    "state_id": "55",
+    "lat": 38.08574,
+    "lng": 37.87116
+  },
+  {
+    "id": "587",
+    "name": "DOĞANYOL",
+    "state_id": "55",
+    "lat": 38.30746,
+    "lng": 39.03431
+  },
+  {
+    "id": "588",
+    "name": "HEKİMHAN",
+    "state_id": "55",
+    "lat": 38.81622,
+    "lng": 37.92882
+  },
+  {
+    "id": "589",
+    "name": "KALE",
+    "state_id": "55",
+    "lat": 38.41538,
+    "lng": 38.77092
+  },
+  {
+    "id": "590",
+    "name": "KULUNCAK",
+    "state_id": "55",
+    "lat": 38.87656,
+    "lng": 37.66279
+  },
+  {
+    "id": "591",
+    "name": "PÜTÜRGE",
+    "state_id": "55",
+    "lat": 38.19923,
+    "lng": 38.86296
+  },
+  {
+    "id": "592",
+    "name": "YAZIHAN",
+    "state_id": "55",
+    "lat": 38.35018,
+    "lng": 38.31667
+  },
+  {
+    "id": "593",
+    "name": "YEŞİLYURT",
+    "state_id": "55",
+    "lat": 38.29602,
+    "lng": 38.24526
+  },
+  {
+    "id": "594",
+    "name": "AHMETLİ",
+    "state_id": "56",
+    "lat": 38.5196,
+    "lng": 27.93865
+  },
+  {
+    "id": "595",
+    "name": "AKHİSAR",
+    "state_id": "56",
+    "lat": 38.91852,
+    "lng": 27.84006
+  },
+  {
+    "id": "596",
+    "name": "ALAŞEHİR",
+    "state_id": "56",
+    "lat": 38.35083,
+    "lng": 28.51718
+  },
+  {
+    "id": "597",
+    "name": "DEMİRCİ",
+    "state_id": "56",
+    "lat": 39.04607,
+    "lng": 28.65889
+  },
+  {
+    "id": "598",
+    "name": "GÖLMARMARA",
+    "state_id": "56",
+    "lat": 38.71389,
+    "lng": 27.91417
+  },
+  {
+    "id": "599",
+    "name": "GÖRDES",
+    "state_id": "56",
+    "lat": 38.93278,
+    "lng": 28.28942
+  },
+  {
+    "id": "600",
+    "name": "KIRKAĞAÇ",
+    "state_id": "56",
+    "lat": 38.61202,
+    "lng": 27.42647
+  },
+  {
+    "id": "601",
+    "name": "KÖPRÜBAŞI",
+    "state_id": "56",
+    "lat": 38.61202,
+    "lng": 27.42647
+  },
+  {
+    "id": "602",
+    "name": "KULA",
+    "state_id": "56",
+    "lat": 38.54726,
+    "lng": 28.64976
+  },
+  {
+    "id": "603",
+    "name": "SALİHLİ",
+    "state_id": "56",
+    "lat": 38.48258,
+    "lng": 28.14774
+  },
+  {
+    "id": "604",
+    "name": "SARIGÖL",
+    "state_id": "56",
+    "lat": 38.61202,
+    "lng": 27.42647
+  },
+  {
+    "id": "605",
+    "name": "SARUHANLI",
+    "state_id": "56",
+    "lat": 38.61202,
+    "lng": 27.42647
+  },
+  {
+    "id": "606",
+    "name": "SELENDİ",
+    "state_id": "56",
+    "lat": 38.74444,
+    "lng": 28.86778
+  },
+  {
+    "id": "607",
+    "name": "SOMA",
+    "state_id": "56",
+    "lat": 39.18554,
+    "lng": 27.60945
+  },
+  {
+    "id": "608",
+    "name": "ŞEHZADELER",
+    "state_id": "56",
+    "lat": 38.61202,
+    "lng": 27.42647
+  },
+  {
+    "id": "609",
+    "name": "TURGUTLU",
+    "state_id": "56",
+    "lat": 38.49533,
+    "lng": 27.6997
+  },
+  {
+    "id": "610",
+    "name": "YUNUSEMRE",
+    "state_id": "56",
+    "lat": 39.70121,
+    "lng": 31.47142
+  },
+  {
+    "id": "611",
+    "name": "AFŞİN",
+    "state_id": "42",
+    "lat": 38.24769,
+    "lng": 36.91399
+  },
+  {
+    "id": "612",
+    "name": "ANDIRIN",
+    "state_id": "42",
+    "lat": 37.5847,
+    "lng": 36.92641
+  },
+  {
+    "id": "613",
+    "name": "ÇAĞLAYANCERİT",
+    "state_id": "42",
+    "lat": 37.74523,
+    "lng": 37.28618
+  },
+  {
+    "id": "614",
+    "name": "DULKADİROĞLU",
+    "state_id": "42",
+    "lat": 37.5847,
+    "lng": 36.92641
+  },
+  {
+    "id": "615",
+    "name": "EKİNÖZÜ",
+    "state_id": "42",
+    "lat": 38.05974,
+    "lng": 37.18786
+  },
+  {
+    "id": "616",
+    "name": "ELBİSTAN",
+    "state_id": "42",
+    "lat": 38.20591,
+    "lng": 37.1983
+  },
+  {
+    "id": "617",
+    "name": "GÖKSUN",
+    "state_id": "42",
+    "lat": 38.02096,
+    "lng": 36.4973
+  },
+  {
+    "id": "618",
+    "name": "NURHAK",
+    "state_id": "42",
+    "lat": 37.96366,
+    "lng": 37.44047
+  },
+  {
+    "id": "619",
+    "name": "ONİKİŞUBAT",
+    "state_id": "42",
+    "lat": 37.5847,
+    "lng": 36.92641
+  },
+  {
+    "id": "620",
+    "name": "PAZARCIK",
+    "state_id": "42",
+    "lat": 37.5847,
+    "lng": 36.92641
+  },
+  {
+    "id": "621",
+    "name": "TÜRKOĞLU",
+    "state_id": "42",
+    "lat": 37.38649,
+    "lng": 36.84262
+  },
+  {
+    "id": "622",
+    "name": "ARTUKLU",
+    "state_id": "57",
+    "lat": 37.31309,
+    "lng": 40.74357
+  },
+  {
+    "id": "623",
+    "name": "DARGEÇİT",
+    "state_id": "57",
+    "lat": 37.54616,
+    "lng": 41.71652
+  },
+  {
+    "id": "624",
+    "name": "DERİK",
+    "state_id": "57",
+    "lat": 37.36336,
+    "lng": 40.26473
+  },
+  {
+    "id": "625",
+    "name": "KIZILTEPE",
+    "state_id": "57",
+    "lat": 37.31309,
+    "lng": 40.74357
+  },
+  {
+    "id": "626",
+    "name": "MAZIDAĞI",
+    "state_id": "57",
+    "lat": 37.31309,
+    "lng": 40.74357
+  },
+  {
+    "id": "627",
+    "name": "MİDYAT",
+    "state_id": "57",
+    "lat": 37.41908,
+    "lng": 41.33909
+  },
+  {
+    "id": "628",
+    "name": "NUSAYBİN",
+    "state_id": "57",
+    "lat": 37.07028,
+    "lng": 41.21465
+  },
+  {
+    "id": "629",
+    "name": "ÖMERLİ",
+    "state_id": "57",
+    "lat": 37.39903,
+    "lng": 40.95442
+  },
+  {
+    "id": "630",
+    "name": "SAVUR",
+    "state_id": "57",
+    "lat": 37.53544,
+    "lng": 40.87876
+  },
+  {
+    "id": "631",
+    "name": "YEŞİLLİ",
+    "state_id": "57",
+    "lat": 37.33813,
+    "lng": 40.81739
+  },
+  {
+    "id": "632",
+    "name": "BODRUM",
+    "state_id": "59",
+    "lat": 37.03833,
+    "lng": 27.42917
+  },
+  {
+    "id": "633",
+    "name": "DALAMAN",
+    "state_id": "59",
+    "lat": 36.76591,
+    "lng": 28.8028
+  },
+  {
+    "id": "634",
+    "name": "DATÇA",
+    "state_id": "59",
+    "lat": 36.73778,
+    "lng": 27.68417
+  },
+  {
+    "id": "635",
+    "name": "FETHİYE",
+    "state_id": "59",
+    "lat": 36.64038,
+    "lng": 29.12758
+  },
+  {
+    "id": "636",
+    "name": "KAVAKLIDERE",
+    "state_id": "59",
+    "lat": 37.21807,
+    "lng": 28.3665
+  },
+  {
+    "id": "637",
+    "name": "KÖYCEĞİZ",
+    "state_id": "59",
+    "lat": 36.92204,
+    "lng": 28.71792
+  },
+  {
+    "id": "638",
+    "name": "MARMARİS",
+    "state_id": "59",
+    "lat": 36.855,
+    "lng": 28.27417
+  },
+  {
+    "id": "639",
+    "name": "MENTEŞE",
+    "state_id": "59",
+    "lat": 37.11667,
+    "lng": 28.26667
+  },
+  {
+    "id": "640",
+    "name": "MİLAS",
+    "state_id": "59",
+    "lat": 37.31639,
+    "lng": 27.78389
+  },
+  {
+    "id": "641",
+    "name": "ORTACA",
+    "state_id": "59",
+    "lat": 36.83915,
+    "lng": 28.76457
+  },
+  {
+    "id": "642",
+    "name": "SEYDİKEMER",
+    "state_id": "59",
+    "lat": 37.21807,
+    "lng": 28.3665
+  },
+  {
+    "id": "643",
+    "name": "ULA",
+    "state_id": "59",
+    "lat": 37.10491,
+    "lng": 28.41667
+  },
+  {
+    "id": "644",
+    "name": "YATAĞAN",
+    "state_id": "59",
+    "lat": 37.34025,
+    "lng": 28.14279
+  },
+  {
+    "id": "645",
+    "name": "BULANIK",
+    "state_id": "60",
+    "lat": 38.73163,
+    "lng": 41.48482
+  },
+  {
+    "id": "646",
+    "name": "HASKÖY",
+    "state_id": "60",
+    "lat": 38.68231,
+    "lng": 41.67851
+  },
+  {
+    "id": "647",
+    "name": "KORKUT",
+    "state_id": "60",
+    "lat": 38.7339,
+    "lng": 41.78396
+  },
+  {
+    "id": "648",
+    "name": "MALAZGİRT",
+    "state_id": "60",
+    "lat": 39.1465,
+    "lng": 42.53536
+  },
+  {
+    "id": "649",
+    "name": "VARTO",
+    "state_id": "60",
+    "lat": 39.17375,
+    "lng": 41.45402
+  },
+  {
+    "id": "650",
+    "name": "ACIGÖL",
+    "state_id": "61",
+    "lat": 38.625,
+    "lng": 34.71222
+  },
+  {
+    "id": "651",
+    "name": "AVANOS",
+    "state_id": "61",
+    "lat": 38.715,
+    "lng": 34.84667
+  },
+  {
+    "id": "652",
+    "name": "DERİNKUYU",
+    "state_id": "61",
+    "lat": 38.3751,
+    "lng": 34.73419
+  },
+  {
+    "id": "653",
+    "name": "GÜLŞEHİR",
+    "state_id": "61",
+    "lat": 38.74594,
+    "lng": 34.62524
+  },
+  {
+    "id": "654",
+    "name": "HACIBEKTAŞ",
+    "state_id": "61",
+    "lat": 38.625,
+    "lng": 34.71222
+  },
+  {
+    "id": "655",
+    "name": "KOZAKLI",
+    "state_id": "61",
+    "lat": 36.88658,
+    "lng": 33.17515
+  },
+  {
+    "id": "656",
+    "name": "ÜRGÜP",
+    "state_id": "61",
+    "lat": 38.6296,
+    "lng": 34.91199
+  },
+  {
+    "id": "657",
+    "name": "ALTUNHİSAR",
+    "state_id": "62",
+    "lat": 37.99159,
+    "lng": 34.37334
+  },
+  {
+    "id": "658",
+    "name": "BOR",
+    "state_id": "62",
+    "lat": 37.89056,
+    "lng": 34.55889
+  },
+  {
+    "id": "659",
+    "name": "ÇAMARDI",
+    "state_id": "62",
+    "lat": 37.96583,
+    "lng": 34.67935
+  },
+  {
+    "id": "660",
+    "name": "ÇİFTLİK",
+    "state_id": "62",
+    "lat": 38.1758,
+    "lng": 34.48535
+  },
+  {
+    "id": "661",
+    "name": "ULUKIŞLA",
+    "state_id": "62",
+    "lat": 37.96583,
+    "lng": 34.67935
+  },
+  {
+    "id": "662",
+    "name": "AKKUŞ",
+    "state_id": "63",
+    "lat": 40.79306,
+    "lng": 37.01639
+  },
+  {
+    "id": "663",
+    "name": "ALTINORDU",
+    "state_id": "63",
+    "lat": 40.97782,
+    "lng": 37.89047
+  },
+  {
+    "id": "664",
+    "name": "AYBASTI",
+    "state_id": "63",
+    "lat": 40.97782,
+    "lng": 37.89047
+  },
+  {
+    "id": "665",
+    "name": "ÇAMAŞ",
+    "state_id": "63",
+    "lat": 40.902,
+    "lng": 37.52786
+  },
+  {
+    "id": "666",
+    "name": "ÇATALPINAR",
+    "state_id": "63",
+    "lat": 40.97782,
+    "lng": 37.89047
+  },
+  {
+    "id": "667",
+    "name": "ÇAYBAŞI",
+    "state_id": "63",
+    "lat": 40.97782,
+    "lng": 37.89047
+  },
+  {
+    "id": "668",
+    "name": "FATSA",
+    "state_id": "63",
+    "lat": 41.02886,
+    "lng": 37.49977
+  },
+  {
+    "id": "669",
+    "name": "GÖLKÖY",
+    "state_id": "63",
+    "lat": 40.68689,
+    "lng": 37.61544
+  },
+  {
+    "id": "670",
+    "name": "GÜLYALI",
+    "state_id": "63",
+    "lat": 40.97782,
+    "lng": 37.89047
+  },
+  {
+    "id": "671",
+    "name": "GÜRGENTEPE",
+    "state_id": "63",
+    "lat": 40.78995,
+    "lng": 37.60073
+  },
+  {
+    "id": "672",
+    "name": "İKİZCE",
+    "state_id": "63",
+    "lat": 41.05833,
+    "lng": 37.08028
+  },
+  {
+    "id": "673",
+    "name": "KABADÜZ",
+    "state_id": "63",
+    "lat": 40.86096,
+    "lng": 37.8847
+  },
+  {
+    "id": "674",
+    "name": "KABATAŞ",
+    "state_id": "63",
+    "lat": 40.75,
+    "lng": 37.45
+  },
+  {
+    "id": "675",
+    "name": "KORGAN",
+    "state_id": "63",
+    "lat": 40.82472,
+    "lng": 37.34667
+  },
+  {
+    "id": "676",
+    "name": "KUMRU",
+    "state_id": "63",
+    "lat": 40.87444,
+    "lng": 37.26389
+  },
+  {
+    "id": "677",
+    "name": "MESUDİYE",
+    "state_id": "63",
+    "lat": 40.45446,
+    "lng": 37.77353
+  },
+  {
+    "id": "678",
+    "name": "PERŞEMBE",
+    "state_id": "63",
+    "lat": 41.06556,
+    "lng": 37.77139
+  },
+  {
+    "id": "679",
+    "name": "ULUBEY",
+    "state_id": "63",
+    "lat": 40.86863,
+    "lng": 37.75405
+  },
+  {
+    "id": "680",
+    "name": "ÜNYE",
+    "state_id": "63",
+    "lat": 41.14049,
+    "lng": 37.28851
+  },
+  {
+    "id": "681",
+    "name": "ARDEŞEN",
+    "state_id": "65",
+    "lat": 41.19064,
+    "lng": 40.97935
+  },
+  {
+    "id": "682",
+    "name": "ÇAMLIHEMŞİN",
+    "state_id": "65",
+    "lat": 41.02083,
+    "lng": 40.52194
+  },
+  {
+    "id": "683",
+    "name": "ÇAYELİ",
+    "state_id": "65",
+    "lat": 41.08609,
+    "lng": 40.72213
+  },
+  {
+    "id": "684",
+    "name": "DEREPAZARI",
+    "state_id": "65",
+    "lat": 41.02083,
+    "lng": 40.52194
+  },
+  {
+    "id": "685",
+    "name": "FINDIKLI",
+    "state_id": "65",
+    "lat": 41.02083,
+    "lng": 40.52194
+  },
+  {
+    "id": "686",
+    "name": "GÜNEYSU",
+    "state_id": "65",
+    "lat": 40.9813,
+    "lng": 40.60465
+  },
+  {
+    "id": "687",
+    "name": "HEMŞİN",
+    "state_id": "65",
+    "lat": 41.04777,
+    "lng": 40.8984
+  },
+  {
+    "id": "688",
+    "name": "İKİZDERE",
+    "state_id": "65",
+    "lat": 40.77484,
+    "lng": 40.55227
+  },
+  {
+    "id": "689",
+    "name": "İYİDERE",
+    "state_id": "65",
+    "lat": 41.01192,
+    "lng": 40.36185
+  },
+  {
+    "id": "690",
+    "name": "KALKANDERE",
+    "state_id": "65",
+    "lat": 40.92046,
+    "lng": 40.43692
+  },
+  {
+    "id": "691",
+    "name": "PAZAR",
+    "state_id": "65",
+    "lat": 41.18019,
+    "lng": 40.88663
+  },
+  {
+    "id": "692",
+    "name": "ADAPAZARI",
+    "state_id": "66",
+    "lat": 39.50333,
+    "lng": 32.07583
+  },
+  {
+    "id": "693",
+    "name": "AKYAZI",
+    "state_id": "66",
+    "lat": 39.50333,
+    "lng": 32.07583
+  },
+  {
+    "id": "694",
+    "name": "ARİFİYE",
+    "state_id": "66",
+    "lat": 40.70036,
+    "lng": 30.35076
+  },
+  {
+    "id": "695",
+    "name": "ERENLER",
+    "state_id": "66",
+    "lat": 40.75504,
+    "lng": 30.39344
+  },
+  {
+    "id": "696",
+    "name": "FERİZLİ",
+    "state_id": "66",
+    "lat": 40.94082,
+    "lng": 30.48583
+  },
+  {
+    "id": "697",
+    "name": "GEYVE",
+    "state_id": "66",
+    "lat": 40.5075,
+    "lng": 30.2925
+  },
+  {
+    "id": "698",
+    "name": "HENDEK",
+    "state_id": "66",
+    "lat": 40.79944,
+    "lng": 30.74806
+  },
+  {
+    "id": "699",
+    "name": "KARAPÜRÇEK",
+    "state_id": "66",
+    "lat": 40.64194,
+    "lng": 30.53944
+  },
+  {
+    "id": "700",
+    "name": "KARASU",
+    "state_id": "66",
+    "lat": 41.10442,
+    "lng": 30.69664
+  },
+  {
+    "id": "701",
+    "name": "KAYNARCA",
+    "state_id": "66",
+    "lat": 41.03083,
+    "lng": 30.3075
+  },
+  {
+    "id": "702",
+    "name": "KOCAALİ",
+    "state_id": "66",
+    "lat": 41.05336,
+    "lng": 30.85278
+  },
+  {
+    "id": "703",
+    "name": "PAMUKOVA",
+    "state_id": "66",
+    "lat": 40.5081,
+    "lng": 30.16732
+  },
+  {
+    "id": "704",
+    "name": "SAPANCA",
+    "state_id": "66",
+    "lat": 40.69141,
+    "lng": 30.26738
+  },
+  {
+    "id": "705",
+    "name": "SERDİVAN",
+    "state_id": "66",
+    "lat": 40.77376,
+    "lng": 30.38006
+  },
+  {
+    "id": "706",
+    "name": "SÖĞÜTLÜ",
+    "state_id": "66",
+    "lat": 40.9059,
+    "lng": 30.47448
+  },
+  {
+    "id": "707",
+    "name": "TARAKLI",
+    "state_id": "66",
+    "lat": 39.50333,
+    "lng": 32.07583
+  },
+  {
+    "id": "708",
+    "name": "19 MAYIS",
+    "state_id": "67",
+    "lat": 41.27976,
+    "lng": 36.3361
+  },
+  {
+    "id": "709",
+    "name": "ALAÇAM",
+    "state_id": "67",
+    "lat": 41.60556,
+    "lng": 35.59806
+  },
+  {
+    "id": "710",
+    "name": "ASARCIK",
+    "state_id": "67",
+    "lat": 41.27976,
+    "lng": 36.3361
+  },
+  {
+    "id": "711",
+    "name": "ATAKUM",
+    "state_id": "67",
+    "lat": 41.27976,
+    "lng": 36.3361
+  },
+  {
+    "id": "712",
+    "name": "AYVACIK",
+    "state_id": "67",
+    "lat": 41.27976,
+    "lng": 36.3361
+  },
+  {
+    "id": "713",
+    "name": "BAFRA",
+    "state_id": "67",
+    "lat": 41.56787,
+    "lng": 35.90311
+  },
+  {
+    "id": "714",
+    "name": "CANİK",
+    "state_id": "67",
+    "lat": 41.07273,
+    "lng": 35.83356
+  },
+  {
+    "id": "715",
+    "name": "ÇARŞAMBA",
+    "state_id": "67",
+    "lat": 41.19889,
+    "lng": 36.72194
+  },
+  {
+    "id": "716",
+    "name": "HAVZA",
+    "state_id": "67",
+    "lat": 40.97056,
+    "lng": 35.66222
+  },
+  {
+    "id": "717",
+    "name": "İLKADIM",
+    "state_id": "67",
+    "lat": 41.27976,
+    "lng": 36.3361
+  },
+  {
+    "id": "718",
+    "name": "KAVAK",
+    "state_id": "67",
+    "lat": 41.07833,
+    "lng": 36.0425
+  },
+  {
+    "id": "719",
+    "name": "LADİK",
+    "state_id": "67",
+    "lat": 40.91056,
+    "lng": 35.89194
+  },
+  {
+    "id": "720",
+    "name": "SALIPAZARI",
+    "state_id": "67",
+    "lat": 41.27976,
+    "lng": 36.3361
+  },
+  {
+    "id": "721",
+    "name": "TEKKEKÖY",
+    "state_id": "67",
+    "lat": 41.21167,
+    "lng": 36.46
+  },
+  {
+    "id": "722",
+    "name": "TERME",
+    "state_id": "67",
+    "lat": 41.20917,
+    "lng": 36.97389
+  },
+  {
+    "id": "723",
+    "name": "VEZİRKÖPRÜ",
+    "state_id": "67",
+    "lat": 41.14361,
+    "lng": 35.45472
+  },
+  {
+    "id": "724",
+    "name": "YAKAKENT",
+    "state_id": "67",
+    "lat": 41.6325,
+    "lng": 35.52889
+  },
+  {
+    "id": "725",
+    "name": "BAYKAN",
+    "state_id": "68",
+    "lat": 38.15754,
+    "lng": 41.7733
+  },
+  {
+    "id": "726",
+    "name": "ERUH",
+    "state_id": "68",
+    "lat": 37.74183,
+    "lng": 42.17422
+  },
+  {
+    "id": "727",
+    "name": "KURTALAN",
+    "state_id": "68",
+    "lat": 37.92533,
+    "lng": 41.68493
+  },
+  {
+    "id": "728",
+    "name": "PERVARİ",
+    "state_id": "68",
+    "lat": 37.93573,
+    "lng": 42.54927
+  },
+  {
+    "id": "729",
+    "name": "ŞİRVAN",
+    "state_id": "68",
+    "lat": 38.06251,
+    "lng": 42.02517
+  },
+  {
+    "id": "730",
+    "name": "TİLLO",
+    "state_id": "68",
+    "lat": 37.94911,
+    "lng": 42.0121
+  },
+  {
+    "id": "731",
+    "name": "AYANCIK",
+    "state_id": "69",
+    "lat": 42.02683,
+    "lng": 35.16253
+  },
+  {
+    "id": "732",
+    "name": "BOYABAT",
+    "state_id": "69",
+    "lat": 41.46889,
+    "lng": 34.76667
+  },
+  {
+    "id": "733",
+    "name": "DİKMEN",
+    "state_id": "69",
+    "lat": 41.65,
+    "lng": 35.26667
+  },
+  {
+    "id": "734",
+    "name": "DURAĞAN",
+    "state_id": "69",
+    "lat": 41.41583,
+    "lng": 35.05444
+  },
+  {
+    "id": "735",
+    "name": "ERFELEK",
+    "state_id": "69",
+    "lat": 41.87926,
+    "lng": 34.91838
+  },
+  {
+    "id": "736",
+    "name": "GERZE",
+    "state_id": "69",
+    "lat": 41.80361,
+    "lng": 35.20111
+  },
+  {
+    "id": "737",
+    "name": "SARAYDÜZÜ",
+    "state_id": "69",
+    "lat": 41.32865,
+    "lng": 34.84686
+  },
+  {
+    "id": "738",
+    "name": "TÜRKELİ",
+    "state_id": "69",
+    "lat": 41.94764,
+    "lng": 34.33861
+  },
+  {
+    "id": "739",
+    "name": "AKINCILAR",
+    "state_id": "70",
+    "lat": 39.74833,
+    "lng": 37.01611
+  },
+  {
+    "id": "740",
+    "name": "ALTINYAYLA",
+    "state_id": "70",
+    "lat": 39.74833,
+    "lng": 37.01611
+  },
+  {
+    "id": "741",
+    "name": "DİVRİĞİ",
+    "state_id": "70",
+    "lat": 39.371,
+    "lng": 38.1137
+  },
+  {
+    "id": "742",
+    "name": "DOĞANŞAR",
+    "state_id": "70",
+    "lat": 40.20841,
+    "lng": 37.53123
+  },
+  {
+    "id": "743",
+    "name": "GEMEREK",
+    "state_id": "70",
+    "lat": 39.18342,
+    "lng": 36.07189
+  },
+  {
+    "id": "744",
+    "name": "GÖLOVA",
+    "state_id": "70",
+    "lat": 40.06194,
+    "lng": 38.60667
+  },
+  {
+    "id": "745",
+    "name": "GÜRÜN",
+    "state_id": "70",
+    "lat": 38.72225,
+    "lng": 37.27097
+  },
+  {
+    "id": "746",
+    "name": "HAFİK",
+    "state_id": "70",
+    "lat": 39.85639,
+    "lng": 37.38639
+  },
+  {
+    "id": "747",
+    "name": "İMRANLI",
+    "state_id": "70",
+    "lat": 39.74833,
+    "lng": 37.01611
+  },
+  {
+    "id": "748",
+    "name": "KANGAL",
+    "state_id": "70",
+    "lat": 39.23354,
+    "lng": 37.39111
+  },
+  {
+    "id": "749",
+    "name": "KOYULHİSAR",
+    "state_id": "70",
+    "lat": 40.30184,
+    "lng": 37.82336
+  },
+  {
+    "id": "750",
+    "name": "SUŞEHRİ",
+    "state_id": "70",
+    "lat": 40.16005,
+    "lng": 38.08413
+  },
+  {
+    "id": "751",
+    "name": "ŞARKIŞLA",
+    "state_id": "70",
+    "lat": 39.74833,
+    "lng": 37.01611
+  },
+  {
+    "id": "752",
+    "name": "ULAŞ",
+    "state_id": "70",
+    "lat": 39.44492,
+    "lng": 37.039
+  },
+  {
+    "id": "753",
+    "name": "YILDIZELİ",
+    "state_id": "70",
+    "lat": 39.74833,
+    "lng": 37.01611
+  },
+  {
+    "id": "754",
+    "name": "ZARA",
+    "state_id": "70",
+    "lat": 39.89778,
+    "lng": 37.75833
+  },
+  {
+    "id": "755",
+    "name": "ÇERKEZKÖY",
+    "state_id": "73",
+    "lat": 41.28629,
+    "lng": 27.99939
+  },
+  {
+    "id": "756",
+    "name": "ÇORLU",
+    "state_id": "73",
+    "lat": 41.16069,
+    "lng": 27.80093
+  },
+  {
+    "id": "757",
+    "name": "ERGENE",
+    "state_id": "73",
+    "lat": 38.46779,
+    "lng": 27.21894
+  },
+  {
+    "id": "758",
+    "name": "HAYRABOLU",
+    "state_id": "73",
+    "lat": 41.21311,
+    "lng": 27.10688
+  },
+  {
+    "id": "759",
+    "name": "KAPAKLI",
+    "state_id": "73",
+    "lat": 40.9781,
+    "lng": 27.51101
+  },
+  {
+    "id": "760",
+    "name": "MALKARA",
+    "state_id": "73",
+    "lat": 40.89105,
+    "lng": 26.90201
+  },
+  {
+    "id": "761",
+    "name": "MARMARAEREĞLİSİ",
+    "state_id": "73",
+    "lat": 40.9781,
+    "lng": 27.51101
+  },
+  {
+    "id": "762",
+    "name": "MURATLI",
+    "state_id": "73",
+    "lat": 40.9781,
+    "lng": 27.51101
+  },
+  {
+    "id": "763",
+    "name": "SARAY",
+    "state_id": "73",
+    "lat": 41.44249,
+    "lng": 27.92062
+  },
+  {
+    "id": "764",
+    "name": "SÜLEYMANPAŞA",
+    "state_id": "73",
+    "lat": 40.9781,
+    "lng": 27.51101
+  },
+  {
+    "id": "765",
+    "name": "ŞARKÖY",
+    "state_id": "73",
+    "lat": 40.61395,
+    "lng": 27.11563
+  },
+  {
+    "id": "766",
+    "name": "ALMUS",
+    "state_id": "74",
+    "lat": 40.37583,
+    "lng": 36.90444
+  },
+  {
+    "id": "767",
+    "name": "ARTOVA",
+    "state_id": "74",
+    "lat": 40.11578,
+    "lng": 36.3001
+  },
+  {
+    "id": "768",
+    "name": "BAŞÇİFTLİK",
+    "state_id": "74",
+    "lat": 40.54694,
+    "lng": 37.16917
+  },
+  {
+    "id": "769",
+    "name": "ERBAA",
+    "state_id": "74",
+    "lat": 40.66889,
+    "lng": 36.5675
+  },
+  {
+    "id": "770",
+    "name": "NİKSAR",
+    "state_id": "74",
+    "lat": 40.59167,
+    "lng": 36.95167
+  },
+  {
+    "id": "771",
+    "name": "PAZAR",
+    "state_id": "74",
+    "lat": 40.27652,
+    "lng": 36.28347
+  },
+  {
+    "id": "772",
+    "name": "REŞADİYE",
+    "state_id": "74",
+    "lat": 40.39194,
+    "lng": 37.3375
+  },
+  {
+    "id": "773",
+    "name": "SULUSARAY",
+    "state_id": "74",
+    "lat": 39.99389,
+    "lng": 36.08404
+  },
+  {
+    "id": "774",
+    "name": "TURHAL",
+    "state_id": "74",
+    "lat": 40.3875,
+    "lng": 36.08111
+  },
+  {
+    "id": "775",
+    "name": "YEŞİLYURT",
+    "state_id": "74",
+    "lat": 40.0064,
+    "lng": 36.22069
+  },
+  {
+    "id": "776",
+    "name": "ZİLE",
+    "state_id": "74",
+    "lat": 40.30306,
+    "lng": 35.88639
+  },
+  {
+    "id": "777",
+    "name": "AKÇAABAT",
+    "state_id": "75",
+    "lat": 41.02121,
+    "lng": 39.57146
+  },
+  {
+    "id": "778",
+    "name": "ARAKLI",
+    "state_id": "75",
+    "lat": 41.005,
+    "lng": 39.72694
+  },
+  {
+    "id": "779",
+    "name": "ARSİN",
+    "state_id": "75",
+    "lat": 40.95271,
+    "lng": 39.92674
+  },
+  {
+    "id": "780",
+    "name": "BEŞİKDÜZÜ",
+    "state_id": "75",
+    "lat": 41.05202,
+    "lng": 39.23294
+  },
+  {
+    "id": "781",
+    "name": "ÇARŞIBAŞI",
+    "state_id": "75",
+    "lat": 41.005,
+    "lng": 39.72694
+  },
+  {
+    "id": "782",
+    "name": "ÇAYKARA",
+    "state_id": "75",
+    "lat": 40.74267,
+    "lng": 40.23175
+  },
+  {
+    "id": "783",
+    "name": "DERNEKPAZARI",
+    "state_id": "75",
+    "lat": 41.005,
+    "lng": 39.72694
+  },
+  {
+    "id": "784",
+    "name": "DÜZKÖY",
+    "state_id": "75",
+    "lat": 40.87461,
+    "lng": 39.41536
+  },
+  {
+    "id": "785",
+    "name": "HAYRAT",
+    "state_id": "75",
+    "lat": 40.8853,
+    "lng": 40.36495
+  },
+  {
+    "id": "786",
+    "name": "KÖPRÜBAŞI",
+    "state_id": "75",
+    "lat": 41.005,
+    "lng": 39.72694
+  },
+  {
+    "id": "787",
+    "name": "MAÇKA",
+    "state_id": "75",
+    "lat": 40.81072,
+    "lng": 39.60465
+  },
+  {
+    "id": "788",
+    "name": "OF",
+    "state_id": "75",
+    "lat": 40.94055,
+    "lng": 40.25918
+  },
+  {
+    "id": "789",
+    "name": "ORTAHİSAR",
+    "state_id": "75",
+    "lat": 38.62214,
+    "lng": 34.86583
+  },
+  {
+    "id": "790",
+    "name": "SÜRMENE",
+    "state_id": "75",
+    "lat": 40.93854,
+    "lng": 40.05842
+  },
+  {
+    "id": "791",
+    "name": "ŞALPAZARI",
+    "state_id": "75",
+    "lat": 41.005,
+    "lng": 39.72694
+  },
+  {
+    "id": "792",
+    "name": "TONYA",
+    "state_id": "75",
+    "lat": 40.88402,
+    "lng": 39.28486
+  },
+  {
+    "id": "793",
+    "name": "VAKFIKEBİR",
+    "state_id": "75",
+    "lat": 41.005,
+    "lng": 39.72694
+  },
+  {
+    "id": "794",
+    "name": "YOMRA",
+    "state_id": "75",
+    "lat": 40.95326,
+    "lng": 39.85546
+  },
+  {
+    "id": "795",
+    "name": "ÇEMİŞGEZEK",
+    "state_id": "76",
+    "lat": 39.05539,
+    "lng": 38.90754
+  },
+  {
+    "id": "796",
+    "name": "HOZAT",
+    "state_id": "76",
+    "lat": 39.10029,
+    "lng": 39.20816
+  },
+  {
+    "id": "797",
+    "name": "MAZGİRT",
+    "state_id": "76",
+    "lat": 39.01783,
+    "lng": 39.60064
+  },
+  {
+    "id": "798",
+    "name": "NAZIMİYE",
+    "state_id": "76",
+    "lat": 39.17986,
+    "lng": 39.82843
+  },
+  {
+    "id": "799",
+    "name": "OVACIK",
+    "state_id": "76",
+    "lat": 40.00994,
+    "lng": 32.82385
+  },
+  {
+    "id": "800",
+    "name": "PERTEK",
+    "state_id": "76",
+    "lat": 38.86574,
+    "lng": 39.32273
+  },
+  {
+    "id": "801",
+    "name": "PÜLÜMÜR",
+    "state_id": "76",
+    "lat": 39.48449,
+    "lng": 39.89532
+  },
+  {
+    "id": "802",
+    "name": "AKÇAKALE",
+    "state_id": "71",
+    "lat": 36.71111,
+    "lng": 38.9475
+  },
+  {
+    "id": "803",
+    "name": "BİRECİK",
+    "state_id": "71",
+    "lat": 37.02577,
+    "lng": 37.97841
+  },
+  {
+    "id": "804",
+    "name": "BOZOVA",
+    "state_id": "71",
+    "lat": 37.3625,
+    "lng": 38.52667
+  },
+  {
+    "id": "805",
+    "name": "CEYLANPINAR",
+    "state_id": "71",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "806",
+    "name": "EYYÜBİYE",
+    "state_id": "71",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "807",
+    "name": "HALFETİ",
+    "state_id": "71",
+    "lat": 37.24529,
+    "lng": 37.86874
+  },
+  {
+    "id": "808",
+    "name": "HALİLİYE",
+    "state_id": "71",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "809",
+    "name": "HARRAN",
+    "state_id": "71",
+    "lat": 36.86,
+    "lng": 39.03139
+  },
+  {
+    "id": "810",
+    "name": "HİLVAN",
+    "state_id": "71",
+    "lat": 37.58687,
+    "lng": 38.95505
+  },
+  {
+    "id": "811",
+    "name": "KARAKÖPRÜ",
+    "state_id": "71",
+    "lat": 37.20361,
+    "lng": 38.79944
+  },
+  {
+    "id": "812",
+    "name": "SİVEREK",
+    "state_id": "71",
+    "lat": 37.75503,
+    "lng": 39.31667
+  },
+  {
+    "id": "813",
+    "name": "SURUÇ",
+    "state_id": "71",
+    "lat": 36.97612,
+    "lng": 38.42533
+  },
+  {
+    "id": "814",
+    "name": "VİRANŞEHİR",
+    "state_id": "71",
+    "lat": 37.22349,
+    "lng": 39.75519
+  },
+  {
+    "id": "815",
+    "name": "BANAZ",
+    "state_id": "77",
+    "lat": 38.73707,
+    "lng": 29.75194
+  },
+  {
+    "id": "816",
+    "name": "EŞME",
+    "state_id": "77",
+    "lat": 38.39976,
+    "lng": 28.96905
+  },
+  {
+    "id": "817",
+    "name": "KARAHALLI",
+    "state_id": "77",
+    "lat": 38.67351,
+    "lng": 29.4058
+  },
+  {
+    "id": "818",
+    "name": "SİVASLI",
+    "state_id": "77",
+    "lat": 38.67351,
+    "lng": 29.4058
+  },
+  {
+    "id": "819",
+    "name": "ULUBEY",
+    "state_id": "77",
+    "lat": 38.41987,
+    "lng": 29.29129
+  },
+  {
+    "id": "820",
+    "name": "BAHÇESARAY",
+    "state_id": "78",
+    "lat": 38.1246,
+    "lng": 42.79825
+  },
+  {
+    "id": "821",
+    "name": "BAŞKALE",
+    "state_id": "78",
+    "lat": 38.04526,
+    "lng": 44.01718
+  },
+  {
+    "id": "822",
+    "name": "ÇALDIRAN",
+    "state_id": "78",
+    "lat": 38.49457,
+    "lng": 43.38323
+  },
+  {
+    "id": "823",
+    "name": "ÇATAK",
+    "state_id": "78",
+    "lat": 38.00293,
+    "lng": 43.05243
+  },
+  {
+    "id": "824",
+    "name": "EDREMİT",
+    "state_id": "78",
+    "lat": 38.42069,
+    "lng": 43.25889
+  },
+  {
+    "id": "825",
+    "name": "ERCİŞ",
+    "state_id": "78",
+    "lat": 39.02587,
+    "lng": 43.35964
+  },
+  {
+    "id": "826",
+    "name": "GEVAŞ",
+    "state_id": "78",
+    "lat": 38.2921,
+    "lng": 43.10189
+  },
+  {
+    "id": "827",
+    "name": "GÜRPINAR",
+    "state_id": "78",
+    "lat": 38.49457,
+    "lng": 43.38323
+  },
+  {
+    "id": "828",
+    "name": "İPEKYOLU",
+    "state_id": "78",
+    "lat": 38.69728,
+    "lng": 37.96765
+  },
+  {
+    "id": "829",
+    "name": "MURADİYE",
+    "state_id": "78",
+    "lat": 38.98568,
+    "lng": 43.7531
+  },
+  {
+    "id": "830",
+    "name": "ÖZALP",
+    "state_id": "78",
+    "lat": 38.65455,
+    "lng": 43.98869
+  },
+  {
+    "id": "831",
+    "name": "SARAY",
+    "state_id": "78",
+    "lat": 38.64691,
+    "lng": 44.16116
+  },
+  {
+    "id": "832",
+    "name": "TUŞBA",
+    "state_id": "78",
+    "lat": 38.49457,
+    "lng": 43.38323
+  },
+  {
+    "id": "833",
+    "name": "AKDAĞMADENİ",
+    "state_id": "80",
+    "lat": 39.66028,
+    "lng": 35.88361
+  },
+  {
+    "id": "834",
+    "name": "AYDINCIK",
+    "state_id": "80",
+    "lat": 39.82,
+    "lng": 34.80444
+  },
+  {
+    "id": "835",
+    "name": "BOĞAZLIYAN",
+    "state_id": "80",
+    "lat": 39.82,
+    "lng": 34.80444
+  },
+  {
+    "id": "836",
+    "name": "ÇANDIR",
+    "state_id": "80",
+    "lat": 39.82,
+    "lng": 34.80444
+  },
+  {
+    "id": "837",
+    "name": "ÇAYIRALAN",
+    "state_id": "80",
+    "lat": 39.82,
+    "lng": 34.80444
+  },
+  {
+    "id": "838",
+    "name": "ÇEKEREK",
+    "state_id": "80",
+    "lat": 40.07306,
+    "lng": 35.49472
+  },
+  {
+    "id": "839",
+    "name": "KADIŞEHRİ",
+    "state_id": "80",
+    "lat": 39.82,
+    "lng": 34.80444
+  },
+  {
+    "id": "840",
+    "name": "SARAYKENT",
+    "state_id": "80",
+    "lat": 39.69361,
+    "lng": 35.51111
+  },
+  {
+    "id": "841",
+    "name": "SARIKAYA",
+    "state_id": "80",
+    "lat": 39.82,
+    "lng": 34.80444
+  },
+  {
+    "id": "842",
+    "name": "SORGUN",
+    "state_id": "80",
+    "lat": 39.81012,
+    "lng": 35.18596
+  },
+  {
+    "id": "843",
+    "name": "ŞEFAATLİ",
+    "state_id": "80",
+    "lat": 39.5043,
+    "lng": 34.7563
+  },
+  {
+    "id": "844",
+    "name": "YENİFAKILI",
+    "state_id": "80",
+    "lat": 39.82,
+    "lng": 34.80444
+  },
+  {
+    "id": "845",
+    "name": "YERKÖY",
+    "state_id": "80",
+    "lat": 39.63806,
+    "lng": 34.46722
+  },
+  {
+    "id": "846",
+    "name": "ALAPLI",
+    "state_id": "81",
+    "lat": 41.45139,
+    "lng": 31.79305
+  },
+  {
+    "id": "847",
+    "name": "ÇAYCUMA",
+    "state_id": "81",
+    "lat": 41.42639,
+    "lng": 32.07556
+  },
+  {
+    "id": "848",
+    "name": "DEVREK",
+    "state_id": "81",
+    "lat": 41.21917,
+    "lng": 31.95583
+  },
+  {
+    "id": "849",
+    "name": "EREĞLİ",
+    "state_id": "81",
+    "lat": 41.28261,
+    "lng": 31.41806
+  },
+  {
+    "id": "850",
+    "name": "GÖKÇEBEY",
+    "state_id": "81",
+    "lat": 41.30583,
+    "lng": 32.14234
+  },
+  {
+    "id": "851",
+    "name": "KİLİMLİ",
+    "state_id": "81",
+    "lat": 41.49111,
+    "lng": 31.83861
+  },
+  {
+    "id": "852",
+    "name": "KOZLU",
+    "state_id": "81",
+    "lat": 41.43194,
+    "lng": 31.74583
+  },
+  {
+    "id": "853",
+    "name": "AĞAÇÖREN",
+    "state_id": "5",
+    "lat": 38.87484,
+    "lng": 33.91674
+  },
+  {
+    "id": "854",
+    "name": "ESKİL",
+    "state_id": "5",
+    "lat": 38.40167,
+    "lng": 33.41306
+  },
+  {
+    "id": "855",
+    "name": "GÜLAĞAÇ",
+    "state_id": "5",
+    "lat": 38.39576,
+    "lng": 34.34576
+  },
+  {
+    "id": "856",
+    "name": "GÜZELYURT",
+    "state_id": "5",
+    "lat": 38.27722,
+    "lng": 34.37194
+  },
+  {
+    "id": "857",
+    "name": "ORTAKÖY",
+    "state_id": "5",
+    "lat": 38.73728,
+    "lng": 34.03866
+  },
+  {
+    "id": "858",
+    "name": "SARIYAHŞİ",
+    "state_id": "5",
+    "lat": 38.37255,
+    "lng": 34.02537
+  },
+  {
+    "id": "859",
+    "name": "SULTANHANI",
+    "state_id": "5",
+    "lat": 38.37255,
+    "lng": 34.02537
+  },
+  {
+    "id": "860",
+    "name": "AYDINTEPE",
+    "state_id": "15",
+    "lat": 40.25631,
+    "lng": 40.22289
+  },
+  {
+    "id": "861",
+    "name": "DEMİRÖZÜ",
+    "state_id": "15",
+    "lat": 40.16023,
+    "lng": 39.89239
+  },
+  {
+    "id": "862",
+    "name": "AYRANCI",
+    "state_id": "44",
+    "lat": 37.18111,
+    "lng": 33.215
+  },
+  {
+    "id": "863",
+    "name": "BAŞYAYLA",
+    "state_id": "44",
+    "lat": 36.75337,
+    "lng": 32.68018
+  },
+  {
+    "id": "864",
+    "name": "ERMENEK",
+    "state_id": "44",
+    "lat": 36.64043,
+    "lng": 32.89179
+  },
+  {
+    "id": "865",
+    "name": "KAZIMKARABEKİR",
+    "state_id": "44",
+    "lat": 37.18111,
+    "lng": 33.215
+  },
+  {
+    "id": "866",
+    "name": "SARIVELİLER",
+    "state_id": "44",
+    "lat": 37.18111,
+    "lng": 33.215
+  },
+  {
+    "id": "867",
+    "name": "BAHŞILI",
+    "state_id": "48",
+    "lat": 39.80017,
+    "lng": 33.43701
+  },
+  {
+    "id": "868",
+    "name": "BALIŞEYH",
+    "state_id": "48",
+    "lat": 39.9334,
+    "lng": 32.8597
+  },
+  {
+    "id": "869",
+    "name": "ÇELEBİ",
+    "state_id": "48",
+    "lat": 39.46418,
+    "lng": 33.5241
+  },
+  {
+    "id": "870",
+    "name": "DELİCE",
+    "state_id": "48",
+    "lat": 39.95371,
+    "lng": 34.02587
+  },
+  {
+    "id": "871",
+    "name": "KARAKEÇİLİ",
+    "state_id": "48",
+    "lat": 39.59417,
+    "lng": 33.37778
+  },
+  {
+    "id": "872",
+    "name": "KESKİN",
+    "state_id": "48",
+    "lat": 39.67306,
+    "lng": 33.61361
+  },
+  {
+    "id": "873",
+    "name": "SULAKYURT",
+    "state_id": "48",
+    "lat": 40.15733,
+    "lng": 33.716
+  },
+  {
+    "id": "874",
+    "name": "YAHŞİHAN",
+    "state_id": "48",
+    "lat": 39.85028,
+    "lng": 33.45294
+  },
+  {
+    "id": "875",
+    "name": "BEŞİRİ",
+    "state_id": "14",
+    "lat": 37.91573,
+    "lng": 41.2865
+  },
+  {
+    "id": "876",
+    "name": "GERCÜŞ",
+    "state_id": "14",
+    "lat": 37.56249,
+    "lng": 41.37753
+  },
+  {
+    "id": "877",
+    "name": "HASANKEYF",
+    "state_id": "14",
+    "lat": 37.70612,
+    "lng": 41.4048
+  },
+  {
+    "id": "878",
+    "name": "KOZLUK",
+    "state_id": "14",
+    "lat": 38.19118,
+    "lng": 41.47775
+  },
+  {
+    "id": "879",
+    "name": "SASON",
+    "state_id": "14",
+    "lat": 38.32767,
+    "lng": 41.41377
+  },
+  {
+    "id": "880",
+    "name": "BEYTÜŞŞEBAP",
+    "state_id": "72",
+    "lat": 37.56318,
+    "lng": 43.16583
+  },
+  {
+    "id": "881",
+    "name": "CİZRE",
+    "state_id": "72",
+    "lat": 37.33024,
+    "lng": 42.18484
+  },
+  {
+    "id": "882",
+    "name": "GÜÇLÜKONAK",
+    "state_id": "72",
+    "lat": 37.46957,
+    "lng": 41.90593
+  },
+  {
+    "id": "883",
+    "name": "İDİL",
+    "state_id": "72",
+    "lat": 37.33481,
+    "lng": 41.88944
+  },
+  {
+    "id": "884",
+    "name": "SİLOPİ",
+    "state_id": "72",
+    "lat": 37.24379,
+    "lng": 42.46345
+  },
+  {
+    "id": "885",
+    "name": "ULUDERE",
+    "state_id": "72",
+    "lat": 37.44074,
+    "lng": 42.85236
+  },
+  {
+    "id": "886",
+    "name": "AMASRA",
+    "state_id": "13",
+    "lat": 41.74633,
+    "lng": 32.38633
+  },
+  {
+    "id": "887",
+    "name": "KURUCAŞİLE",
+    "state_id": "13",
+    "lat": 41.83781,
+    "lng": 32.71621
+  },
+  {
+    "id": "888",
+    "name": "ULUS",
+    "state_id": "13",
+    "lat": 41.58417,
+    "lng": 32.64139
+  },
+  {
+    "id": "889",
+    "name": "ÇILDIR",
+    "state_id": "9",
+    "lat": 37.816,
+    "lng": 27.88846
+  },
+  {
+    "id": "890",
+    "name": "DAMAL",
+    "state_id": "9",
+    "lat": 41.34145,
+    "lng": 42.8368
+  },
+  {
+    "id": "891",
+    "name": "GÖLE",
+    "state_id": "9",
+    "lat": 40.78746,
+    "lng": 42.60603
+  },
+  {
+    "id": "892",
+    "name": "HANAK",
+    "state_id": "9",
+    "lat": 41.23344,
+    "lng": 42.84037
+  },
+  {
+    "id": "893",
+    "name": "POSOF",
+    "state_id": "9",
+    "lat": 41.51111,
+    "lng": 42.72917
+  },
+  {
+    "id": "894",
+    "name": "ARALIK",
+    "state_id": "38",
+    "lat": 41.22617,
+    "lng": 33.13699
+  },
+  {
+    "id": "895",
+    "name": "KARAKOYUNLU",
+    "state_id": "38",
+    "lat": 39.87036,
+    "lng": 43.63014
+  },
+  {
+    "id": "896",
+    "name": "TUZLUCA",
+    "state_id": "38",
+    "lat": 40.03871,
+    "lng": 43.65208
+  },
+  {
+    "id": "897",
+    "name": "ALTINOVA",
+    "state_id": "79",
+    "lat": 40.65501,
+    "lng": 29.27693
+  },
+  {
+    "id": "898",
+    "name": "ARMUTLU",
+    "state_id": "79",
+    "lat": 40.51944,
+    "lng": 28.82806
+  },
+  {
+    "id": "899",
+    "name": "ÇINARCIK",
+    "state_id": "79",
+    "lat": 40.65501,
+    "lng": 29.27693
+  },
+  {
+    "id": "900",
+    "name": "ÇİFTLİKKÖY",
+    "state_id": "79",
+    "lat": 40.66028,
+    "lng": 29.32361
+  },
+  {
+    "id": "901",
+    "name": "TERMAL",
+    "state_id": "79",
+    "lat": 40.60739,
+    "lng": 29.17306
+  },
+  {
+    "id": "902",
+    "name": "EFLANİ",
+    "state_id": "43",
+    "lat": 41.42289,
+    "lng": 32.95761
+  },
+  {
+    "id": "903",
+    "name": "ESKİPAZAR",
+    "state_id": "43",
+    "lat": 40.94298,
+    "lng": 32.53091
+  },
+  {
+    "id": "904",
+    "name": "OVACIK",
+    "state_id": "43",
+    "lat": 40.00994,
+    "lng": 32.82385
+  },
+  {
+    "id": "905",
+    "name": "SAFRANBOLU",
+    "state_id": "43",
+    "lat": 41.25083,
+    "lng": 32.69417
+  },
+  {
+    "id": "906",
+    "name": "YENİCE",
+    "state_id": "43",
+    "lat": 41.19962,
+    "lng": 32.33133
+  },
+  {
+    "id": "907",
+    "name": "ELBEYLİ",
+    "state_id": "51",
+    "lat": 36.67417,
+    "lng": 37.46667
+  },
+  {
+    "id": "908",
+    "name": "MUSABEYLİ",
+    "state_id": "51",
+    "lat": 36.88639,
+    "lng": 36.91861
+  },
+  {
+    "id": "909",
+    "name": "POLATELİ",
+    "state_id": "51",
+    "lat": 36.84137,
+    "lng": 37.14407
+  },
+  {
+    "id": "910",
+    "name": "BAHÇE",
+    "state_id": "64",
+    "lat": 37.20422,
+    "lng": 36.175
+  },
+  {
+    "id": "911",
+    "name": "DÜZİÇİ",
+    "state_id": "64",
+    "lat": 37.24216,
+    "lng": 36.45484
+  },
+  {
+    "id": "912",
+    "name": "HASANBEYLİ",
+    "state_id": "64",
+    "lat": 37.12838,
+    "lng": 36.54608
+  },
+  {
+    "id": "913",
+    "name": "KADİRLİ",
+    "state_id": "64",
+    "lat": 37.37389,
+    "lng": 36.09611
+  },
+  {
+    "id": "914",
+    "name": "SUMBAS",
+    "state_id": "64",
+    "lat": 37.4513,
+    "lng": 36.02349
+  },
+  {
+    "id": "915",
+    "name": "TOPRAKKALE",
+    "state_id": "64",
+    "lat": 37.06855,
+    "lng": 36.14661
+  },
+  {
+    "id": "916",
+    "name": "AKÇAKOCA",
+    "state_id": "27",
+    "lat": 41.08935,
+    "lng": 31.12362
+  },
+  {
+    "id": "917",
+    "name": "CUMAYERİ",
+    "state_id": "27",
+    "lat": 40.87389,
+    "lng": 30.95091
+  },
+  {
+    "id": "918",
+    "name": "ÇİLİMLİ",
+    "state_id": "27",
+    "lat": 40.89361,
+    "lng": 31.04917
+  },
+  {
+    "id": "919",
+    "name": "GÖLYAKA",
+    "state_id": "27",
+    "lat": 40.7769,
+    "lng": 30.99587
+  },
+  {
+    "id": "920",
+    "name": "GÜMÜŞOVA",
+    "state_id": "27",
+    "lat": 40.84694,
+    "lng": 30.94111
+  },
+  {
+    "id": "921",
+    "name": "KAYNAŞLI",
+    "state_id": "27",
+    "lat": 40.83889,
+    "lng": 31.16389
+  },
+  {
+    "id": "922",
+    "name": "YIĞILCA",
+    "state_id": "27",
+    "lat": 40.83889,
+    "lng": 31.16389
+  }
+]

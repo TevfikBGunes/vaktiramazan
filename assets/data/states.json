@@ -1,0 +1,326 @@
+[
+  {
+    "id": "1",
+    "name": "ADANA"
+  },
+  {
+    "id": "2",
+    "name": "ADIYAMAN"
+  },
+  {
+    "id": "3",
+    "name": "AFYONKARAHİSAR"
+  },
+  {
+    "id": "4",
+    "name": "AĞRI"
+  },
+  {
+    "id": "5",
+    "name": "AKSARAY"
+  },
+  {
+    "id": "6",
+    "name": "AMASYA"
+  },
+  {
+    "id": "7",
+    "name": "ANKARA"
+  },
+  {
+    "id": "8",
+    "name": "ANTALYA"
+  },
+  {
+    "id": "9",
+    "name": "ARDAHAN"
+  },
+  {
+    "id": "10",
+    "name": "ARTVİN"
+  },
+  {
+    "id": "11",
+    "name": "AYDIN"
+  },
+  {
+    "id": "12",
+    "name": "BALIKESİR"
+  },
+  {
+    "id": "13",
+    "name": "BARTIN"
+  },
+  {
+    "id": "14",
+    "name": "BATMAN"
+  },
+  {
+    "id": "15",
+    "name": "BAYBURT"
+  },
+  {
+    "id": "16",
+    "name": "BİLECİK"
+  },
+  {
+    "id": "17",
+    "name": "BİNGÖL"
+  },
+  {
+    "id": "18",
+    "name": "BİTLİS"
+  },
+  {
+    "id": "19",
+    "name": "BOLU"
+  },
+  {
+    "id": "20",
+    "name": "BURDUR"
+  },
+  {
+    "id": "21",
+    "name": "BURSA"
+  },
+  {
+    "id": "22",
+    "name": "ÇANAKKALE"
+  },
+  {
+    "id": "23",
+    "name": "ÇANKIRI"
+  },
+  {
+    "id": "24",
+    "name": "ÇORUM"
+  },
+  {
+    "id": "25",
+    "name": "DENİZLİ"
+  },
+  {
+    "id": "26",
+    "name": "DİYARBAKIR"
+  },
+  {
+    "id": "27",
+    "name": "DÜZCE"
+  },
+  {
+    "id": "28",
+    "name": "EDİRNE"
+  },
+  {
+    "id": "29",
+    "name": "ELAZIĞ"
+  },
+  {
+    "id": "30",
+    "name": "ERZİNCAN"
+  },
+  {
+    "id": "31",
+    "name": "ERZURUM"
+  },
+  {
+    "id": "32",
+    "name": "ESKİŞEHİR"
+  },
+  {
+    "id": "33",
+    "name": "GAZİANTEP"
+  },
+  {
+    "id": "34",
+    "name": "GİRESUN"
+  },
+  {
+    "id": "35",
+    "name": "GÜMÜŞHANE"
+  },
+  {
+    "id": "36",
+    "name": "HAKKARİ"
+  },
+  {
+    "id": "37",
+    "name": "HATAY"
+  },
+  {
+    "id": "38",
+    "name": "IĞDIR"
+  },
+  {
+    "id": "39",
+    "name": "ISPARTA"
+  },
+  {
+    "id": "40",
+    "name": "İSTANBUL"
+  },
+  {
+    "id": "41",
+    "name": "İZMİR"
+  },
+  {
+    "id": "42",
+    "name": "KAHRAMANMARAŞ"
+  },
+  {
+    "id": "43",
+    "name": "KARABÜK"
+  },
+  {
+    "id": "44",
+    "name": "KARAMAN"
+  },
+  {
+    "id": "45",
+    "name": "KARS"
+  },
+  {
+    "id": "46",
+    "name": "KASTAMONU"
+  },
+  {
+    "id": "47",
+    "name": "KAYSERİ"
+  },
+  {
+    "id": "48",
+    "name": "KIRIKKALE"
+  },
+  {
+    "id": "49",
+    "name": "KIRKLARELİ"
+  },
+  {
+    "id": "50",
+    "name": "KIRŞEHİR"
+  },
+  {
+    "id": "51",
+    "name": "KİLİS"
+  },
+  {
+    "id": "52",
+    "name": "KOCAELİ"
+  },
+  {
+    "id": "53",
+    "name": "KONYA"
+  },
+  {
+    "id": "54",
+    "name": "KÜTAHYA"
+  },
+  {
+    "id": "55",
+    "name": "MALATYA"
+  },
+  {
+    "id": "56",
+    "name": "MANİSA"
+  },
+  {
+    "id": "57",
+    "name": "MARDİN"
+  },
+  {
+    "id": "58",
+    "name": "MERSİN"
+  },
+  {
+    "id": "59",
+    "name": "MUĞLA"
+  },
+  {
+    "id": "60",
+    "name": "MUŞ"
+  },
+  {
+    "id": "61",
+    "name": "NEVŞEHİR"
+  },
+  {
+    "id": "62",
+    "name": "NİĞDE"
+  },
+  {
+    "id": "63",
+    "name": "ORDU"
+  },
+  {
+    "id": "64",
+    "name": "OSMANİYE"
+  },
+  {
+    "id": "65",
+    "name": "RİZE"
+  },
+  {
+    "id": "66",
+    "name": "SAKARYA"
+  },
+  {
+    "id": "67",
+    "name": "SAMSUN"
+  },
+  {
+    "id": "68",
+    "name": "SİİRT"
+  },
+  {
+    "id": "69",
+    "name": "SİNOP"
+  },
+  {
+    "id": "70",
+    "name": "SİVAS"
+  },
+  {
+    "id": "71",
+    "name": "ŞANLIURFA"
+  },
+  {
+    "id": "72",
+    "name": "ŞIRNAK"
+  },
+  {
+    "id": "73",
+    "name": "TEKİRDAĞ"
+  },
+  {
+    "id": "74",
+    "name": "TOKAT"
+  },
+  {
+    "id": "75",
+    "name": "TRABZON"
+  },
+  {
+    "id": "76",
+    "name": "TUNCELİ"
+  },
+  {
+    "id": "77",
+    "name": "UŞAK"
+  },
+  {
+    "id": "78",
+    "name": "VAN"
+  },
+  {
+    "id": "79",
+    "name": "YALOVA"
+  },
+  {
+    "id": "80",
+    "name": "YOZGAT"
+  },
+  {
+    "id": "81",
+    "name": "ZONGULDAK"
+  }
+]

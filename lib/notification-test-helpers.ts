@@ -95,7 +95,7 @@ export async function cancelAllTestNotifications(): Promise<void> {
  * Namaz vakti bildirimi testi (2 sn sonra). Ayet metni ve tıklanınca ayete gider.
  */
 export async function testPrayerNotification(): Promise<string> {
-  const body = `İkindi vakti girdi. "${verseSnippet(TEST_VERSE)}"`;
+  const body = `"${verseSnippet(TEST_VERSE)}"`;
   return await sendTestNotificationNow(
     '🌤️ İkindi vakti',
     body,
