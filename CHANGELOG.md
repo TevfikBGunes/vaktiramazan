@@ -1,5 +1,11 @@
 # vaktiramazan
 
+## 1.11.0
+
+### Minor Changes
+
+- 8b80e08: Switch to dynamic prayer times fetching via Aladhan API and remove static data files.
+
 ## 1.10.0
 
 ### Minor Changes
