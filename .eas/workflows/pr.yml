@@ -1,0 +1,12 @@
+name: Preview Build
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  build_preview:
+    name: Build Preview
+    type: build
+    params:
+      platform: ios
+      profile: preview

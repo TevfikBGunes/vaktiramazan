@@ -11,6 +11,7 @@ export const Colors = {
     accent: '#D97706',
     text: '#1F2937',
     textSecondary: '#6B7280',
+    border: '#E5E7EB',
   },
   dark: {
     background: '#1E1B2E',
@@ -18,6 +19,7 @@ export const Colors = {
     accent: '#FFB380',
     text: '#FFFFFF',
     textSecondary: '#A0A0A0',
+    border: '#374151',
   },
 };
 

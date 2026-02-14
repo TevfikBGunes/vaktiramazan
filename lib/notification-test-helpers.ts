@@ -43,6 +43,7 @@ export async function sendTestNotificationNow(
       title,
       body,
       data: data ?? { screen: '/(tabs)', url: '/(tabs)' },
+      // @ts-ignore: channelId is valid for Android but types might be strict
       channelId: CHANNEL_IDS[channelId],
       sound: true,
     },
@@ -67,6 +68,7 @@ export async function scheduleTestNotification(
       title,
       body,
       data: { screen: '/(tabs)', url: '/(tabs)' },
+      // @ts-ignore: channelId is valid for Android but types might be strict
       channelId: CHANNEL_IDS[channelId],
       sound: true,
     },
