@@ -55,6 +55,7 @@ module.exports = {
           },
         },
       ],
+      "expo-insights",
     ],
     experiments: {
       typedRoutes: true,
