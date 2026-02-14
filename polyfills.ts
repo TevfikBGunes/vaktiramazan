@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+// @ts-ignore
 import structuredClone from '@ungap/structured-clone';
 
 if (Platform.OS !== 'web') {
@@ -11,6 +12,10 @@ if (Platform.OS !== 'web') {
     const { TextEncoderStream, TextDecoderStream } = await import(
       '@stardazed/streams-text-encoding'
     );
+
+    // Buffer polyfill
+    const { Buffer } = await import('buffer');
+    polyfillGlobal('Buffer', () => Buffer);
 
     if (!('structuredClone' in global)) {
       polyfillGlobal('structuredClone', () => structuredClone);
