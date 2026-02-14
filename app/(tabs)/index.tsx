@@ -1,11 +1,10 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
 import { hapticSelection } from '@/lib/haptics';
-import { getStoredDistrictId } from '@/lib/location-storage';
-import type { District, PrayerTimesRecord, State } from '@/lib/prayer-times';
+import { getStoredLocation, toLocationTitleCase, type StoredLocation } from '@/lib/location-storage';
+import { fetchDailyPrayerTimes } from '@/lib/aladhan-api';
+import type { PrayerTimesRecord } from '@/lib/prayer-times';
 import {
-    getDailyRecords,
-    getLocationName,
     getTimerState,
     timesToDisplayList,
 } from '@/lib/prayer-times';
@@ -13,20 +12,12 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Circle } from 'react-native-svg';
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
-
-const districts = require('../../assets/data/prayer-times.districts.json') as District[];
-const states = require('../../assets/data/prayer-times.states.json') as State[];
-const prayerTimes2026 = require('../../assets/data/prayer-times-2026.json') as {
-  data: PrayerTimesRecord[];
-};
-
-const DEFAULT_DISTRICT_ID = '15153';
 
 const CircularTimer = ({
   time = '--:--:--',
@@ -128,29 +119,44 @@ function formatGregorianLong(d: Date): string {
 export default function HomeScreen() {
   const router = useRouter();
   const colors = Colors[useTheme().activeTheme];
-  const [districtId, setDistrictId] = useState<string>(DEFAULT_DISTRICT_ID);
+  const [location, setLocation] = useState<StoredLocation | null>(null);
+  const [todayRecord, setTodayRecord] = useState<PrayerTimesRecord | null>(null);
+  const [tomorrowRecord, setTomorrowRecord] = useState<PrayerTimesRecord | null>(null);
+  const [loading, setLoading] = useState(true);
 
+  // Load location and fetch prayer times
+  const loadData = useCallback(async () => {
+    try {
+      const loc = await getStoredLocation();
+      setLocation(loc);
+      const { today, tomorrow } = await fetchDailyPrayerTimes(loc.lat, loc.lng);
+      setTodayRecord(today);
+      setTomorrowRecord(tomorrow);
+    } catch (err) {
+      console.error('Failed to load prayer times:', err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // Reload on focus (location may have changed)
   useFocusEffect(
     useCallback(() => {
-      getStoredDistrictId().then((id) => {
-        if (id) setDistrictId(id);
-      });
-    }, [])
-  );
-
-  const { today: todayRecord, tomorrow: tomorrowRecord } = useMemo(
-    () => getDailyRecords(prayerTimes2026.data),
-    []
+      loadData();
+    }, [loadData])
   );
   
   const prayerList = useMemo(
     () => (todayRecord ? timesToDisplayList(todayRecord.times) : []),
     [todayRecord]
   );
-  const locationName = useMemo(
-    () => getLocationName(districtId, districts, states),
-    [districtId]
-  );
+
+  const locationName = useMemo(() => {
+    if (!location) return 'Yükleniyor...';
+    const district = toLocationTitleCase(location.districtName);
+    const state = toLocationTitleCase(location.stateName);
+    return `${district}, ${state}`;
+  }, [location]);
 
   const [timerState, setTimerState] = useState(() =>
     getTimerState(todayRecord, tomorrowRecord)
@@ -221,13 +227,15 @@ export default function HomeScreen() {
           </Animated.View>
 
           <View style={styles.listSection}>
-            {prayerList.length > 0
-              ? prayerList.map((item, index) => (
-                  <PrayerRow key={item.name} item={item} index={index} />
-                ))
-              : (
-                  <Text style={[styles.emptyText, { color: colors.textSecondary }]}>Bugün için vakit verisi yok</Text>
-                )}
+            {loading ? (
+              <ActivityIndicator size="large" color={colors.accent} style={{ marginTop: 20 }} />
+            ) : prayerList.length > 0 ? (
+              prayerList.map((item, index) => (
+                <PrayerRow key={item.name} item={item} index={index} />
+              ))
+            ) : (
+              <Text style={[styles.emptyText, { color: colors.textSecondary }]}>Bugün için vakit verisi yok</Text>
+            )}
           </View>
 
           <Animated.View 

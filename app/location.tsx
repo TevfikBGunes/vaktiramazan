@@ -1,13 +1,8 @@
 import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
-import { setStoredDistrictId } from '@/lib/location-storage';
-import type { District, State } from '@/lib/prayer-times';
-import {
-  getDistrictsForState,
-  getStatesForCountry,
-} from '@/lib/prayer-times';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { hapticSelection } from '@/lib/haptics';
+import { setStoredLocation, toLocationTitleCase } from '@/lib/location-storage';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import {
@@ -21,10 +16,21 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const districts = require('../assets/data/prayer-times.districts.json') as District[];
-const states = require('../assets/data/prayer-times.states.json') as State[];
+interface StateItem {
+  id: string;
+  name: string;
+}
 
-const TURKEY_COUNTRY_ID = '2';
+interface DistrictItem {
+  id: string;
+  name: string;
+  state_id: string;
+  lat?: number;
+  lng?: number;
+}
+
+const statesData = require('../assets/data/states.json') as StateItem[];
+const districtsData = require('../assets/data/districts.json') as DistrictItem[];
 
 function toTitleCase(str: string) {
   return str
@@ -42,20 +48,23 @@ export default function LocationScreen() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const stateList = useMemo(
-    () => getStatesForCountry(states, TURKEY_COUNTRY_ID),
+    () => [...statesData].sort((a, b) => a.name.localeCompare(b.name, 'tr')),
     []
   );
+
   const districtList = useMemo(
     () =>
       selectedStateId
-        ? getDistrictsForState(districts, selectedStateId)
+        ? districtsData
+            .filter((d) => d.state_id === selectedStateId)
+            .sort((a, b) => a.name.localeCompare(b.name, 'tr'))
         : [],
     [selectedStateId]
   );
 
   const filteredList = useMemo(() => {
     const query = searchQuery.toLocaleLowerCase('tr-TR').trim();
-    const list = step === 'state' ? stateList : districtList;
+    const list: (StateItem | DistrictItem)[] = step === 'state' ? stateList : districtList;
     if (!query) return list;
     return list.filter((item) => item.name.toLocaleLowerCase('tr-TR').includes(query));
   }, [step, stateList, districtList, searchQuery]);
@@ -64,12 +73,19 @@ export default function LocationScreen() {
     hapticSelection();
     setSelectedStateId(stateId);
     setStep('district');
-    setSearchQuery(''); // Clear search for next step
+    setSearchQuery('');
   };
 
-  const handleSelectDistrict = async (districtId: string) => {
+  const handleSelectDistrict = async (district: DistrictItem) => {
     hapticSelection();
-    await setStoredDistrictId(districtId);
+    const state = statesData.find((s) => s.id === district.state_id);
+    await setStoredLocation({
+      districtId: district.id,
+      districtName: district.name,
+      stateName: state?.name ?? '',
+      lat: district.lat ?? 41.0225,
+      lng: district.lng ?? 28.94083,
+    });
     router.back();
   };
 
@@ -80,12 +96,12 @@ export default function LocationScreen() {
     setSearchQuery('');
   };
 
-  const renderItem = ({ item }: { item: State | District }) => (
+  const renderItem = ({ item }: { item: StateItem | DistrictItem }) => (
     <Pressable
       onPress={() =>
         step === 'state'
-          ? handleSelectState(item._id)
-          : handleSelectDistrict(item._id)
+          ? handleSelectState(item.id)
+          : handleSelectDistrict(item as DistrictItem)
       }
       style={({ pressed }) => [
         styles.row,
@@ -139,7 +155,7 @@ export default function LocationScreen() {
 
       <FlatList
         data={filteredList}
-        keyExtractor={(item) => item._id}
+        keyExtractor={(item) => item.id}
         renderItem={renderItem}
         contentContainerStyle={styles.listContent}
         keyboardShouldPersistTaps="handled"

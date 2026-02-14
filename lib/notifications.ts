@@ -1,16 +1,19 @@
-import * as Notifications from 'expo-notifications';
-import type { PrayerTimesRecord } from '@/lib/prayer-times';
-import type { NotificationPreferences, PrayerTimeKey } from '@/lib/notification-preferences';
-import { CHANNEL_IDS } from '@/lib/notification-setup';
-import { getVerseForDate, type Verse } from '@/lib/verses';
+import * as Notifications from "expo-notifications";
+import type { PrayerTimesRecord } from "@/lib/prayer-times";
+import type {
+  NotificationPreferences,
+  PrayerTimeKey,
+} from "@/lib/notification-preferences";
+import { CHANNEL_IDS } from "@/lib/notification-setup";
+import { getVerseForDate, type Verse } from "@/lib/verses";
 
 const PRAYER_NAMES: Record<PrayerTimeKey, string> = {
-  imsak: '🌅 İmsak',
-  gunes: '☀️ Güneş',
-  ogle: '🌞 Öğle',
-  ikindi: '🌤️ İkindi',
-  aksam: '🌙 Akşam (İftar)',
-  yatsi: '🌃 Yatsı',
+  imsak: "🌅 İmsak",
+  gunes: "☀️ Güneş",
+  ogle: "🌞 Öğle",
+  ikindi: "🌤️ İkindi",
+  aksam: "🌙 Akşam (İftar)",
+  yatsi: "🌃 Yatsı",
 };
 
 const MAX_DAYS_AHEAD = 7;
@@ -18,7 +21,7 @@ const MAX_VERSE_BODY_LENGTH = 100;
 
 /** Sahur bildiriminde gösterilen sabit metin (hadis). */
 const SAHUR_MESSAGE =
-  'Sahurda yemek yiyiniz, Çünkü sahur yemeğinde bereket vardır. (Buhari, Savm, 20)';
+  "Sahurda yemek yiyiniz, Çünkü sahur yemeğinde bereket vardır. (Buhari, Savm, 20)";
 
 /** İftar bildiriminde gösterilen sabit metin (dua). */
 const IFTAR_MESSAGE =
@@ -28,12 +31,12 @@ const IFTAR_MESSAGE =
 function verseSnippet(verse: Verse): string {
   const t = verse.text.trim();
   if (t.length <= MAX_VERSE_BODY_LENGTH) return t;
-  return t.slice(0, MAX_VERSE_BODY_LENGTH - 1).trim() + '…';
+  return t.slice(0, MAX_VERSE_BODY_LENGTH - 1).trim() + "…";
 }
 
 function verseNotificationData(verse: Verse) {
   return {
-    screen: '/(tabs)/verse',
+    screen: "/(tabs)/verse",
     url: `/(tabs)/verse?verseId=${verse.id}`,
     verseId: verse.id,
   };
@@ -41,8 +44,8 @@ function verseNotificationData(verse: Verse) {
 
 /** Parse "YYYY-MM-DD" or ISO date string and "HH:mm" into local Date */
 function toTriggerDate(dateStr: string, timeStr: string): Date {
-  const [y, m, d] = dateStr.slice(0, 10).split('-').map(Number);
-  const [hour, min] = timeStr.split(':').map(Number);
+  const [y, m, d] = dateStr.slice(0, 10).split("-").map(Number);
+  const [hour, min] = timeStr.split(":").map(Number);
   return new Date(y, m - 1, d, hour, min, 0);
 }
 
@@ -82,7 +85,14 @@ export async function schedulePrayerTimeNotifications(
   prefs: NotificationPreferences
 ): Promise<void> {
   const now = new Date();
-  const keys: PrayerTimeKey[] = ['imsak', 'gunes', 'ogle', 'ikindi', 'aksam', 'yatsi'];
+  const keys: PrayerTimeKey[] = [
+    "imsak",
+    "gunes",
+    "ogle",
+    "ikindi",
+    "aksam",
+    "yatsi",
+  ];
 
   for (let dayOffset = 0; dayOffset < MAX_DAYS_AHEAD; dayOffset++) {
     const d = new Date(now);
@@ -96,19 +106,19 @@ export async function schedulePrayerTimeNotifications(
       const triggerDate = toTriggerDate(record.date, record.times[key]);
       if (triggerDate.getTime() <= Date.now()) continue;
       const identifier = `prayer-${key}-${dateStr}`;
-      const isIftar = key === 'aksam';
+      const isIftar = key === "aksam";
       if (isIftar) {
         await scheduleAt(
           identifier,
           `${PRAYER_NAMES[key]} vakti`,
-          `${PRAYER_NAMES[key]} vakti girdi.`,
+          "",
           triggerDate,
           CHANNEL_IDS.PRAYER_TIMES,
-          { screen: '/(tabs)', url: '/(tabs)' }
+          { screen: "/(tabs)", url: "/(tabs)" }
         );
       } else {
         const verse = getVerseForDate(dateStr, key);
-        const body = `${PRAYER_NAMES[key]} vakti girdi. "${verseSnippet(verse)}"`;
+        const body = `${verseSnippet(verse)}`;
         await scheduleAt(
           identifier,
           `${PRAYER_NAMES[key]} vakti`,
@@ -147,11 +157,11 @@ export async function scheduleSahurIftarNotifications(
       if (sahurDate.getTime() > Date.now()) {
         await scheduleAt(
           `sahur-${dateStr}`,
-          '⏰ Sahur hatırlatması',
+          "⏰ Sahur hatırlatması",
           SAHUR_MESSAGE,
           sahurDate,
           CHANNEL_IDS.SAHUR_IFTAR,
-          { screen: '/(tabs)', url: '/(tabs)' }
+          { screen: "/(tabs)", url: "/(tabs)" }
         );
       }
     }
@@ -162,11 +172,11 @@ export async function scheduleSahurIftarNotifications(
       if (iftarDate.getTime() > Date.now()) {
         await scheduleAt(
           `iftar-${dateStr}`,
-          '🌙 İftar vakti',
+          "🌙 İftar vakti",
           IFTAR_MESSAGE,
           iftarDate,
           CHANNEL_IDS.SAHUR_IFTAR,
-          { screen: '/(tabs)', url: '/(tabs)' }
+          { screen: "/(tabs)", url: "/(tabs)" }
         );
       }
     }
@@ -179,10 +189,12 @@ export async function scheduleSahurIftarNotifications(
       );
       if (beforeDate.getTime() > Date.now()) {
         const verse = getVerseForDate(dateStr);
-        const body = `İftara ${prefs.iftarMinutesBefore} dakika kaldı. "${verseSnippet(verse)}"`;
+        const body = `İftara ${
+          prefs.iftarMinutesBefore
+        } dakika kaldı. "${verseSnippet(verse)}"`;
         await scheduleAt(
           `iftar-before-${dateStr}`,
-          '⏰ İftara kalan süre',
+          "⏰ İftara kalan süre",
           body,
           beforeDate,
           CHANNEL_IDS.SAHUR_IFTAR,
@@ -214,7 +226,7 @@ export async function scheduleVerseOfDayNotifications(
     const identifier = `verse-${dateStr}`;
     await scheduleAt(
       identifier,
-      '🌙 Günün Ayeti',
+      "🌙 Günün Ayeti",
       `"${verseSnippet(verse)}"`,
       d,
       CHANNEL_IDS.VERSE_OF_DAY,
@@ -237,8 +249,12 @@ export async function cancelAllScheduledNotifications(): Promise<void> {
 export async function rescheduleAllNotifications(
   records: PrayerTimesRecord[]
 ): Promise<void> {
-  const { getNotificationPreferences } = await import('@/lib/notification-preferences');
-  const { requestNotificationPermissions } = await import('@/lib/notification-setup');
+  const { getNotificationPreferences } = await import(
+    "@/lib/notification-preferences"
+  );
+  const { requestNotificationPermissions } = await import(
+    "@/lib/notification-setup"
+  );
 
   const granted = await requestNotificationPermissions();
   if (!granted) return;
