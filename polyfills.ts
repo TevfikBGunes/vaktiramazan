@@ -13,6 +13,10 @@ if (Platform.OS !== 'web') {
       '@stardazed/streams-text-encoding'
     );
 
+    const { ReadableStream, TransformStream } = await import(
+      'web-streams-polyfill'
+    );
+
     // Buffer polyfill
     const { Buffer } = await import('buffer');
     polyfillGlobal('Buffer', () => Buffer);
@@ -23,6 +27,8 @@ if (Platform.OS !== 'web') {
 
     polyfillGlobal('TextEncoderStream', () => TextEncoderStream);
     polyfillGlobal('TextDecoderStream', () => TextDecoderStream);
+    polyfillGlobal('ReadableStream', () => ReadableStream);
+    polyfillGlobal('TransformStream', () => TransformStream);
   };
 
   setupPolyfills();
