@@ -1,5 +1,28 @@
 # vaktiramazan
 
+## 1.12.0
+
+### Minor Changes
+
+- 2166950: - Upgrade to Expo SDK 55
+  - Integrate EAS Build and Development Client
+  - Add Expo Insights for performance analytics
+  - Configure CI/CD workflows for automated builds
+- cd850bb: Upgrade to Expo SDK 55
+
+  - Upgrade Expo SDK from 52 to 55
+  - Update all Expo modules to compatible versions
+  - Fix TypeScript types for new SDK
+  - Update dependencies for React Native 0.83
+
+### Patch Changes
+
+- 87ab232: Fix AI SDK streaming error in Akıllı Şef feature
+
+  - Replace useObject hook with manual fetch to avoid empty body error
+  - Replace streamObject with generateObject for non-streaming response
+  - Fix React Native ReadableStream polyfill compatibility issue
+
 ## 1.11.0
 
 ### Minor Changes
