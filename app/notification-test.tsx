@@ -11,15 +11,12 @@ import {
   testVerseNotification,
 } from '@/lib/notification-test-helpers';
 import { rescheduleAllNotifications } from '@/lib/notifications';
-import type { PrayerTimesRecord } from '@/lib/prayer-times';
+import { fetchDailyPrayerTimes } from '@/lib/aladhan-api';
+import { getStoredLocation } from '@/lib/location-storage';
 import { PrayerTimeModal, type PrayerTimeModalType } from '@/components/prayer-time-modal';
 import React, { useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-const prayerTimesData = require('../assets/data/prayer-times-2026.json') as {
-  data: PrayerTimesRecord[];
-};
 
 export default function NotificationTestScreen() {
   const { activeTheme } = useTheme();
@@ -76,7 +73,9 @@ export default function NotificationTestScreen() {
 
   const handleRescheduleAll = async () => {
     try {
-      await rescheduleAllNotifications(prayerTimesData.data);
+      const loc = await getStoredLocation();
+      const { monthData } = await fetchDailyPrayerTimes(loc.lat, loc.lng);
+      await rescheduleAllNotifications(monthData);
       const list = await listScheduledNotifications();
       setScheduledCount(list.length);
       Alert.alert('Başarılı', `${list.length} bildirim yeniden zamanlandı.`);
@@ -214,13 +213,13 @@ export default function NotificationTestScreen() {
 
         <View style={styles.infoBox}>
           <Text style={[styles.infoText, { color: colors.textSecondary }]}>
-            💡 Bildirimler gerçek cihazda test edilmelidir. Simulator'da düzgün çalışmayabilir.
+            Bildirimler gerçek cihazda test edilmelidir. Simulator'da düzgün çalışmayabilir.
           </Text>
           <Text style={[styles.infoText, { color: colors.textSecondary }]}>
-            📱 iOS: Ayarlar → Bildirimler → Vakt-i Ramazan
+            iOS: Ayarlar - Bildirimler - Vakt-i Ramazan
           </Text>
           <Text style={[styles.infoText, { color: colors.textSecondary }]}>
-            🤖 Android: Ayarlar → Uygulamalar → Vakt-i Ramazan → Bildirimler
+            Android: Ayarlar - Uygulamalar - Vakt-i Ramazan - Bildirimler
           </Text>
         </View>
       </ScrollView>

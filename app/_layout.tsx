@@ -3,22 +3,19 @@ import { DefaultTheme, ThemeProvider as NavigationThemeProvider } from '@react-n
 import { type Href, Stack, router } from 'expo-router';
 import * as Notifications from 'expo-notifications';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import 'react-native-reanimated';
 
 import { Colors } from '@/constants/theme';
 import { ThemeProvider, useTheme } from '@/context/ThemeContext';
 import { rescheduleAllNotifications } from '@/lib/notifications';
 import { setupNotifications } from '@/lib/notification-setup';
+import { fetchDailyPrayerTimes } from '@/lib/aladhan-api';
+import { getStoredLocation } from '@/lib/location-storage';
 import type { PrayerTimesRecord } from '@/lib/prayer-times';
-import { getDailyRecords } from '@/lib/prayer-times';
 import { getNotificationPreferences, type NotificationPreferences } from '@/lib/notification-preferences';
 import { PrayerTimeModal, type PrayerTimeModalType } from '@/components/prayer-time-modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const prayerTimesData = require('../assets/data/prayer-times-2026.json') as {
-  data: PrayerTimesRecord[];
-};
 
 function useNotificationResponse() {
   useEffect(() => {
@@ -65,11 +62,20 @@ function RootLayoutContent() {
   // Notification preferences
   const [notifPrefs, setNotifPrefs] = useState<NotificationPreferences | null>(null);
 
-  // Get today's prayer times
-  const { today: todayRecord } = useMemo(
-    () => getDailyRecords(prayerTimesData.data),
-    []
-  );
+  // Today's prayer record (fetched from API)
+  const [todayRecord, setTodayRecord] = useState<PrayerTimesRecord | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const loc = await getStoredLocation();
+        const { today } = await fetchDailyPrayerTimes(loc.lat, loc.lng);
+        setTodayRecord(today);
+      } catch (err) {
+        console.error('Layout: failed to fetch prayer times', err);
+      }
+    })();
+  }, []);
 
   // Load notification preferences
   useEffect(() => {
@@ -180,9 +186,17 @@ export default function RootLayout() {
   useNotificationResponse();
 
   useEffect(() => {
-    setupNotifications().then(() => {
-      rescheduleAllNotifications(prayerTimesData.data);
-    });
+    (async () => {
+      await setupNotifications();
+      // Fetch prayer data for notifications
+      try {
+        const loc = await getStoredLocation();
+        const { monthData } = await fetchDailyPrayerTimes(loc.lat, loc.lng);
+        await rescheduleAllNotifications(monthData);
+      } catch (err) {
+        console.error('Failed to schedule notifications:', err);
+      }
+    })();
   }, []);
 
   return (
