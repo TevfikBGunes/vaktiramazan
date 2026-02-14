@@ -2,11 +2,9 @@ import { Colors } from '@/constants/theme';
 import { useTheme } from '@/context/ThemeContext';
 import { hapticLight, hapticSelection } from '@/lib/haptics';
 import { generateAPIUrl } from '@/utils';
-import { experimental_useObject as useObject } from '@ai-sdk/react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import { fetch as expoFetch } from 'expo/fetch';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
     ActivityIndicator,
@@ -20,22 +18,21 @@ import {
     View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { z } from 'zod';
 
-const menuSchema = z.object({
-  soup: z.string().describe('Çorba adı'),
-  soupIngredients: z.string().describe('Çorba malzemeleri listesi'),
-  soupInstructions: z.string().describe('Çorba yapılışı tarifi'),
-  main: z.string().describe('Ana yemek adı'),
-  mainIngredients: z.string().describe('Ana yemek malzemeleri listesi'),
-  mainInstructions: z.string().describe('Ana yemek yapılışı tarifi'),
-  side: z.string().describe('Yan yemek veya meze adı'),
-  sideIngredients: z.string().describe('Yan yemek/meze malzemeleri listesi'),
-  sideInstructions: z.string().describe('Yan yemek/meze yapılışı tarifi'),
-  dessert: z.string().describe('Tatlı adı'),
-  dessertIngredients: z.string().describe('Tatlı malzemeleri listesi'),
-  dessertInstructions: z.string().describe('Tatlı yapılışı tarifi'),
-});
+type MenuResult = {
+  soup: string;
+  soupIngredients: string;
+  soupInstructions: string;
+  main: string;
+  mainIngredients: string;
+  mainInstructions: string;
+  side: string;
+  sideIngredients: string;
+  sideInstructions: string;
+  dessert: string;
+  dessertIngredients: string;
+  dessertInstructions: string;
+};
 
 type RandomMenu = {
   soup: string;
@@ -84,11 +81,19 @@ export default function MenuScreen() {
     setRandomMenuLoading(true);
     try {
       const exclude = menuHistoryRef.current;
-      const res = await (expoFetch as unknown as typeof fetch)(randomMenuApiUrl, {
+      
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+
+      const res = await fetch(randomMenuApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ exclude }),
+        signal: controller.signal,
       });
+      
+      clearTimeout(timeoutId);
+
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         throw new Error(data?.error ?? `Hata: ${res.status}`);
@@ -107,12 +112,39 @@ export default function MenuScreen() {
     }
   }, [randomMenuApiUrl]);
 
-  const { object, submit, isLoading, error } = useObject({
-    api: apiUrl,
-    schema: menuSchema,
-    fetch: apiUrl ? (expoFetch as unknown as typeof globalThis.fetch) : undefined,
-    onError: (err) => console.error(err),
-  });
+  const [aiMenuResult, setAiMenuResult] = useState<MenuResult | null>(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
+
+  const submitAiMenu = useCallback(async (prompt: string) => {
+    if (!apiUrl) {
+      setAiError('API adresi yapılandırılmamış.');
+      return;
+    }
+    setAiLoading(true);
+    setAiError(null);
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000);
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt }),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error ?? `Hata: ${res.status}`);
+      }
+      const data = (await res.json()) as MenuResult;
+      setAiMenuResult(data);
+    } catch (err) {
+      setAiError(err instanceof Error ? err.message : 'Menü oluşturulamadı');
+    } finally {
+      setAiLoading(false);
+    }
+  }, [apiUrl]);
 
   const refreshRandomMenu = useCallback(() => {
     fetchRandomMenu();
@@ -125,9 +157,9 @@ export default function MenuScreen() {
   const handleCreateMenu = useCallback(() => {
     const text = ingredientsInput.trim();
     if (!text) return;
-    submit({ prompt: text });
+    submitAiMenu(text);
     setIngredientsInput('');
-  }, [ingredientsInput, submit]);
+  }, [ingredientsInput, submitAiMenu]);
 
   return (
     <LinearGradient
@@ -246,21 +278,21 @@ export default function MenuScreen() {
                 onChangeText={setIngredientsInput}
                 multiline
                 numberOfLines={2}
-                editable={!isLoading}
+                editable={!aiLoading}
               />
               <Pressable
                 style={({ pressed }) => [
                   styles.submitButton,
                   { backgroundColor: colors.accent },
-                  (isLoading || !ingredientsInput.trim()) && { opacity: 0.6 },
-                  pressed && !isLoading && { opacity: 0.8 },
+                  (aiLoading || !ingredientsInput.trim()) && { opacity: 0.6 },
+                  pressed && !aiLoading && { opacity: 0.8 },
                 ]}
                 onPress={() => {
                   hapticLight();
                   handleCreateMenu();
                 }}
-                disabled={isLoading || !ingredientsInput.trim()}>
-                {isLoading ? (
+                disabled={aiLoading || !ingredientsInput.trim()}>
+                {aiLoading ? (
                   <ActivityIndicator color="#fff" size="small" />
                 ) : (
                   <>
@@ -270,84 +302,84 @@ export default function MenuScreen() {
                 )}
               </Pressable>
 
-              {error && (
+              {aiError && (
                 <View style={[styles.errorBox, { backgroundColor: colors.background }]}>
                   <Text style={[styles.errorText, { color: colors.accent }]}>
-                    {error.message.includes('quota') || error.message.includes('exceeded')
+                    {aiError.includes('quota') || aiError.includes('exceeded')
                       ? 'API kotası aşıldı. Lütfen bir süre sonra tekrar deneyin veya Google AI Studio hesabınızda kotanızı kontrol edin.'
-                      : error.message}
+                      : aiError}
                   </Text>
                   <Text style={[styles.errorHint, { color: colors.textSecondary }]}>
-                    {error.message.includes('quota') || error.message.includes('exceeded')
+                    {aiError.includes('quota') || aiError.includes('exceeded')
                       ? 'Kota bilgisi: ai.google.dev/gemini-api/docs/rate-limits'
                       : '.env dosyasında GOOGLE_GENERATIVE_AI_API_KEY tanımlı olduğundan emin olun.'}
                   </Text>
                 </View>
               )}
 
-              {object != null && (
+              {aiMenuResult != null && (
                 <View style={[styles.menuCard, { backgroundColor: colors.background, marginTop: 12 }]}>
                   {/* Soup */}
                   <Text style={[styles.menuLabel, { color: colors.textSecondary }]}>Çorba</Text>
                   <Text style={[styles.menuItem, { color: colors.text }]}>
-                    {object.soup ?? '...'}
+                    {aiMenuResult.soup ?? '...'}
                   </Text>
-                  {object.soupIngredients && (
+                  {aiMenuResult.soupIngredients && (
                     <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
-                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {object.soupIngredients}
+                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {aiMenuResult.soupIngredients}
                     </Text>
                   )}
-                  {object.soupInstructions && (
+                  {aiMenuResult.soupInstructions && (
                     <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
-                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {object.soupInstructions}
+                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {aiMenuResult.soupInstructions}
                     </Text>
                   )}
 
                   {/* Main */}
                   <Text style={[styles.menuLabel, { color: colors.textSecondary, marginTop: 16 }]}>Ana Yemek</Text>
                   <Text style={[styles.menuItem, { color: colors.text }]}>
-                    {object.main ?? '...'}
+                    {aiMenuResult.main ?? '...'}
                   </Text>
-                  {object.mainIngredients && (
+                  {aiMenuResult.mainIngredients && (
                     <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
-                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {object.mainIngredients}
+                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {aiMenuResult.mainIngredients}
                     </Text>
                   )}
-                  {object.mainInstructions && (
+                  {aiMenuResult.mainInstructions && (
                     <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
-                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {object.mainInstructions}
+                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {aiMenuResult.mainInstructions}
                     </Text>
                   )}
 
                   {/* Side */}
                   <Text style={[styles.menuLabel, { color: colors.textSecondary, marginTop: 16 }]}>Yan / Meze</Text>
                   <Text style={[styles.menuItem, { color: colors.text }]}>
-                    {object.side ?? '...'}
+                    {aiMenuResult.side ?? '...'}
                   </Text>
-                  {object.sideIngredients && (
+                  {aiMenuResult.sideIngredients && (
                     <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
-                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {object.sideIngredients}
+                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {aiMenuResult.sideIngredients}
                     </Text>
                   )}
-                  {object.sideInstructions && (
+                  {aiMenuResult.sideInstructions && (
                     <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
-                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {object.sideInstructions}
+                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {aiMenuResult.sideInstructions}
                     </Text>
                   )}
 
                   {/* Dessert */}
                   <Text style={[styles.menuLabel, { color: colors.textSecondary, marginTop: 16 }]}>Tatlı</Text>
                   <Text style={[styles.menuItem, { color: colors.text }]}>
-                    {object.dessert ?? '...'}
+                    {aiMenuResult.dessert ?? '...'}
                   </Text>
-                  {object.dessertIngredients && (
+                  {aiMenuResult.dessertIngredients && (
                     <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
-                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {object.dessertIngredients}
+                      <Text style={{ fontWeight: '600' }}>Malzemeler:</Text> {aiMenuResult.dessertIngredients}
                     </Text>
                   )}
-                  {object.dessertInstructions && (
+                  {aiMenuResult.dessertInstructions && (
                     <Text style={[styles.recipeText, { color: colors.textSecondary }]}>
-                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {object.dessertInstructions}
+                      <Text style={{ fontWeight: '600' }}>Yapılışı:</Text> {aiMenuResult.dessertInstructions}
                     </Text>
                   )}
                 </View>

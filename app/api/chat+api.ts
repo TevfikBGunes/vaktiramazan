@@ -1,5 +1,5 @@
 import { google } from '@ai-sdk/google';
-import { streamObject } from 'ai';
+import { generateObject } from 'ai';
 import { z } from 'zod';
 
 const menuSchema = z.object({
@@ -36,16 +36,27 @@ export async function POST(req: Request) {
     );
   }
 
-  const systemPrompt =
-    'Sen Türk mutfağı konusunda uzman bir şefsin. Şu malzemelere göre iftar için uygun, pratik ve lezzetli bir menü öner. Her yemek için adını, malzemelerini ve yapılış tarifini ayrı ayrı, Türkçe olarak yaz.';
-  const result = streamObject({
-    model: google('gemini-2.0-flash-lite'),
-    schema: menuSchema,
-    system: systemPrompt,
-    messages: [
-      { role: 'user' as const, content: promptText },
-    ],
-  });
+  try {
+    const systemPrompt =
+      'Sen Türk mutfağı konusunda uzman bir şefsin. Şu malzemelere göre iftar için uygun, pratik ve lezzetli bir menü öner. Her yemek için adını, malzemelerini ve yapılış tarifini ayrı ayrı, Türkçe olarak yaz.';
+    
+    const result = await generateObject({
+      model: google('gemini-2.0-flash-lite'),
+      schema: menuSchema,
+      system: systemPrompt,
+      messages: [
+        { role: 'user' as const, content: promptText },
+      ],
+    });
 
-  return result.toTextStreamResponse();
+    return new Response(JSON.stringify(result.object), {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    console.error('API Error:', error);
+    return new Response(
+      JSON.stringify({ error: 'AI generation failed', details: error instanceof Error ? error.message : 'Unknown error' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 }
